@@ -1,0 +1,14 @@
+----Basic reportable variables-----
+- Demand for each dish type
+- Price of each dish
+- Cost of each ingredient
+- Restaurant favorability rating
+- Total profits/losses
+- Available funds
+
+----Basic underlying variables (not on report, but needed for AI)-----
+- Order rate/probablility of each dish
+- 
+
+--- Basic constants (to be used in the UI) ----
+- Ingredients needed for each dish
