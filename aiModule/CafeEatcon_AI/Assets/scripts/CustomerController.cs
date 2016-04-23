@@ -46,7 +46,7 @@ public class CustomerController : MonoBehaviour {
 			customer = customers [Random.Range (0, customers.Length)];
 			//Figure out the actual spawn wait between the min and max
 			actualSpawnWait = Random.Range (minSpawnWait, maxSpawnWait);
-			spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+			spawnPosition = new Vector3 (spawnValues.x,spawnValues.y,spawnValues.z);
 			spawnRotation = Quaternion.identity;
 			Instantiate (customer, spawnPosition, spawnRotation);
 			customersSpawned++;
