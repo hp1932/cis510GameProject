@@ -1,0 +1,4 @@
+This is my work toward the AI for the game. It's highly experimental at present. We can discuss it and possibly combine it with the rest of the parts on Tuesday.
+
+
+-Hannah
