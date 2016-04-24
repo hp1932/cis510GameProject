@@ -116,8 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  order: 
   orderTime: 1.5
-  entryDuration: 20
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

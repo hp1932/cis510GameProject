@@ -6,10 +6,14 @@ public class CustomerController : MonoBehaviour {
 	public float minSpawnWait; 		// The minimum time between spawns.
 	public float maxSpawnWait;		// The maximum time between spawns. Actual spawn time is randomized between thee values
 	public int numCustomers;		// The total number of customers for the day/phase
-	public GameObject[] customers;	// Array of random customers to spawn in
 	public Vector3 spawnValues;		//Where to start spawning in customers
+	public GameObject[] customerTypes;		// Array of random customers to spawn in
+	public Vector3[] customerWaitPositions;	// Array containing positions in line for customers. 0th position is window
 
-	private int customersSpawned;	// The number of customers actually spawned currently
+	private GameObject[] customersInLine;	//Tracks all the customers on screen/ in line
+	private int customersSpawned;			// The number of customers actually spawned 
+	private int openSpaceIndex;				//The index of the next open space in line
+	private readonly int MAX_LINE_LENGTH = 5;	//The max number of customers in line
 
 	/*************************************************
 	 * Function: Start
@@ -19,6 +23,8 @@ public class CustomerController : MonoBehaviour {
 	void Start () 
 	{
 		customersSpawned = 0;
+		openSpaceIndex = 0;
+		customersInLine = new GameObject[MAX_LINE_LENGTH];
 		//Spawn in some customers! 
 		StartCoroutine (SpawnCustomers ());
 	}
@@ -37,20 +43,75 @@ public class CustomerController : MonoBehaviour {
 	{
 		float actualSpawnWait;
 		GameObject customer;
+		GameObject spawnedCustomer;
+		CustomerMover spawnedCustomerMover;
 		Vector3 spawnPosition;
 		Quaternion spawnRotation;
+
 		//While there are customers left
-		while (customersSpawned < numCustomers) 
+		while (customersSpawned <= numCustomers) 
 		{
-			// Pick a random customer to spawn in
-			customer = customers [Random.Range (0, customers.Length)];
 			//Figure out the actual spawn wait between the min and max
 			actualSpawnWait = Random.Range (minSpawnWait, maxSpawnWait);
-			spawnPosition = new Vector3 (spawnValues.x,spawnValues.y,spawnValues.z);
-			spawnRotation = Quaternion.identity;
-			Instantiate (customer, spawnPosition, spawnRotation);
-			customersSpawned++;
+
+			//Check to see if there is a space to spawn in
+			if (openSpaceIndex < MAX_LINE_LENGTH) 
+			{
+				// Pick a random customer to spawn in
+				customer = customerTypes [Random.Range (0, customerTypes.Length)];
+
+				//Set up spawn values
+				spawnPosition = new Vector3 (spawnValues.x, spawnValues.y, spawnValues.z);
+				spawnRotation = Quaternion.identity;
+
+				//Spawn it in and grab a reference to it
+				spawnedCustomer = (GameObject)Instantiate (customer, spawnPosition, spawnRotation);
+				spawnedCustomerMover = spawnedCustomer.GetComponent<CustomerMover> ();
+				customersSpawned++;
+
+				//set the customer's place in line. The customer will take care of moving to that spot
+				spawnedCustomerMover.SetTarget(customerWaitPositions[openSpaceIndex]);
+				customersInLine [openSpaceIndex] = spawnedCustomer;
+				openSpaceIndex++;
+			}
+
 			yield return new WaitForSeconds (actualSpawnWait);
 		}
+		yield return new WaitForSeconds (maxSpawnWait);
+
+	}
+
+	/***************************************
+	 * Purpose: "pop" the 0th element of the array
+	 * 			Move all customers in array up
+	 * 			Assign new targets for each customer
+	 * 			Reduce openSpaceIndex by one
+	 * **************************************/
+	public void MoveLineForward()
+	{
+		for (int i = 0; i < customersInLine.Length - 1; ++i) 
+		{
+			print ("Moving " + i + " to " + (i + 1));
+			customersInLine [i] = customersInLine [i + 1];
+			if (customersInLine [i] != null) 
+			{
+				customersInLine [i].GetComponent<CustomerMover> ().SetTarget (customerWaitPositions [i]);
+			}
+		}
+		openSpaceIndex = openSpaceIndex - 1;
+		if((customersSpawned >= numCustomers) && (openSpaceIndex == 0))
+		{
+			//TO DO: Make this smarter than just putting it on a timer
+			Invoke ("AllSpawned", 4);
+		}
+	}
+	/********************************************
+	 * PURPOSE: Sets variable in global control
+	 * 			which triggers scene change.
+	 * ******************************************/
+	void AllSpawned()
+	{
+		//Let GlobalControl know we've spawned everyone.
+		GlobalControl.Instance.allCustomersDone = true;
 	}
 }

@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GlobalControl : MonoBehaviour 
 {
@@ -14,6 +15,8 @@ public class GlobalControl : MonoBehaviour
 
 	//stats to be kept regardless of the scene
 	public RestaurantStatistics savedPlayerData = new RestaurantStatistics();
+	public bool allCustomersDone;	//flag to tell if scene should be finished. Triggered by CustomerController
+	public int phase;
 
 	/**********************************************
 	 * Purpose: Initialize instance of singleton
@@ -30,6 +33,21 @@ public class GlobalControl : MonoBehaviour
 		else if (Instance != this)
 		{
 			Destroy (gameObject);
+		}
+	}
+
+	void Start()
+	{
+		allCustomersDone = false;
+		phase = 1;
+	}
+
+	void Update()
+	{
+		if ( (1==phase)&& (allCustomersDone)) 
+		{
+			SceneManager.LoadScene ("phase2");
+			allCustomersDone = false;
 		}
 	}
 }
