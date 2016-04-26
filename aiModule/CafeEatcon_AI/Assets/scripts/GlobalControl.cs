@@ -18,7 +18,6 @@ public class GlobalControl : MonoBehaviour
 	public bool allCustomersDone;	//flag to tell if scene should be finished. Triggered by CustomerController
 	public int phase;
 
-
 	/**********************************************
 	 * Purpose: Initialize instance of singleton
 	 * 			Ensure it is only instance
@@ -31,6 +30,8 @@ public class GlobalControl : MonoBehaviour
 		{
 			DontDestroyOnLoad(gameObject);
 			Instance = this;
+			Instance.SetUpRecipes ();
+			Instance.SetUpPrices ();
 		}
 		else if (Instance != this)
 		{
@@ -41,8 +42,13 @@ public class GlobalControl : MonoBehaviour
 		allCustomersDone = false;
 		phase = 1;
 
-		Instance.SetUpRecipes ();
-		Instance.SetUpPrices ();
+		print ("Price of a ham sammy: " + Instance.savedPlayerData.dishPrices ["Ham Sandwich"]);
+
+	}
+
+	void Start()
+	{
+
 	}
 		
 	/**************************************
@@ -51,9 +57,9 @@ public class GlobalControl : MonoBehaviour
 	 * **************************************/
 	public void SetUpRecipes()
 	{
-		savedPlayerData.recipes.Add ("Ham Sandwich", new string[] {"bread","ham","cheese","condiments" });
-		savedPlayerData.recipes.Add ("Turkey Sandwich", new string[] {"bread","turkey","cheese","condiments" });
-		savedPlayerData.recipes.Add ("Veggie Sandwich", new string[] {"bread","veggie","cheese","condiments" });	
+		Instance.savedPlayerData.recipes.Add ("Ham Sandwich", new string[] {"bread","ham","cheese","condiments" });
+		Instance.savedPlayerData.recipes.Add ("Turkey Sandwich", new string[] {"bread","turkey","cheese","condiments" });
+		Instance.savedPlayerData.recipes.Add ("Veggie Sandwich", new string[] {"bread","veggie","cheese","condiments" });	
 	}
 
 	/**************************************
@@ -62,9 +68,9 @@ public class GlobalControl : MonoBehaviour
 	 * **************************************/
 	public void SetUpPrices()
 	{
-		savedPlayerData.dishPrices.Add ("Ham Sandwich", 4.50f);
-		savedPlayerData.dishPrices.Add ("Turkey Sandwich", 5.00f);
-		savedPlayerData.dishPrices.Add ("Veggie Sandwich",  3.50f);	
+		Instance.savedPlayerData.dishPrices.Add ("Ham Sandwich", 4.50f);
+		Instance.savedPlayerData.dishPrices.Add ("Turkey Sandwich", 5.00f);
+		Instance.savedPlayerData.dishPrices.Add ("Veggie Sandwich",  3.50f);	
 	}
 
 	void Update()
