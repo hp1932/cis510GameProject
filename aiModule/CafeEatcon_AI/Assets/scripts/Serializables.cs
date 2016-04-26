@@ -25,6 +25,61 @@ public class RestaurantStatistics
 		ingredientsOnHand = new Dictionary<string, int>();
 		recipes = new Dictionary<string, string[]> ();
 
+		InitializeIngredientsOnHand ();
+		InitializeIngredientPrices ();
+		InitializeRecipes ();
+		InitializePrices ();
+		InitializeDishDemands ();
+
+		favorabilityRating = 50f;
+		currentBalance = 0.00f;
+
+	}
+
+	/**************************************
+	 * Purpose: Initialize recipe hash table
+	 * 			with string name and array of ingredients
+	 * **************************************/
+	private void InitializeRecipes()
+	{
+		recipes.Add ("Ham Sandwich", new string[] {"bread","ham","cheese","condiments" });
+		recipes.Add ("Turkey Sandwich", new string[] {"bread","turkey","cheese","condiments" });
+		recipes.Add ("Veggie Sandwich", new string[] {"bread","veggie","cheese","condiments" });	
+	}
+
+	/**************************************
+	 * Purpose: Initialize price hash table
+	 * 			with string name and float price
+	 * **************************************/
+	private void InitializePrices()
+	{
+		dishPrices.Add ("Ham Sandwich", 4.50f);
+		dishPrices.Add ("Turkey Sandwich", 5.00f);
+		dishPrices.Add ("Veggie Sandwich",  3.50f);	
+	}
+
+	private void InitializeIngredientPrices()
+	{
+		ingredientPrices.Add ("bread", 1.5f);
+		ingredientPrices.Add ("cheese", 0.5f);
+		ingredientPrices.Add ("condiments", 0.5f);
+		ingredientPrices.Add ("turkey", 1.5f);
+		ingredientPrices.Add ("ham", 1f);
+	}
+
+	private void InitializeDishDemands()
+	{
+		dishDemands.Add ("Ham Sandwich",0.50f);
+		dishDemands.Add ("Turkey Sandwich", 0.25f);
+		dishDemands.Add ("Veggie Sandwich", 0.25f);
+	}
+
+	/************************************
+	 * Purpose: Set up ingredients for initial round
+	 * 			ONLY call in constructor
+	 * ***********************************/
+	private void InitializeIngredientsOnHand()
+	{
 		//Set up ingredients on hand for first round.
 		ingredientsOnHand.Add("bread", 5);
 		ingredientsOnHand.Add("cheese", 5);
@@ -32,10 +87,19 @@ public class RestaurantStatistics
 		ingredientsOnHand.Add("turkey", 2);
 		ingredientsOnHand.Add("ham", 3);
 		ingredientsOnHand.Add("veggie", 2);
+	}
 
-		favorabilityRating = 50f;
-		currentBalance = 0.00f;
-
+	/***********************************
+	 * Purpose: Update the demand for a dish
+	 * 
+	 * *********************************/
+	public void setDishDemand(string dish, float demand)
+	{
+		//Make sure dish is valid first
+		if (dishDemands.ContainsKey (dish)) 
+		{
+			dishDemands [dish] = demand;
+		}
 	}
 
 }

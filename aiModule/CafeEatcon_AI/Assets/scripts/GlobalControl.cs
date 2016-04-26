@@ -14,7 +14,7 @@ public class GlobalControl : MonoBehaviour
 	public static GlobalControl Instance;
 
 	//stats to be kept regardless of the scene
-	public RestaurantStatistics savedPlayerData = new RestaurantStatistics();
+	public RestaurantStatistics savedPlayerData;
 	public bool allCustomersDone;	//flag to tell if scene should be finished. Triggered by CustomerController
 	public int phase;
 
@@ -30,8 +30,7 @@ public class GlobalControl : MonoBehaviour
 		{
 			DontDestroyOnLoad(gameObject);
 			Instance = this;
-			Instance.SetUpRecipes ();
-			Instance.SetUpPrices ();
+			savedPlayerData = new RestaurantStatistics ();
 		}
 		else if (Instance != this)
 		{
@@ -39,40 +38,12 @@ public class GlobalControl : MonoBehaviour
 			Destroy (gameObject);
 		}
 
+		//Reset variables that need to be cleared each level
 		allCustomersDone = false;
 		phase = 1;
-
-		print ("Price of a ham sammy: " + Instance.savedPlayerData.dishPrices ["Ham Sandwich"]);
-
-	}
-
-	void Start()
-	{
-
+		print (Instance.savedPlayerData.dishPrices ["Ham Sandwich"]);
 	}
 		
-	/**************************************
-	 * Purpose: Initialize recipe hash table
-	 * 			with string name and array of ingredients
-	 * **************************************/
-	public void SetUpRecipes()
-	{
-		Instance.savedPlayerData.recipes.Add ("Ham Sandwich", new string[] {"bread","ham","cheese","condiments" });
-		Instance.savedPlayerData.recipes.Add ("Turkey Sandwich", new string[] {"bread","turkey","cheese","condiments" });
-		Instance.savedPlayerData.recipes.Add ("Veggie Sandwich", new string[] {"bread","veggie","cheese","condiments" });	
-	}
-
-	/**************************************
-	 * Purpose: Initialize price hash table
-	 * 			with string name and float price
-	 * **************************************/
-	public void SetUpPrices()
-	{
-		Instance.savedPlayerData.dishPrices.Add ("Ham Sandwich", 4.50f);
-		Instance.savedPlayerData.dishPrices.Add ("Turkey Sandwich", 5.00f);
-		Instance.savedPlayerData.dishPrices.Add ("Veggie Sandwich",  3.50f);	
-	}
-
 	void Update()
 	{
 		if ( (1==phase)&& (allCustomersDone)) 

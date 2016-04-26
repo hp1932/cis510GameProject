@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/***************************************************
+ * Purpose: Control customer movement and behavior
+ * TO DO: CHange class name to be more apt?
+ * *************************************************/
+
 public class CustomerMover : MonoBehaviour {
 
 	public float moveSpeed; //move speed
@@ -27,17 +32,27 @@ public class CustomerMover : MonoBehaviour {
 		order = "Ham Sandwich";
 	}
 
+	/***************************************
+	 * Purpose: Set location to which customer is moving
+	 * *************************************/
 	public void SetTarget(Vector3 t)
 	{
 		target = t;
 		reachedTarget = false;
 	}
 
+	/***************************************
+	 * Purpose: Get move target
+	 * *************************************/
 	public Vector3 GetTarget()
 	{
 		return target;
 	}
 
+	/***************************************
+	 * Purpose: Move toward target.
+	 * 			If at window, order and wait.
+	 * *************************************/
 	void Update()
 	{
 		if (moving) {
