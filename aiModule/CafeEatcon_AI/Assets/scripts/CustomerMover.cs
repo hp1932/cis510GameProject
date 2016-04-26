@@ -7,6 +7,7 @@ public class CustomerMover : MonoBehaviour {
 	public string order;
 	private Vector3 target; //the customer's target
 	private Transform offscreenDestinationTransform; //the customer's target
+	private RestaurantController restaurant;
 
 	private bool reachedTarget;
 	private bool moving;
@@ -17,11 +18,13 @@ public class CustomerMover : MonoBehaviour {
 
 	void Start()
 	{
+		restaurant = GameObject.FindWithTag ("Restaurant").GetComponent<RestaurantController>();
 		customerController = GameObject.FindWithTag ("CustomerController");
 		driveUpLocation = GameObject.FindWithTag ("DriveUpWindow").transform.position;
 		offscreenDestinationTransform = GameObject.FindWithTag("OffscreenTarget").transform;
 		reachedTarget = false;
 		moving = true;
+		order = "Ham Sandwich";
 	}
 
 	public void SetTarget(Vector3 t)
@@ -45,6 +48,7 @@ public class CustomerMover : MonoBehaviour {
 				{
 					reachedTarget = true;
 					PauseForFood (orderTime);
+					restaurant.Order (order);
 				}
 				if (transform.position == offscreenDestinationTransform.position) 
 				{
