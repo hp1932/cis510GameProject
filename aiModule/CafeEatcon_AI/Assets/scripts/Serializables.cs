@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 public class RestaurantStatistics
@@ -30,6 +31,7 @@ public class RestaurantStatistics
 		InitializeRecipes ();
 		InitializePrices ();
 		InitializeDishDemands ();
+		sortDemandsByValue ();
 
 		favorabilityRating = 50f;
 		currentBalance = 0.00f;
