@@ -3,27 +3,33 @@ using System.Collections;
 
 public class RenderLine : MonoBehaviour {
 
-	private LineRenderer lineRenderer;
+	private LineRenderer lineRendererMain;
 	private float counter;
-	private float distance;
+
+
+
+	// for later - public int lengthOfLineRenderer = 20; (seems to be able to determine length of line)
 
 	// Somewhere in start and update we need to be able to calculate the middle point in the drawn demand curve line to connect
 	// average spent per customer and average number of customers per day (demand) to calculate total potential profit
 
+
 	public Transform origin;
 	public Transform destination;
 	public float lineDrawSpeed = 6f;
+	public float lineWidth;
 	public Color c1;
-	public int LWStart;
-	public int LWEnd;
+	public float distance;
+
 
 
 	public void Start () {
 
-		lineRenderer = GetComponent<LineRenderer> ();
-		lineRenderer.SetPosition (0, origin.position);
-		lineRenderer.SetColors (c1, c1);
-		lineRenderer.SetWidth (LWStart, LWEnd);
+		// Main Origin to Destination Line
+		lineRendererMain = GetComponent<LineRenderer> ();
+		lineRendererMain.SetPosition (0, origin.position);
+		lineRendererMain.SetColors (c1, c1);
+		lineRendererMain.SetWidth(lineWidth, lineWidth);
 
 		distance = Vector3.Distance (origin.position, destination.position);
 
@@ -41,7 +47,7 @@ public class RenderLine : MonoBehaviour {
 	
 			Vector3 pointAlongLine = x * Vector3.Normalize (pointB - pointA) + pointA;
 	
-			lineRenderer.SetPosition (1, pointAlongLine);
+			lineRendererMain.SetPosition (1, pointAlongLine);
 		}
 	 }
 }

@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\SCRIPTS\CostMove.cs" />
      <Compile Include="Assets\SCRIPTS\CustomerMove.cs" />
+     <Compile Include="Assets\SCRIPTS\MoveWith.cs" />
      <Compile Include="Assets\SCRIPTS\RenderLine.cs" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
