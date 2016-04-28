@@ -48,6 +48,9 @@ public class RenderLine : MonoBehaviour {
 			Vector3 pointAlongLine = x * Vector3.Normalize (pointB - pointA) + pointA;
 	
 			lineRendererMain.SetPosition (1, pointAlongLine);
+			distance = Vector3.Distance (origin.position, destination.position);
+
 		}
 	 }
+
 }
