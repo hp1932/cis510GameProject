@@ -11,16 +11,31 @@ public class RestaurantStatistics
 	public GameObject[] supplies;	//A list of current supplies. This will be populated with actual gameObjects representing the ingredient
 
 	//NOTE May want to change string name identifier to enum later in each dictionary
-	public Dictionary<string, float> dishDemands; 		// demand for each dish
+	public List<DishDemand> dishDemandsSorted; 		// demand for each dish
+	public Dictionary<string, float> dishDemands;
 	public Dictionary<string, float> ingredientPrices;	// Cost of each ingredient
 	public Dictionary<string, float> dishPrices;		//Cost of each dish.
 	public Dictionary<string, int> ingredientsOnHand;	//Name of eahc ingredient and count 
 	public Dictionary<string, string[]> recipes;
 	public float favorabilityRating;
 
+
+	//TO DO: Make these into an array or something more dynamic
+	public readonly string HAM_SANDWICH = "Ham Sandwich";
+	public readonly string TURKEY_SANDWICH = "Turkey Sandwich";
+	public readonly string VEGGIE_SANDWICH = "Veggie Sandwich";
+	public readonly string BREAD = "Bread";
+	public readonly string CHEESE = "Cheese";
+	public readonly string CONDIMENTS = "Condiments";
+	public readonly string TURKEY = "Turkey";
+	public readonly string HAM = "Ham";
+	public readonly string VEGGIE = "Veggie";
+
+
 	public RestaurantStatistics()
 	{
-		dishDemands = new Dictionary<string, float>();
+		dishDemandsSorted = new List<DishDemand>();
+		dishDemands = new Dictionary<string, float> ();
 		ingredientPrices = new Dictionary<string, float>();
 		dishPrices = new Dictionary<string, float>();
 		ingredientsOnHand = new Dictionary<string, int>();
@@ -31,7 +46,7 @@ public class RestaurantStatistics
 		InitializeRecipes ();
 		InitializePrices ();
 		InitializeDishDemands ();
-		sortDemandsByValue ();
+		SortDemands ();
 
 		favorabilityRating = 50f;
 		currentBalance = 0.00f;
@@ -44,9 +59,9 @@ public class RestaurantStatistics
 	 * **************************************/
 	private void InitializeRecipes()
 	{
-		recipes.Add ("Ham Sandwich", new string[] {"bread","ham","cheese","condiments" });
-		recipes.Add ("Turkey Sandwich", new string[] {"bread","turkey","cheese","condiments" });
-		recipes.Add ("Veggie Sandwich", new string[] {"bread","veggie","cheese","condiments" });	
+		recipes.Add (HAM_SANDWICH, new string[] {BREAD, HAM, CHEESE, CONDIMENTS });
+		recipes.Add (TURKEY_SANDWICH, new string[] {BREAD, TURKEY, CHEESE, CONDIMENTS });
+		recipes.Add (VEGGIE_SANDWICH, new string[] {BREAD, VEGGIE,CHEESE,CONDIMENTS });	
 	}
 
 	/**************************************
@@ -55,25 +70,48 @@ public class RestaurantStatistics
 	 * **************************************/
 	private void InitializePrices()
 	{
-		dishPrices.Add ("Ham Sandwich", 4.50f);
-		dishPrices.Add ("Turkey Sandwich", 5.00f);
-		dishPrices.Add ("Veggie Sandwich",  3.50f);	
+		dishPrices.Add (HAM_SANDWICH, 4.50f);
+		dishPrices.Add (TURKEY_SANDWICH, 5.00f);
+		dishPrices.Add (VEGGIE_SANDWICH,  3.50f);	
 	}
 
+	/**************************************
+	 * Purpose: Initialize price hash table
+	 * 			with string name and float price
+	 * **************************************/
 	private void InitializeIngredientPrices()
 	{
-		ingredientPrices.Add ("bread", 1.5f);
-		ingredientPrices.Add ("cheese", 0.5f);
-		ingredientPrices.Add ("condiments", 0.5f);
-		ingredientPrices.Add ("turkey", 1.5f);
-		ingredientPrices.Add ("ham", 1f);
+		ingredientPrices.Add (BREAD, 1.5f);
+		ingredientPrices.Add (CHEESE, 0.5f);
+		ingredientPrices.Add (CONDIMENTS, 0.5f);
+		ingredientPrices.Add (TURKEY, 1.5f);
+		ingredientPrices.Add (HAM, 1f);
 	}
 
+	/**************************************
+	 * Purpose: Initialize demands hash table
+	 * 			with string name and float probability
+	 * **************************************/
 	private void InitializeDishDemands()
 	{
-		dishDemands.Add ("Ham Sandwich",0.50f);
-		dishDemands.Add ("Turkey Sandwich", 0.25f);
-		dishDemands.Add ("Veggie Sandwich", 0.25f);
+		dishDemands.Add (HAM_SANDWICH, 0.50f);
+		dishDemands.Add (TURKEY_SANDWICH, 0.25f);
+		dishDemands.Add (VEGGIE_SANDWICH, 0.25f);
+	}
+
+	/**************************
+	 * Purpose: take dishDemands dictionary
+	 * 			copy into dishDemandsSorted and sort it
+	 * Note: THIS IS NOT THE BEST WAY TO DO THIS
+	 * 	But it will work for the POC. I'll refactor later
+	 * ***************************/
+	public void SortDemands()
+	{
+		dishDemandsSorted = new List<DishDemand> ();
+		foreach (KeyValuePair<string, float> kvp in dishDemands) {
+			dishDemandsSorted.Add (new DishDemand (kvp.Key, kvp.Value));
+		}
+		dishDemandsSorted.Sort ();
 	}
 
 	/************************************
@@ -83,26 +121,23 @@ public class RestaurantStatistics
 	private void InitializeIngredientsOnHand()
 	{
 		//Set up ingredients on hand for first round.
-		ingredientsOnHand.Add("bread", 5);
-		ingredientsOnHand.Add("cheese", 5);
-		ingredientsOnHand.Add("condiments", 5);
-		ingredientsOnHand.Add("turkey", 2);
-		ingredientsOnHand.Add("ham", 3);
-		ingredientsOnHand.Add("veggie", 2);
+		ingredientsOnHand.Add(BREAD, 5);
+		ingredientsOnHand.Add(CHEESE, 5);
+		ingredientsOnHand.Add(CONDIMENTS, 5);
+		ingredientsOnHand.Add(TURKEY, 2);
+		ingredientsOnHand.Add(HAM, 3);
+		ingredientsOnHand.Add(VEGGIE, 2);
 	}
 
 	/***********************************
 	 * Purpose: Update the demand for a dish
 	 * 
 	 * *********************************/
-	public void setDishDemand(string dish, float demand)
+	public void setDishDemand(string dish, int demand)
 	{
-		//Make sure dish is valid first
-		if (dishDemands.ContainsKey (dish)) 
-		{
-			dishDemands [dish] = demand;
-		}
+		dishDemands [dish] = demand;
 	}
 
 }
+
 	

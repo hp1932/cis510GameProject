@@ -48,6 +48,8 @@ public class CustomerController : MonoBehaviour {
 		CustomerMover spawnedCustomerMover;
 		Vector3 spawnPosition;
 		Quaternion spawnRotation;
+		List<DishDemand> sortedDemands = GlobalControl.Instance.savedPlayerData.dishDemandsSorted;
+		float rand;
 
 		//While there are customers left
 		while (customersSpawned <= numCustomers) 
@@ -75,8 +77,20 @@ public class CustomerController : MonoBehaviour {
 				customersInLine [openSpaceIndex] = spawnedCustomer;
 				openSpaceIndex++;
 
-				//Assign an order based on their probabilities
-
+				rand = Random.Range (0f, 1f);
+				float cumulativeProb = 0;
+				//Assign an order based on dish probabilities
+				foreach (DishDemand dd in sortedDemands) 
+				{
+					cumulativeProb += dd.probability;
+					print ("Comparing rand " + rand + " to " + cumulativeProb);
+					if (rand <= cumulativeProb) 
+					{
+						spawnedCustomerMover.order = dd.name;
+						print ("Order set as " + dd.name);
+						break;
+					}
+				}
 
 			}
 
