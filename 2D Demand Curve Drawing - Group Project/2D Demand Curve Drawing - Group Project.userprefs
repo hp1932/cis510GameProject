@@ -1,9 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SCRIPTS/MoveWith.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SCRIPTS/HorizontalLRScript.cs">
     <Files>
-      <File FileName="Assets/SCRIPTS/RenderLine.cs" Line="19" Column="34" />
-      <File FileName="Assets/SCRIPTS/MoveWith.cs" Line="9" Column="3" />
+      <File FileName="Assets/SCRIPTS/HorizontalLRScript.cs" Line="4" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
