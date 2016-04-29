@@ -39,20 +39,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67ad3f48ff12479a9919243e402b08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnWait: 1
-  maxSpawnWait: 5
+  minSpawnWait: 2
+  maxSpawnWait: 6
   numCustomers: 5
-  spawnValues: {x: -12, y: 0, z: 0}
+  spawnValues: {x: -20, y: -0, z: 0}
   customerTypes:
   - {fileID: 112556, guid: fa5b22d0e424f496aa1706704e99cb11, type: 2}
   - {fileID: 110210, guid: 7497319d98ca5444aa9a0a7e942fbf58, type: 2}
   - {fileID: 132524, guid: 6395fb75de7df405d96825fdda7d67b5, type: 2}
   customerWaitPositions:
   - {x: 0, y: 0, z: 0}
-  - {x: -2, y: 0, z: 0}
   - {x: -4, y: 0, z: 0}
-  - {x: -6, y: 0, z: 0}
   - {x: -8, y: 0, z: 0}
+  - {x: -12, y: 0, z: 0}
+  - {x: -16, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
