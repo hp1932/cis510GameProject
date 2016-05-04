@@ -15,7 +15,6 @@ public class CustomerController : MonoBehaviour {
 	private int customersSpawned;			// The number of customers actually spawned 
 	private int openSpaceIndex;				//The index of the next open space in line
 	private readonly int MAX_LINE_LENGTH = 5;	//The max number of customers in line
-	private Dictionary<string, float> dishDemands; //copy of the one in global instance
 	/*************************************************
 	 * Function: Start
 	 * Purpose: Instantiate variables. 
@@ -26,7 +25,6 @@ public class CustomerController : MonoBehaviour {
 		customersSpawned = 0;
 		openSpaceIndex = 0;
 		customersInLine = new GameObject[MAX_LINE_LENGTH];
-		dishDemands = GlobalControl.Instance.savedPlayerData.dishDemands;
 
 		//Spawn in some customers! 
 		StartCoroutine (SpawnCustomers ());
@@ -50,6 +48,8 @@ public class CustomerController : MonoBehaviour {
 		CustomerMover spawnedCustomerMover;
 		Vector3 spawnPosition;
 		Quaternion spawnRotation;
+		List<DishDemand> sortedDemands = GlobalControl.Instance.savedPlayerData.dishDemandsSorted;
+		float rand;
 
 		//While there are customers left
 		while (customersSpawned <= numCustomers) 
@@ -76,6 +76,21 @@ public class CustomerController : MonoBehaviour {
 				spawnedCustomerMover.SetTarget(customerWaitPositions[openSpaceIndex]);
 				customersInLine [openSpaceIndex] = spawnedCustomer;
 				openSpaceIndex++;
+
+				rand = Random.Range (0f, 1f);
+				float cumulativeProb = 0;
+				//Assign an order based on dish probabilities
+				foreach (DishDemand dd in sortedDemands) 
+				{
+					cumulativeProb += dd.probability;
+					print ("Comparing rand " + rand + " to " + cumulativeProb);
+					if (rand <= cumulativeProb) 
+					{
+						spawnedCustomerMover.order = dd.name;
+						print ("Order set as " + dd.name);
+						break;
+					}
+				}
 
 			}
 

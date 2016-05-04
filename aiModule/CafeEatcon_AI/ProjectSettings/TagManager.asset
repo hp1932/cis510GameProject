@@ -45,3 +45,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Tiles
+    uniqueID: 4156506487
+    locked: 0
+  - name: Building
+    uniqueID: 3565158195
+    locked: 0
+  - name: Decorations
+    uniqueID: 1193338663
+    locked: 0
+  - name: Cars
+    uniqueID: 2320811865
+    locked: 0

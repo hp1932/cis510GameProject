@@ -29,7 +29,6 @@ public class CustomerMover : MonoBehaviour {
 		offscreenDestinationTransform = GameObject.FindWithTag("OffscreenTarget").transform;
 		reachedTarget = false;
 		moving = true;
-		order = "Ham Sandwich";
 	}
 
 	/***************************************
