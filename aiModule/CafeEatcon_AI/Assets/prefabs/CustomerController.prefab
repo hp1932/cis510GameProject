@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpawnWait: 1
-  maxSpawnWait: 4
+  maxSpawnWait: 3
   numCustomers: 5
   spawnValues: {x: -20, y: -0, z: 0}
   customerTypes:
