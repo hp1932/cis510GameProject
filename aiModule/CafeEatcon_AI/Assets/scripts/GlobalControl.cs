@@ -25,7 +25,6 @@ public class GlobalControl : MonoBehaviour
 	 * ********************************************/
 	void Awake ()   
 	{
-		print ("GC awake.");
 		if (Instance == null)
 		{
 			DontDestroyOnLoad(gameObject);
@@ -34,20 +33,19 @@ public class GlobalControl : MonoBehaviour
 		}
 		else if (Instance != this)
 		{
-			print ("Destroying!!!!!!!!");
 			Destroy (gameObject);
 		}
 
 		//Reset variables that need to be cleared each level
 		allCustomersDone = false;
 		phase = 1;
-		print (Instance.savedPlayerData.dishPrices ["Ham Sandwich"]);
 	}
 		
 	void Update()
 	{
 		if ( (1==phase)&& (allCustomersDone)) 
 		{
+			
 			SceneManager.LoadScene ("phase2");
 			allCustomersDone = false;
 		}

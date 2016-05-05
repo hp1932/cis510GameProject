@@ -10,6 +10,8 @@ public class CustomerMover : MonoBehaviour {
 
 	public float moveSpeed; //move speed
 	public string order;
+	public float orderTime;
+
 	private Vector3 target; //the customer's target
 	private Transform offscreenDestinationTransform; //the customer's target
 	private RestaurantController restaurant;
@@ -18,8 +20,9 @@ public class CustomerMover : MonoBehaviour {
 	private bool moving;
 	private Vector3 driveUpLocation;
 	private GameObject customerController;
+	private bool isLastCustomer;
 
-	public float orderTime;
+
 
 	void Start()
 	{
@@ -38,6 +41,22 @@ public class CustomerMover : MonoBehaviour {
 	{
 		target = t;
 		reachedTarget = false;
+	}
+
+	/***************************************
+	 * Purpose: Get isLast flag
+	 * *************************************/
+	public bool IsLastCustomer()
+	{
+		return isLastCustomer;
+	}
+
+	/***************************************
+	 * Purpose: Set isLast flag
+	 * *************************************/
+	public void SetLastCustomer(bool b)
+	{
+		isLastCustomer = b;
 	}
 
 	/***************************************
@@ -93,8 +112,15 @@ public class CustomerMover : MonoBehaviour {
 		moving = true;
 		target = offscreenDestinationTransform.position;
 		reachedTarget = false;
+		if (isLastCustomer) 
+		{
+			restaurant.SaveStats ();
+			GlobalControl.Instance.allCustomersDone = true;
+		}
 
 		//Tell the customer controller to pop stack of customers
 		customerController.GetComponent<CustomerController>().MoveLineForward();
+
+
 	}
 }

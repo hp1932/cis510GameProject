@@ -28,7 +28,6 @@ public class RestaurantController : MonoBehaviour {
 		balanceText.text = "Balance: $"+ localPlayerData.currentBalance;
 	}
 
-
 	/**************************************
 	 * Purpose: Save data to global control
 	 * **************************************/  
@@ -46,16 +45,21 @@ public class RestaurantController : MonoBehaviour {
 	{
 		string[] ingredientList = localPlayerData.recipes [food];
 
-		if (HaveAllIngredients(food)) 
-		{
+		localPlayerData.numCustomers++;
+
+		if (HaveAllIngredients (food)) {
 			//For each ingredient in the recipe...
-			foreach (string ingredient in ingredientList) 
-			{
+			foreach (string ingredient in ingredientList) {
 				localPlayerData.ingredientsOnHand [ingredient]--;
 			} 
+			//Update the totals from the transaction
 			localPlayerData.currentBalance += localPlayerData.dishPrices [food];
+			localPlayerData.numCustomersServed++;
+			localPlayerData.moneyEarned += localPlayerData.dishPrices [food];
+
+			//Update UI
 			UpdateBalance ();
-		}
+		} 
 	}
 
 	/*******************************************

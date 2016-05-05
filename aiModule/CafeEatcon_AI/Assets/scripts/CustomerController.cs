@@ -52,7 +52,7 @@ public class CustomerController : MonoBehaviour {
 		float rand;
 
 		//While there are customers left
-		while (customersSpawned <= numCustomers) 
+		while (customersSpawned < numCustomers) 
 		{
 			//Figure out the actual spawn wait between the min and max
 			actualSpawnWait = Random.Range (minSpawnWait, maxSpawnWait);
@@ -92,6 +92,12 @@ public class CustomerController : MonoBehaviour {
 					}
 				}
 
+				//Set flag on last customer
+				if (customersSpawned == numCustomers) 
+				{
+					spawnedCustomerMover.SetLastCustomer (true);
+				}
+
 			}
 
 			yield return new WaitForSeconds (actualSpawnWait);
@@ -117,19 +123,19 @@ public class CustomerController : MonoBehaviour {
 			}
 		}
 		openSpaceIndex = openSpaceIndex - 1;
-		if((customersSpawned >= numCustomers) && (openSpaceIndex == 0))
+		/*if((customersSpawned >= numCustomers) && (openSpaceIndex == 0))
 		{
 			//TO DO: Make this smarter than just putting it on a timer
 			Invoke ("AllSpawned", 4);
-		}
+		}*/
 	}
 	/********************************************
 	 * PURPOSE: Sets variable in global control
 	 * 			which triggers scene change.
 	 * ******************************************/
-	void AllSpawned()
+	/*void AllSpawned()
 	{
 		//Let GlobalControl know we've spawned everyone.
 		GlobalControl.Instance.allCustomersDone = true;
-	}
+	}*/
 }

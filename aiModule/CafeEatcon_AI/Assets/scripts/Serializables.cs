@@ -19,6 +19,11 @@ public class RestaurantStatistics
 	public Dictionary<string, string[]> recipes;
 	public float favorabilityRating;
 
+	//Variables to be reported in phase 2
+	public int numCustomers;
+	public int numCustomersServed;
+	public float moneySpent;
+	public float moneyEarned;
 
 	//TO DO: Make these into an array or something more dynamic
 	public readonly string HAM_SANDWICH = "Ham Sandwich";
@@ -50,6 +55,10 @@ public class RestaurantStatistics
 
 		favorabilityRating = 50f;
 		currentBalance = 0.00f;
+		numCustomers = 0;
+		numCustomersServed = 0;
+		moneyEarned = 0.0f;
+		moneySpent = 0.0f;
 
 	}
 
