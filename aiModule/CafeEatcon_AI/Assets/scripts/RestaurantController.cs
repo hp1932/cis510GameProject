@@ -16,6 +16,7 @@ public class RestaurantController : MonoBehaviour {
 	void Awake()
 	{
 		GlobalControl gc = GlobalControl.Instance;
+
 		print (gc.ToString ());
 		localPlayerData = gc.savedPlayerData;
 		//Get the ingredientsOnHand from the global controller
@@ -25,9 +26,10 @@ public class RestaurantController : MonoBehaviour {
 
 	void UpdateBalance()
 	{
-		balanceText.text = "Balance: $"+ localPlayerData.currentBalance;
+		balanceText.text = "Total Balance: $"+ localPlayerData.currentBalance+
+			"\nDaily Profit: $"+localPlayerData.moneyEarned;
 	}
-
+		
 	/**************************************
 	 * Purpose: Save data to global control
 	 * **************************************/  
@@ -57,9 +59,23 @@ public class RestaurantController : MonoBehaviour {
 			localPlayerData.numCustomersServed++;
 			localPlayerData.moneyEarned += localPlayerData.dishPrices [food];
 
+			//Add to the dishesServed counter
+			if (DishInDictionary (food)) {
+				localPlayerData.dishesServed [food]++;
+			} 
+			else 
+			{
+				localPlayerData.dishesServed.Add (food, 1);
+			}
+
 			//Update UI
 			UpdateBalance ();
 		} 
+	}
+
+	bool DishInDictionary(string food)
+	{
+		return localPlayerData.dishesServed.ContainsKey (food);
 	}
 
 	/*******************************************

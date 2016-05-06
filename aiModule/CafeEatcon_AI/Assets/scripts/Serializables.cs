@@ -24,6 +24,7 @@ public class RestaurantStatistics
 	public int numCustomersServed;
 	public float moneySpent;
 	public float moneyEarned;
+	public Dictionary<string, int> dishesServed;	//A list of dishes served and their counts
 
 	//TO DO: Make these into an array or something more dynamic
 	public readonly string HAM_SANDWICH = "Ham Sandwich";
@@ -45,6 +46,7 @@ public class RestaurantStatistics
 		dishPrices = new Dictionary<string, float>();
 		ingredientsOnHand = new Dictionary<string, int>();
 		recipes = new Dictionary<string, string[]> ();
+		dishesServed = new Dictionary<string, int> ();
 
 		InitializeIngredientsOnHand ();
 		InitializeIngredientPrices ();
@@ -54,7 +56,7 @@ public class RestaurantStatistics
 		SortDemands ();
 
 		favorabilityRating = 50f;
-		currentBalance = 0.00f;
+		currentBalance = 10.00f;	//start with some cash just to see the difference from daily profit to start
 		numCustomers = 0;
 		numCustomersServed = 0;
 		moneyEarned = 0.0f;
@@ -145,6 +147,18 @@ public class RestaurantStatistics
 	public void setDishDemand(string dish, int demand)
 	{
 		dishDemands [dish] = demand;
+	}
+
+	/**********************************
+	 * Purpose: Reset daily variables
+	 * 			for phase 1
+	 * *********************************/
+	public void ResetValuesForPhase1 ()
+	{
+		moneyEarned = 0;
+		numCustomers = 0;
+		numCustomersServed = 0;
+		dishesServed = new Dictionary<string, int> ();
 	}
 
 }

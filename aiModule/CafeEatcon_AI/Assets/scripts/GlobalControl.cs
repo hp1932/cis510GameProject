@@ -38,7 +38,9 @@ public class GlobalControl : MonoBehaviour
 
 		//Reset variables that need to be cleared each level
 		allCustomersDone = false;
+		//I need to fix how phases are handled later.....
 		phase = 1;
+
 	}
 		
 	void Update()
@@ -47,6 +49,7 @@ public class GlobalControl : MonoBehaviour
 		{
 			
 			SceneManager.LoadScene ("phase2");
+			phase = 2;
 			allCustomersDone = false;
 		}
 	}
