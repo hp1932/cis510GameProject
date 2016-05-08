@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 40
   order: 
-  orderTime: 3
+  orderTime: 2
 --- !u!212 &21286648
 SpriteRenderer:
   m_ObjectHideFlags: 1

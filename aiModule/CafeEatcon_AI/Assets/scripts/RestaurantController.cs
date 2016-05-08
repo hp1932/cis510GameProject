@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class RestaurantController : MonoBehaviour {
 
 	public RestaurantStatistics localPlayerData = new RestaurantStatistics();
-	public GUIText balanceText;
+	public Text balanceText;
 
 	// Use this for initialization
 	void Start () {
