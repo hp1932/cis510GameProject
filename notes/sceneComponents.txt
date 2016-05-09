@@ -1,0 +1,66 @@
+Simulation
+	Visual Components
+	[]Customer Satisfaction Feedback
+	[]Current Inventory
+	[?]Current Bank Balance (How is this different from the global cashroll?)
+	[X]Global Cashroll
+	[X]Daily Profit
+
+	Global Variables Touched
+	[X]Global Cashroll
+	[X]Inventory
+	[X]Daily Income
+	[X]Missed Customers
+	[X]Dishes Served
+	[X]Total Customers Served
+
+Reports
+	Visual Components
+	[X]Units Sold
+	[X]Income (Same as profit?)
+	[X]Expenses
+	[X]Profit
+	[]Customers Served/Missed
+	[]Buttons for Scene Switch
+	[]Accept Level Button
+	[X]Total funds
+	
+	Global Variables
+	[]Dishes Served
+	[]Ingredients Used (How is this being touched? Should it be displayed?)
+	[]Customers Served/Missed
+	[]Daily Income
+	[]Daily Expenses
+	[]Daily Profit
+	[]Total Bankroll
+	[]Demand Change
+
+Graph/Price Adjustment
+	Visual Components
+	[]Graph
+	[]Menu Price Points with INC/DEC Buttons
+	[]To Reports Button
+	
+	Global Variables
+	[]Dishes
+	[]Dish Prices
+	[]Dish Cost
+	[]Dish Demand
+	[]Average Dish Price
+	[]Average Cost Price
+
+Purchasing
+	Visual Components
+	[]Dishes
+	[]Inc/Dec buttons for purchased amount
+	[]Balance (-Cost)
+	[]Return to Reports Page
+	
+	Global Variables
+	[]Ingredient Prices
+	[]Balance
+	[]Ingredient Inventories
+
+
+
+

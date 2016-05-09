@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11467828}
   m_Layer: 0
   m_Name: CustomerController
-  m_TagString: Untagged
+  m_TagString: CustomerController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,11 +39,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67ad3f48ff12479a9919243e402b08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnWait: 0
-  maxSpawnWait: 0
+  minSpawnWait: 0.5
+  maxSpawnWait: 2
   numCustomers: 10
-  customers: []
-  spawnValues: {x: 0, y: 0, z: 0}
+  spawnValues: {x: -30, y: -0, z: 0}
+  customerTypes:
+  - {fileID: 112102, guid: ab623955e36188a4a836f72f1a2cc98b, type: 2}
+  - {fileID: 136892, guid: f4dfb96f0dd1d744784798e75da04349, type: 2}
+  - {fileID: 178856, guid: bc16324b1cbf83747a3253e7d2dd71a3, type: 2}
+  - {fileID: 118040, guid: 54611697b87b6f348aa27244f1abde85, type: 2}
+  - {fileID: 187558, guid: 7b6f340847edf00458a6d236ebf4beae, type: 2}
+  - {fileID: 120186, guid: 6395fb75de7df405d96825fdda7d67b5, type: 2}
+  - {fileID: 169476, guid: 7497319d98ca5444aa9a0a7e942fbf58, type: 2}
+  - {fileID: 182142, guid: fa5b22d0e424f496aa1706704e99cb11, type: 2}
+  customerWaitPositions:
+  - {x: 0, y: 0, z: 0}
+  - {x: -3, y: 0, z: 0}
+  - {x: -6, y: 0, z: 0}
+  - {x: -9, y: 0, z: 0}
+  - {x: -12, y: 0, z: 0}
+  - {x: -15, y: 0, z: 0}
+  - {x: -18, y: 0, z: 0}
+  - {x: -21, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -14,7 +14,7 @@ public class GlobalControl : MonoBehaviour
 	public static GlobalControl Instance;
 
 	//stats to be kept regardless of the scene
-	public RestaurantStatistics savedPlayerData = new RestaurantStatistics();
+	public RestaurantStatistics savedPlayerData;
 	public bool allCustomersDone;	//flag to tell if scene should be finished. Triggered by CustomerController
 	public int phase;
 
@@ -29,24 +29,27 @@ public class GlobalControl : MonoBehaviour
 		{
 			DontDestroyOnLoad(gameObject);
 			Instance = this;
+			savedPlayerData = new RestaurantStatistics ();
 		}
 		else if (Instance != this)
 		{
 			Destroy (gameObject);
 		}
-	}
 
-	void Start()
-	{
+		//Reset variables that need to be cleared each level
 		allCustomersDone = false;
+		//I need to fix how phases are handled later.....
 		phase = 1;
-	}
 
+	}
+		
 	void Update()
 	{
 		if ( (1==phase)&& (allCustomersDone)) 
 		{
+			
 			SceneManager.LoadScene ("phase2");
+			phase = 2;
 			allCustomersDone = false;
 		}
 	}

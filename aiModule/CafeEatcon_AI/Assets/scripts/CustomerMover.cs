@@ -1,22 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/***************************************************
+ * Purpose: Control customer movement and behavior
+ * TO DO: CHange class name to be more apt?
+ * *************************************************/
+
 public class CustomerMover : MonoBehaviour {
 
 	public float moveSpeed; //move speed
 	public string order;
+	public float orderTime;
+
 	private Vector3 target; //the customer's target
 	private Transform offscreenDestinationTransform; //the customer's target
+	private RestaurantController restaurant;
 
 	private bool reachedTarget;
 	private bool moving;
 	private Vector3 driveUpLocation;
 	private GameObject customerController;
+	private bool isLastCustomer;
 
-	public float orderTime;
+
 
 	void Start()
 	{
+		restaurant = GameObject.FindWithTag ("Restaurant").GetComponent<RestaurantController>();
 		customerController = GameObject.FindWithTag ("CustomerController");
 		driveUpLocation = GameObject.FindWithTag ("DriveUpWindow").transform.position;
 		offscreenDestinationTransform = GameObject.FindWithTag("OffscreenTarget").transform;
@@ -24,17 +34,43 @@ public class CustomerMover : MonoBehaviour {
 		moving = true;
 	}
 
+	/***************************************
+	 * Purpose: Set location to which customer is moving
+	 * *************************************/
 	public void SetTarget(Vector3 t)
 	{
 		target = t;
 		reachedTarget = false;
 	}
 
+	/***************************************
+	 * Purpose: Get isLast flag
+	 * *************************************/
+	public bool IsLastCustomer()
+	{
+		return isLastCustomer;
+	}
+
+	/***************************************
+	 * Purpose: Set isLast flag
+	 * *************************************/
+	public void SetLastCustomer(bool b)
+	{
+		isLastCustomer = b;
+	}
+
+	/***************************************
+	 * Purpose: Get move target
+	 * *************************************/
 	public Vector3 GetTarget()
 	{
 		return target;
 	}
 
+	/***************************************
+	 * Purpose: Move toward target.
+	 * 			If at window, order and wait.
+	 * *************************************/
 	void Update()
 	{
 		if (moving) {
@@ -45,6 +81,7 @@ public class CustomerMover : MonoBehaviour {
 				{
 					reachedTarget = true;
 					PauseForFood (orderTime);
+					restaurant.Order (order);
 				}
 				if (transform.position == offscreenDestinationTransform.position) 
 				{
@@ -75,8 +112,15 @@ public class CustomerMover : MonoBehaviour {
 		moving = true;
 		target = offscreenDestinationTransform.position;
 		reachedTarget = false;
+		if (isLastCustomer) 
+		{
+			restaurant.SaveStats ();
+			GlobalControl.Instance.allCustomersDone = true;
+		}
 
 		//Tell the customer controller to pop stack of customers
 		customerController.GetComponent<CustomerController>().MoveLineForward();
+
+
 	}
 }

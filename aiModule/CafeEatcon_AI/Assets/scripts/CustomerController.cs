@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CustomerController : MonoBehaviour {
 
@@ -14,7 +15,6 @@ public class CustomerController : MonoBehaviour {
 	private int customersSpawned;			// The number of customers actually spawned 
 	private int openSpaceIndex;				//The index of the next open space in line
 	private readonly int MAX_LINE_LENGTH = 5;	//The max number of customers in line
-
 	/*************************************************
 	 * Function: Start
 	 * Purpose: Instantiate variables. 
@@ -25,12 +25,13 @@ public class CustomerController : MonoBehaviour {
 		customersSpawned = 0;
 		openSpaceIndex = 0;
 		customersInLine = new GameObject[MAX_LINE_LENGTH];
+
 		//Spawn in some customers! 
 		StartCoroutine (SpawnCustomers ());
 	}
 
 	/*************************************************
-	 * Function: SpanwCustomers()
+	 * Function: SpawnCustomers()
 	 * Purpose: Pick a random customer type to spawn in
 	 * 			Choose random delay between spawns
 	 * 			Instantiate new customer
@@ -47,9 +48,11 @@ public class CustomerController : MonoBehaviour {
 		CustomerMover spawnedCustomerMover;
 		Vector3 spawnPosition;
 		Quaternion spawnRotation;
+		List<DishDemand> sortedDemands = GlobalControl.Instance.savedPlayerData.dishDemandsSorted;
+		float rand;
 
 		//While there are customers left
-		while (customersSpawned <= numCustomers) 
+		while (customersSpawned < numCustomers) 
 		{
 			//Figure out the actual spawn wait between the min and max
 			actualSpawnWait = Random.Range (minSpawnWait, maxSpawnWait);
@@ -73,6 +76,28 @@ public class CustomerController : MonoBehaviour {
 				spawnedCustomerMover.SetTarget(customerWaitPositions[openSpaceIndex]);
 				customersInLine [openSpaceIndex] = spawnedCustomer;
 				openSpaceIndex++;
+
+				rand = Random.Range (0f, 1f);
+				float cumulativeProb = 0;
+				//Assign an order based on dish probabilities
+				foreach (DishDemand dd in sortedDemands) 
+				{
+					cumulativeProb += dd.probability;
+					print ("Comparing rand " + rand + " to " + cumulativeProb);
+					if (rand <= cumulativeProb) 
+					{
+						spawnedCustomerMover.order = dd.name;
+						print ("Order set as " + dd.name);
+						break;
+					}
+				}
+
+				//Set flag on last customer
+				if (customersSpawned == numCustomers) 
+				{
+					spawnedCustomerMover.SetLastCustomer (true);
+				}
+
 			}
 
 			yield return new WaitForSeconds (actualSpawnWait);
@@ -91,7 +116,6 @@ public class CustomerController : MonoBehaviour {
 	{
 		for (int i = 0; i < customersInLine.Length - 1; ++i) 
 		{
-			print ("Moving " + i + " to " + (i + 1));
 			customersInLine [i] = customersInLine [i + 1];
 			if (customersInLine [i] != null) 
 			{
@@ -99,19 +123,19 @@ public class CustomerController : MonoBehaviour {
 			}
 		}
 		openSpaceIndex = openSpaceIndex - 1;
-		if((customersSpawned >= numCustomers) && (openSpaceIndex == 0))
+		/*if((customersSpawned >= numCustomers) && (openSpaceIndex == 0))
 		{
 			//TO DO: Make this smarter than just putting it on a timer
 			Invoke ("AllSpawned", 4);
-		}
+		}*/
 	}
 	/********************************************
 	 * PURPOSE: Sets variable in global control
 	 * 			which triggers scene change.
 	 * ******************************************/
-	void AllSpawned()
+	/*void AllSpawned()
 	{
 		//Let GlobalControl know we've spawned everyone.
 		GlobalControl.Instance.allCustomersDone = true;
-	}
+	}*/
 }
