@@ -26,8 +26,13 @@ public class RestaurantController : MonoBehaviour {
 
 	void UpdateBalance()
 	{
-		balanceText.text = "Total Balance: $"+ localPlayerData.currentBalance+
-			"\nDaily Profit: $"+localPlayerData.moneyEarned;
+		balanceText.text = 
+			"Total Balance: $" 	+ localPlayerData.currentBalance +
+			"\nDaily Profit: $" + localPlayerData.moneyEarned +
+			"\n\nBread: " 		+ localPlayerData.ingredientsOnHand["Bread"] +
+			"\nTurkey: " 		+ localPlayerData.ingredientsOnHand["Turkey"] +
+			"\nHam: " 			+ localPlayerData.ingredientsOnHand["Ham"] +
+			"\nVeggie: " 		+ localPlayerData.ingredientsOnHand["Veggie"];
 	}
 		
 	/**************************************
