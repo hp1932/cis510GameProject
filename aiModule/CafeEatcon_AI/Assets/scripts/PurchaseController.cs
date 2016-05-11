@@ -28,7 +28,8 @@ public class PurchaseController : MonoBehaviour {
 	public Text hamPrice_Text;
 	public Text veggiePrice_Text;
 
-	private float breadPrice;
+	public Text balanceText;
+	
 
 	void Start () {
 
@@ -50,10 +51,17 @@ public class PurchaseController : MonoBehaviour {
 		hamPrice_Text.text 		= "$" + localPlayerData.ingredientPrices ["Ham"].ToString ();
 		veggiePrice_Text.text 	= "$" + localPlayerData.ingredientPrices ["Veggie"].ToString ();
 
-		breadCount_Text.text = purchaseCount ["Bread"].ToString ();
-		turkeyCount_Text.text = purchaseCount ["Turkey"].ToString ();
-		hamCount_Text.text = purchaseCount ["Ham"].ToString ();
-		veggieCount_Text.text = purchaseCount ["Veggie"].ToString ();
+		breadCount_Text.text 	= purchaseCount ["Bread"].ToString ();
+		turkeyCount_Text.text 	= purchaseCount ["Turkey"].ToString ();
+		hamCount_Text.text 		= purchaseCount ["Ham"].ToString ();
+		veggieCount_Text.text 	= purchaseCount ["Veggie"].ToString ();
+
+		breadResult_Text.text 	= "x                =   $" + (localPlayerData.ingredientPrices ["Bread"] * purchaseCount ["Bread"]).ToString ();
+		turkeyResult_Text.text 	= "x                =   $" + (localPlayerData.ingredientPrices ["Turkey"] * purchaseCount ["Turkey"]).ToString ();
+		hamResult_Text.text 	= "x                =   $" + (localPlayerData.ingredientPrices ["Ham"] * purchaseCount ["Ham"]).ToString ();
+		veggieResult_Text.text 	= "x                =   $" + (localPlayerData.ingredientPrices ["Veggie"] * purchaseCount ["Veggie"]).ToString ();
+
+		balanceText.text = "Current Balance: " + localPlayerData.currentBalance.ToString();
 	}
 
 	private void InitializePurchaseCount()
