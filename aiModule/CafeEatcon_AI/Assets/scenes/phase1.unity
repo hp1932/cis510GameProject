@@ -940,7 +940,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 486898, guid: 0bf0c045176b5f24aa2170d694915df3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 486898, guid: 0bf0c045176b5f24aa2170d694915df3, type: 2}
       propertyPath: m_LocalPosition.z
@@ -968,7 +968,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 486898, guid: 0bf0c045176b5f24aa2170d694915df3, type: 2}
       propertyPath: m_LocalScale.y
-      value: 15
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bf0c045176b5f24aa2170d694915df3, type: 2}
@@ -3592,7 +3592,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 451030, guid: 988ed5ee5cb33fc4e9eb643b00a42aba, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 451030, guid: 988ed5ee5cb33fc4e9eb643b00a42aba, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3624,7 +3624,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 451030, guid: 988ed5ee5cb33fc4e9eb643b00a42aba, type: 2}
       propertyPath: m_LocalScale.y
-      value: 15
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 988ed5ee5cb33fc4e9eb643b00a42aba, type: 2}
@@ -3836,7 +3836,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461100, guid: 15b09bb238f8e084e8694306d0d0645d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 16
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 461100, guid: 15b09bb238f8e084e8694306d0d0645d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5569,7 +5569,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 401440, guid: 0ecb4d19c1169f742b4c2667f6729563, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 401440, guid: 0ecb4d19c1169f742b4c2667f6729563, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5597,7 +5597,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 401440, guid: 0ecb4d19c1169f742b4c2667f6729563, type: 2}
       propertyPath: m_LocalScale.y
-      value: 15
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ecb4d19c1169f742b4c2667f6729563, type: 2}
@@ -7421,7 +7421,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 445466, guid: 8dee32d868af582408daf731aed58daa, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 11.5
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 445466, guid: 8dee32d868af582408daf731aed58daa, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7453,7 +7453,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 445466, guid: 8dee32d868af582408daf731aed58daa, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 445466, guid: 8dee32d868af582408daf731aed58daa, type: 2}
       propertyPath: m_LocalScale.x
@@ -9458,7 +9458,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 447610, guid: f90b9290a07f670449a3dd19e7a0d9de, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 16
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 447610, guid: f90b9290a07f670449a3dd19e7a0d9de, type: 2}
       propertyPath: m_LocalPosition.z
@@ -9900,7 +9900,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 431818, guid: a7465de7871882e48848da163688683b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 16
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 431818, guid: a7465de7871882e48848da163688683b, type: 2}
       propertyPath: m_LocalPosition.z
