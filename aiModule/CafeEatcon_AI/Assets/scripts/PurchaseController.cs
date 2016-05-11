@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PurchaseController : MonoBehaviour {
 
 	public RestaurantStatistics localPlayerData;
+	public Dictionary<string,int> purchaseCount;
 
 	public Text breadStock_Text;
 	public Text turkeyStock_Text;
@@ -22,13 +23,19 @@ public class PurchaseController : MonoBehaviour {
 	public Text hamResult_Text;
 	public Text veggieResult_Text;
 
-	private int breadPrice;
-	private int breadCount;
+	public Text breadPrice_Text;
+	public Text turkeyPrice_Text;
+	public Text hamPrice_Text;
+	public Text veggiePrice_Text;
+
+	private float breadPrice;
 
 	void Start () {
 
 		localPlayerData = GlobalControl.Instance.savedPlayerData;
 
+		purchaseCount = new Dictionary<string, int>();
+		InitializePurchaseCount ();
 	}
 
 	void Update()
@@ -38,7 +45,48 @@ public class PurchaseController : MonoBehaviour {
 		hamStock_Text.text 		= localPlayerData.ingredientsOnHand ["Ham"].ToString();
 		veggieStock_Text.text 	= localPlayerData.ingredientsOnHand ["Veggie"].ToString();
 
+		breadPrice_Text.text 	= "$" + localPlayerData.ingredientPrices ["Bread"].ToString ();
+		turkeyPrice_Text.text 	= "$" + localPlayerData.ingredientPrices ["Turkey"].ToString ();
+		hamPrice_Text.text 		= "$" + localPlayerData.ingredientPrices ["Ham"].ToString ();
+		veggiePrice_Text.text 	= "$" + localPlayerData.ingredientPrices ["Veggie"].ToString ();
 
+		breadCount_Text.text = purchaseCount ["Bread"].ToString ();
+		turkeyCount_Text.text = purchaseCount ["Turkey"].ToString ();
+		hamCount_Text.text = purchaseCount ["Ham"].ToString ();
+		veggieCount_Text.text = purchaseCount ["Veggie"].ToString ();
 	}
 
+	private void InitializePurchaseCount()
+	{
+		purchaseCount.Add ("Bread", 0);
+		purchaseCount.Add ("Turkey", 0);
+		purchaseCount.Add ("Ham", 0);
+		purchaseCount.Add ("Veggie", 0);
+	}
+
+	public void Purchase(string food)
+	{
+		
+		float ingredientPrice = localPlayerData.ingredientPrices [food];
+		
+		if (localPlayerData.currentBalance < ingredientPrice * purchaseCount [food]) {
+			print ("[Purchase Error]: Insufficient Funds");
+			return;
+		} else {
+			localPlayerData.currentBalance -= (ingredientPrice * purchaseCount [food]); // subtract total
+			localPlayerData.ingredientsOnHand [food] += purchaseCount [food]; 			// add purchased ingredients to invetory
+			purchaseCount [food] = 0;
+		}
+	}
+
+	public void incrementCount(string food)
+	{
+		purchaseCount [food] += 1;
+	}
+
+	public void decrementCount(string food)
+	{
+		if (purchaseCount [food] > 0)
+			purchaseCount [food] -= 1;
+	}
 }

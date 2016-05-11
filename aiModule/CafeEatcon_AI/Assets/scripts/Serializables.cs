@@ -96,7 +96,8 @@ public class RestaurantStatistics
 		ingredientPrices.Add (CHEESE, 0.5f);
 		ingredientPrices.Add (CONDIMENTS, 0.5f);
 		ingredientPrices.Add (TURKEY, 1.5f);
-		ingredientPrices.Add (HAM, 1f);
+		ingredientPrices.Add (HAM, 1.0f);
+		ingredientPrices.Add (VEGGIE, 0.5f);
 	}
 
 	/**************************************

@@ -382,8 +382,8 @@ RectTransform:
   - {fileID: 1137245766}
   - {fileID: 1189582925}
   - {fileID: 1758872055}
-  - {fileID: 1618652873}
   - {fileID: 1372750448}
+  - {fileID: 1618652873}
   - {fileID: 1101141401}
   m_Father: {fileID: 535884503}
   m_RootOrder: 0
@@ -611,7 +611,7 @@ GameObject:
   - 114: {fileID: 309539504}
   - 114: {fileID: 309539503}
   m_Layer: 5
-  m_Name: turkeyInc_Button
+  m_Name: turkeyDec_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -673,7 +673,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 309539504}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1668673536}
+        m_MethodName: decrementCount
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Turkey
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &309539504
@@ -783,7 +794,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 325016583}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1668673536}
+        m_MethodName: Purchase
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Veggie
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &325016583
@@ -904,7 +926,7 @@ GameObject:
   - 114: {fileID: 416711780}
   - 114: {fileID: 416711779}
   m_Layer: 5
-  m_Name: hamDec_Button
+  m_Name: hamInc_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -966,7 +988,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 416711780}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1668673536}
+        m_MethodName: incrementCount
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Ham
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &416711780
@@ -1983,7 +2016,7 @@ GameObject:
   - 114: {fileID: 1042546279}
   - 114: {fileID: 1042546278}
   m_Layer: 5
-  m_Name: veggieInc_Button
+  m_Name: veggieDec_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2045,7 +2078,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1042546279}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1668673536}
+        m_MethodName: decrementCount
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Veggie
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1042546279
@@ -2093,7 +2137,7 @@ GameObject:
   - 114: {fileID: 1095283969}
   - 114: {fileID: 1095283968}
   m_Layer: 5
-  m_Name: veggitDec_Button
+  m_Name: veggitInc_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2155,7 +2199,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1095283969}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1668673536}
+        m_MethodName: incrementCount
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Veggie
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1095283969
@@ -2265,7 +2320,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1096503212}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1668673536}
+        m_MethodName: Purchase
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Turkey
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1096503212
@@ -2375,7 +2441,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1101141403}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1668673536}
+        m_MethodName: Purchase
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bread
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1101141403
@@ -2423,7 +2500,7 @@ GameObject:
   - 114: {fileID: 1106230532}
   - 114: {fileID: 1106230531}
   m_Layer: 5
-  m_Name: hamInc_Button
+  m_Name: hamDec_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2485,7 +2562,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1106230532}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1668673536}
+        m_MethodName: decrementCount
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Ham
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1106230532
@@ -3291,7 +3379,7 @@ RectTransform:
   m_Children:
   - {fileID: 1522480592}
   m_Father: {fileID: 105700778}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 75, y: 0}
@@ -3335,7 +3423,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1372750450}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1668673536}
+        m_MethodName: decrementCount
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bread
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1372750450
@@ -3952,7 +4051,7 @@ RectTransform:
   m_Children:
   - {fileID: 977390213}
   m_Father: {fileID: 105700778}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 125, y: 0}
@@ -3996,7 +4095,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1618652875}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1668673536}
+        m_MethodName: incrementCount
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bread
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1618652875
@@ -4144,6 +4254,10 @@ MonoBehaviour:
   turkeyResult_Text: {fileID: 713065469}
   hamResult_Text: {fileID: 759975938}
   veggieResult_Text: {fileID: 1475037192}
+  breadPrice_Text: {fileID: 1189582926}
+  turkeyPrice_Text: {fileID: 1581377055}
+  hamPrice_Text: {fileID: 79875716}
+  veggiePrice_Text: {fileID: 165940418}
 --- !u!4 &1668673537
 Transform:
   m_ObjectHideFlags: 0
@@ -4489,7 +4603,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1804072533}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1668673536}
+        m_MethodName: Purchase
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Ham
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1804072533
@@ -4931,7 +5056,7 @@ GameObject:
   - 114: {fileID: 1967575918}
   - 114: {fileID: 1967575917}
   m_Layer: 5
-  m_Name: turkeyDec_Button
+  m_Name: turkeyInc_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4993,7 +5118,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1967575918}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1668673536}
+        m_MethodName: incrementCount
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Turkey
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1967575918
