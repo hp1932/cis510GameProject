@@ -52,7 +52,7 @@ public class CustomerController : MonoBehaviour {
 		float rand;
 
 		//While there are customers left
-		while (customersSpawned < numCustomers) 
+		while (customersSpawned <= numCustomers) 
 		{
 			//Figure out the actual spawn wait between the min and max
 			actualSpawnWait = Random.Range (minSpawnWait, maxSpawnWait);
@@ -83,18 +83,18 @@ public class CustomerController : MonoBehaviour {
 				foreach (DishDemand dd in sortedDemands) 
 				{
 					cumulativeProb += dd.probability;
-					print ("Comparing rand " + rand + " to " + cumulativeProb);
 					if (rand <= cumulativeProb) 
 					{
 						spawnedCustomerMover.order = dd.name;
-						print ("Order set as " + dd.name);
 						break;
 					}
 				}
 
 				//Set flag on last customer
+				print("Customer "+customersSpawned+ "/"+numCustomers);
 				if (customersSpawned == numCustomers) 
 				{
+					print ("SET LAST CUSTOMER!");
 					spawnedCustomerMover.SetLastCustomer (true);
 				}
 

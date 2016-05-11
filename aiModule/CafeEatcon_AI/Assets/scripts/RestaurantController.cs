@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class RestaurantController : MonoBehaviour {
 
-	public RestaurantStatistics localPlayerData = new RestaurantStatistics();
+	public RestaurantStatistics localPlayerData;
 	public Text balanceText;
 
 	// Use this for initialization
@@ -15,10 +15,6 @@ public class RestaurantController : MonoBehaviour {
 
 	void Awake()
 	{
-		GlobalControl gc = GlobalControl.Instance;
-
-		print (gc.ToString ());
-		localPlayerData = gc.savedPlayerData;
 		//Get the ingredientsOnHand from the global controller
 		localPlayerData = GlobalControl.Instance.savedPlayerData;
 		UpdateBalance ();

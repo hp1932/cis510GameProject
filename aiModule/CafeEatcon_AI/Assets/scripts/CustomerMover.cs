@@ -20,7 +20,7 @@ public class CustomerMover : MonoBehaviour {
 	private bool moving;
 	private Vector3 driveUpLocation;
 	private GameObject customerController;
-	private bool isLastCustomer;
+	public bool isLastCustomer;
 
 
 
@@ -85,6 +85,14 @@ public class CustomerMover : MonoBehaviour {
 				}
 				if (transform.position == offscreenDestinationTransform.position) 
 				{
+					print ("CUSTOMER LEFT THE SCREEN!!!");
+					if (isLastCustomer) 
+					{
+						restaurant.SaveStats ();
+						GlobalControl.Instance.allCustomersDone = true;
+						print("Last customer. All done = "+ GlobalControl.Instance.allCustomersDone);
+
+					}
 					Destroy (gameObject);
 				}
 			} 
@@ -112,11 +120,6 @@ public class CustomerMover : MonoBehaviour {
 		moving = true;
 		target = offscreenDestinationTransform.position;
 		reachedTarget = false;
-		if (isLastCustomer) 
-		{
-			restaurant.SaveStats ();
-			GlobalControl.Instance.allCustomersDone = true;
-		}
 
 		//Tell the customer controller to pop stack of customers
 		customerController.GetComponent<CustomerController>().MoveLineForward();
