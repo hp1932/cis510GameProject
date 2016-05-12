@@ -25,7 +25,7 @@ public class ButtonController : MonoBehaviour {
 
 	public void SwitchToSimulation()
 	{
-		SceneManager.LoadScene ("phase1");
 		GlobalControl.Instance.savedPlayerData.ResetValuesForPhase1 ();
+		SceneManager.LoadScene ("phase1");
 	}
 }
