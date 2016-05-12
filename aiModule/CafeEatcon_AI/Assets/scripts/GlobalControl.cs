@@ -16,7 +16,6 @@ public class GlobalControl : MonoBehaviour
 	//stats to be kept regardless of the scene
 	public RestaurantStatistics savedPlayerData;
 	public bool allCustomersDone;	//flag to tell if scene should be finished. Triggered by CustomerController
-	public int phase;
 
 	/**********************************************
 	 * Purpose: Initialize instance of singleton
@@ -39,18 +38,16 @@ public class GlobalControl : MonoBehaviour
 		//Reset variables that need to be cleared each level
 		allCustomersDone = false;
 		//I need to fix how phases are handled later.....
-		phase = 1;
-
 	}
 		
 	void Update()
 	{
-		if ( (1==phase)&& (allCustomersDone)) 
+		if (allCustomersDone) 
 		{
-			
 			SceneManager.LoadScene ("phase2");
-			phase = 2;
 			allCustomersDone = false;
 		}
 	}
+
+
 }
