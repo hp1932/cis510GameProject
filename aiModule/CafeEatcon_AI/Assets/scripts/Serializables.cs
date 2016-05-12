@@ -53,6 +53,7 @@ public class RestaurantStatistics
 		InitializeRecipes ();
 		InitializePrices ();
 		InitializeDishDemands ();
+		InitializeDishesServed ();
 		SortDemands ();
 
 		favorabilityRating = 50f;
@@ -160,6 +161,13 @@ public class RestaurantStatistics
 		numCustomers = 0;
 		numCustomersServed = 0;
 		dishesServed = new Dictionary<string, int> ();
+	}
+
+	public void InitializeDishesServed()
+	{
+		dishesServed.Add (TURKEY_SANDWICH, 0);
+		dishesServed.Add (HAM_SANDWICH, 0);
+		dishesServed.Add (VEGGIE_SANDWICH, 0);
 	}
 
 }
