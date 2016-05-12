@@ -8,19 +8,15 @@ public class RestaurantController : MonoBehaviour {
 
 	public RestaurantStatistics localPlayerData;
 	public Text balanceText;
-
-	// Use this for initialization
-	void Start () {
-	}
-
+	
 	void Awake()
 	{
 		//Get the ingredientsOnHand from the global controller
 		localPlayerData = GlobalControl.Instance.savedPlayerData;
-		UpdateBalance ();
 	}
 
-	void UpdateBalance()
+
+	void Update()
 	{
 		balanceText.text = 
 			"Total Balance: $" 	+ localPlayerData.currentBalance +
@@ -69,8 +65,6 @@ public class RestaurantController : MonoBehaviour {
 				localPlayerData.dishesServed.Add (food, 1);
 			}
 
-			//Update UI
-			UpdateBalance ();
 		} 
 	}
 
@@ -101,9 +95,5 @@ public class RestaurantController : MonoBehaviour {
 		}
 		return true;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

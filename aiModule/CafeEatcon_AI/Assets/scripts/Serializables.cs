@@ -40,20 +40,19 @@ public class RestaurantStatistics
 
 	public RestaurantStatistics()
 	{
-		dishDemandsSorted = new List<DishDemand>();
-		dishDemands = new Dictionary<string, float> ();
-		ingredientPrices = new Dictionary<string, float>();
-		dishPrices = new Dictionary<string, float>();
-		ingredientsOnHand = new Dictionary<string, int>();
-		recipes = new Dictionary<string, string[]> ();
-		dishesServed = new Dictionary<string, int> ();
+		dishDemandsSorted 	= new List<DishDemand>();
+		dishDemands 		= new Dictionary<string, float> ();
+		ingredientPrices 	= new Dictionary<string, float>();
+		dishPrices 			= new Dictionary<string, float>();
+		ingredientsOnHand 	= new Dictionary<string, int>();
+		recipes 			= new Dictionary<string, string[]> ();
+		dishesServed 		= new Dictionary<string, int> ();
 
 		InitializeIngredientsOnHand ();
 		InitializeIngredientPrices ();
 		InitializeRecipes ();
 		InitializePrices ();
 		InitializeDishDemands ();
-		InitializeDishesServed ();
 		SortDemands ();
 
 		favorabilityRating = 50f;
@@ -161,13 +160,6 @@ public class RestaurantStatistics
 		numCustomers = 0;
 		numCustomersServed = 0;
 		dishesServed = new Dictionary<string, int> ();
-	}
-
-	public void InitializeDishesServed()
-	{
-		dishesServed.Add (TURKEY_SANDWICH, 0);
-		dishesServed.Add (HAM_SANDWICH, 0);
-		dishesServed.Add (VEGGIE_SANDWICH, 0);
 	}
 
 }
