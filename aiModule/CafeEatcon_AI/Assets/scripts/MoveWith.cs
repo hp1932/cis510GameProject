@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MoveWith : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class MoveWith : MonoBehaviour {
 	public float veggieSandwichCost;
 	public int PerCustCostY;
 	public int PerCustCostX;
+	public int yOfGUI;
+	public int xOfGUI;
 
 	RestaurantStatistics localPlayerData;
 
@@ -29,6 +32,7 @@ public class MoveWith : MonoBehaviour {
 		print ("Avg meal cost: " + avgMealCost);
 
 		moveMiddle ();
+
 	
 	}
 
@@ -261,7 +265,6 @@ public class MoveWith : MonoBehaviour {
 			PerCustCostY = 290;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
-
 	}
 
 	public void hamUP() 
@@ -315,38 +318,6 @@ public class MoveWith : MonoBehaviour {
 			moveMiddle ();
 		}
 	}
-
-
-
-
-
-
-
-	// Below is the increase descrease... ignore for now
-
-	public void CostIncrease()
-	{
-		if (PerCustCostY <= 465) {
-			PerCustCostY = PerCustCostY + 5;
-			PerCustCostX = PerCustCostX - 10;
-			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
-
-		}
-	}
-
-		public void CostDecrease()
-		{
-			if (PerCustCostY >= 295)
-			{
-				PerCustCostY = PerCustCostY - 5;
-				PerCustCostX = PerCustCostX + 10;
-				transform.position = new Vector3(PerCustCostX, PerCustCostY, -4);
-
-			}
-
-
-	}
-
 	// Update is called once per frame
 	void Update () {
 
@@ -354,4 +325,43 @@ public class MoveWith : MonoBehaviour {
 
 	}
 
+	void OnGUI ()
+	{
+		GUI.color = Color.red;
+		GUI.Label(new Rect(xOfGUI,yOfGUI,200,20), "Price of Ham Sandwich: " + hamSandwichCost.ToString()); // x 185 y 93
+		GUI.Label(new Rect(xOfGUI,yOfGUI + 30,200,20), "Price of Turkey Sandwich: " + turkeySandwichCost.ToString()); // x 185
+		GUI.Label(new Rect(xOfGUI,yOfGUI + 60,200,20), "Price of Veggie Sandwich: " + veggieSandwichCost.ToString()); // x 185
+		GUI.Label(new Rect(xOfGUI,yOfGUI - 30,200,20), "Average Meal Cost: " + avgMealCost.ToString()); // x 185
+
+
+	}
+
+
+	public void finalSubmit ()
+	{
+		if (avgMealCost >=0.50){
+			localPlayerData.dishPrices[localPlayerData.HAM_SANDWICH] = hamSandwichCost;
+			localPlayerData.dishPrices[localPlayerData.TURKEY_SANDWICH] = turkeySandwichCost;
+			localPlayerData.dishPrices[localPlayerData.VEGGIE_SANDWICH] = veggieSandwichCost;
+			GlobalControl.Instance.savedPlayerData = localPlayerData;
+			SceneManager.LoadScene ("phase2");
+			print ("Well, that might have worked");
+
+
+			// **** NEED COMMAND TO SWTICH SCENES HERE ****
+		}
+	}
+
+	// From Adam's button controller
+
+	// public void SwitchToScene(string scene)
+	// {
+	// 	SceneManager.LoadScene (scene);
+	// }
+	//
+	// public void SwitchToSimulation()
+	// {
+	// 	SceneManager.LoadScene ("phase1");
+	// 	GlobalControl.Instance.savedPlayerData.ResetValuesForPhase1 ();
+	// }
 }
