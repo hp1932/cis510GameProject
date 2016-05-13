@@ -70,9 +70,9 @@ public class RestaurantStatistics
 	 * **************************************/
 	private void InitializeRecipes()
 	{
-		recipes.Add (HAM_SANDWICH, new string[] {BREAD, HAM, CHEESE, CONDIMENTS });
-		recipes.Add (TURKEY_SANDWICH, new string[] {BREAD, TURKEY, CHEESE, CONDIMENTS });
-		recipes.Add (VEGGIE_SANDWICH, new string[] {BREAD, VEGGIE,CHEESE,CONDIMENTS });	
+		recipes.Add (HAM_SANDWICH, new string[] {BREAD, HAM });
+		recipes.Add (TURKEY_SANDWICH, new string[] {BREAD, TURKEY });
+		recipes.Add (VEGGIE_SANDWICH, new string[] {BREAD, VEGGIE });	
 	}
 
 	/**************************************
