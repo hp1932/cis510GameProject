@@ -22,6 +22,8 @@ public class RestaurantController : MonoBehaviour {
 			"Total Balance: $" 	+ localPlayerData.currentBalance +
 			"\nDaily Profit: $" + localPlayerData.moneyEarned +
 			"\n\nBread: " 		+ localPlayerData.ingredientsOnHand["Bread"] +
+			"\nCheese: " 		+ localPlayerData.ingredientsOnHand["Cheese"] +
+			"\nCondiments: " 	+ localPlayerData.ingredientsOnHand["Condiments"] +
 			"\nTurkey: " 		+ localPlayerData.ingredientsOnHand["Turkey"] +
 			"\nHam: " 			+ localPlayerData.ingredientsOnHand["Ham"] +
 			"\nVeggie: " 		+ localPlayerData.ingredientsOnHand["Veggie"];
