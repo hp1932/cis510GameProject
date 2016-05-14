@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
  * I could not put these functions inside it.
  * ************************************/
 public class ButtonController : MonoBehaviour {
+	public AudioClip switchSound;
 
 	// Use this for initialization
 	void Start () {
@@ -20,12 +21,15 @@ public class ButtonController : MonoBehaviour {
 
 	public void SwitchToScene(string scene)
 	{
+		SoundManager.instance.PlaySingle (switchSound);
 		SceneManager.LoadScene (scene);
+
 	}
 
 	public void SwitchToSimulation()
 	{
 		GlobalControl.Instance.savedPlayerData.ResetValuesForPhase1 ();
+		SoundManager.instance.PlaySingle (switchSound);
 		SceneManager.LoadScene ("phase1");
 	}
 }

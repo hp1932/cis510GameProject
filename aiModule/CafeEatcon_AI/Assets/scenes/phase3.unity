@@ -1901,6 +1901,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11493208, guid: c820120be8b6d438ca2982151b011383, type: 2}
+      propertyPath: switchSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 750eeb69c3aba2a4c93145a20f07cebf, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c820120be8b6d438ca2982151b011383, type: 2}
   m_IsPrefabParent: 0
@@ -4333,6 +4337,9 @@ MonoBehaviour:
   hamPrice_Text: {fileID: 79875716}
   veggiePrice_Text: {fileID: 165940418}
   balanceText: {fileID: 895418593}
+  buttonSound: {fileID: 8300000, guid: 71de75e54e160394daccfb37ecccb0ff, type: 3}
+  purchaseSound: {fileID: 8300000, guid: 6f010a591bff18a4180a94f4e6f31c3b, type: 3}
+  failSound: {fileID: 8300000, guid: a9d881c3f003a5542aad73ca72d84ee7, type: 3}
 --- !u!4 &1668673537
 Transform:
   m_ObjectHideFlags: 0

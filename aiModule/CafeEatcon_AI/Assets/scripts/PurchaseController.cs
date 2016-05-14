@@ -29,6 +29,10 @@ public class PurchaseController : MonoBehaviour {
 	public Text veggiePrice_Text;
 
 	public Text balanceText;
+
+	public AudioClip buttonSound;
+	public AudioClip purchaseSound;
+	public AudioClip failSound;
 	
 
 	void Start () {
@@ -78,9 +82,11 @@ public class PurchaseController : MonoBehaviour {
 		float ingredientPrice = localPlayerData.ingredientPrices [food];
 		
 		if (localPlayerData.currentBalance < ingredientPrice * purchaseCount [food]) {
+			SoundManager.instance.PlaySingle (failSound);
 			print ("[Purchase Error]: Insufficient Funds");
 			return;
 		} else {
+			SoundManager.instance.PlaySingle (purchaseSound);
 			localPlayerData.currentBalance -= (ingredientPrice * purchaseCount [food]); // subtract total
 			localPlayerData.ingredientsOnHand [food] += purchaseCount [food]; 			// add purchased ingredients to invetory
 			purchaseCount [food] = 0;
@@ -89,11 +95,13 @@ public class PurchaseController : MonoBehaviour {
 
 	public void incrementCount(string food)
 	{
+		SoundManager.instance.PlaySingle (buttonSound);
 		purchaseCount [food] += 1;
 	}
 
 	public void decrementCount(string food)
 	{
+		SoundManager.instance.PlaySingle (buttonSound);
 		if (purchaseCount [food] > 0)
 			purchaseCount [food] -= 1;
 	}
