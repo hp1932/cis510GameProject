@@ -80,8 +80,10 @@ public class PurchaseController : MonoBehaviour {
 	{
 		
 		float ingredientPrice = localPlayerData.ingredientPrices [food];
-		
-		if (localPlayerData.currentBalance < ingredientPrice * purchaseCount [food]) {
+		if (purchaseCount [food] == 0) {
+			SoundManager.instance.PlaySingle (failSound);
+		}
+		else if (localPlayerData.currentBalance < ingredientPrice * purchaseCount [food]) {
 			SoundManager.instance.PlaySingle (failSound);
 			print ("[Purchase Error]: Insufficient Funds");
 			return;
