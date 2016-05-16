@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4cdf013d9f8f1234cbb3cd0590a6c3dd
-timeCreated: 1463182363
+timeCreated: 1463438260
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -698,72 +698,6 @@ TextureImporter:
         serializedVersion: 2
         x: 90
         y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: uipack_bilbaeno_54
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 78
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: uipack_bilbaeno_55
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 78
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: uipack_bilbaeno_56
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 78
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: uipack_bilbaeno_57
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 78
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: uipack_bilbaeno_58
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 78
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: uipack_bilbaeno_59
-      rect:
-        serializedVersion: 2
-        x: 90
-        y: 78
         width: 16
         height: 16
       alignment: 0

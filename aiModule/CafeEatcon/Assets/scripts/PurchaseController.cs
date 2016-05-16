@@ -29,6 +29,7 @@ public class PurchaseController : MonoBehaviour {
 	public Text veggiePrice_Text;
 
 	public Text balanceText;
+	public Text profitText;
 
 	public AudioClip buttonSound;
 	public AudioClip purchaseSound;
@@ -65,7 +66,8 @@ public class PurchaseController : MonoBehaviour {
 		hamResult_Text.text 	= "x                =   $" + (localPlayerData.ingredientPrices ["Ham"] * purchaseCount ["Ham"]).ToString ();
 		veggieResult_Text.text 	= "x                =   $" + (localPlayerData.ingredientPrices ["Veggie"] * purchaseCount ["Veggie"]).ToString ();
 
-		balanceText.text = "Current Balance: " + localPlayerData.currentBalance.ToString();
+		balanceText.text = "Bank Balance: $" + localPlayerData.currentBalance.ToString ();
+		profitText.text = "Today's Revenue: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent).ToString ();
 	}
 
 	private void InitializePurchaseCount()

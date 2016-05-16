@@ -40,8 +40,8 @@ public class ReportController : MonoBehaviour {
 	void UpdateSalesReport() 
 	{
 		
-		balanceText.text = "Current Balance: $" + localPlayerData.currentBalance.ToString ();
-		profitText.text = "Today's Profit: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent).ToString ();
+		balanceText.text = "Bank Balance: $" + localPlayerData.currentBalance.ToString ();
+		profitText.text = "Today's Revenue: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent).ToString ();
 
 		turkeyPrice_Text.text 	= "$" + localPlayerData.dishPrices ["Turkey Sandwich"].ToString ();
 		if (localPlayerData.dishesServed.ContainsKey("Turkey Sandwich")) {

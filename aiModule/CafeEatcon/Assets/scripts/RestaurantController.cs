@@ -7,7 +7,10 @@ using System.Collections.Generic;
 public class RestaurantController : MonoBehaviour {
 
 	public RestaurantStatistics localPlayerData;
-	public Text balanceText;
+
+	public Text bankText;
+	public Text revenueText;
+	public Text inventoryText;
 	
 	void Awake()
 	{
@@ -18,13 +21,15 @@ public class RestaurantController : MonoBehaviour {
 
 	void Update()
 	{
-		balanceText.text = 
-			"Total Balance: $" 	+ localPlayerData.currentBalance +
-			"\nDaily Profit: $" + localPlayerData.moneyEarned +
-			"\n\nBread: " 		+ localPlayerData.ingredientsOnHand["Bread"] +
-			"\nTurkey: " 		+ localPlayerData.ingredientsOnHand["Turkey"] +
-			"\nHam: " 			+ localPlayerData.ingredientsOnHand["Ham"] +
-			"\nVeggie: " 		+ localPlayerData.ingredientsOnHand["Veggie"];
+		revenueText.text = "Today's Revenue: $" + localPlayerData.moneyEarned;
+
+		bankText.text = "Bank Balance: $" 	+ localPlayerData.currentBalance;
+
+		inventoryText.text = 
+			"Bread x" + localPlayerData.ingredientsOnHand ["Bread"].ToString () +
+			"\nTurkey x" + localPlayerData.ingredientsOnHand ["Turkey"].ToString () +
+			"\nHam x" + localPlayerData.ingredientsOnHand ["Ham"].ToString () +
+			"\nVeggies x" + localPlayerData.ingredientsOnHand ["Veggie"].ToString ();
 	}
 		
 	/**************************************

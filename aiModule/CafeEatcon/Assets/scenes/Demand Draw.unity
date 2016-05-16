@@ -517,7 +517,7 @@ Transform:
   m_GameObject: {fileID: 306884643}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 115, y: 470, z: -3}
-  m_LocalScale: {x: 40, y: 40, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -716,13 +716,13 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.5555255, g: 0.5539486, b: 0.5514706, a: 0.019607844}
+  m_BackGroundColor: {r: 0.7647059, g: 0.91237324, b: 1, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.87
-    height: 0.86
+    width: 1
+    height: 1
   near clip plane: 0
   far clip plane: 1000
   field of view: 60
@@ -748,7 +748,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 438925921}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 297.2, y: 277.4, z: -10}
+  m_LocalPosition: {x: 291.27, y: 279.71, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1409,7 +1409,7 @@ Transform:
   m_GameObject: {fileID: 1197588508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 475, y: 290, z: -3}
-  m_LocalScale: {x: 40, y: 40, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1513,7 +1513,7 @@ MonoBehaviour:
   origin: {fileID: 306884645}
   destination: {fileID: 1197588510}
   lineDrawSpeed: 3
-  lineWidth: 6
+  lineWidth: 4
   c1: {r: 0.6392157, g: 0.08235294, b: 0.08235294, a: 1}
   distance: 0
 --- !u!120 &1432169590
