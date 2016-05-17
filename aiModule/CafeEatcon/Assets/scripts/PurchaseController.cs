@@ -39,6 +39,7 @@ public class PurchaseController : MonoBehaviour {
 	void Start () {
 
 		localPlayerData = GlobalControl.Instance.savedPlayerData;
+		localPlayerData.moneySpent = 0;	//Reset the money spent for this round 
 
 		purchaseCount = new Dictionary<string, int>();
 		InitializePurchaseCount ();
@@ -91,9 +92,12 @@ public class PurchaseController : MonoBehaviour {
 			return;
 		} else {
 			SoundManager.instance.PlaySingle (purchaseSound);
-			localPlayerData.currentBalance -= (ingredientPrice * purchaseCount [food]); // subtract total
+			float cost = (ingredientPrice * purchaseCount [food]);
+			localPlayerData.currentBalance -= cost; // subtract total
+			localPlayerData.moneySpent += cost;
 			localPlayerData.ingredientsOnHand [food] += purchaseCount [food]; 			// add purchased ingredients to invetory
 			purchaseCount [food] = 0;
+			GlobalControl.Instance.savedPlayerData = localPlayerData;
 		}
 	}
 

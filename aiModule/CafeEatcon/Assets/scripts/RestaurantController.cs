@@ -21,7 +21,7 @@ public class RestaurantController : MonoBehaviour {
 
 	void Update()
 	{
-		revenueText.text = "Today's Revenue: $" + localPlayerData.moneyEarned;
+		revenueText.text = "Today's Profit: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent);
 
 		bankText.text = "Bank Balance: $" 	+ localPlayerData.currentBalance;
 
