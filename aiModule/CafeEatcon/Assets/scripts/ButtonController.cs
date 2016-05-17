@@ -21,9 +21,21 @@ public class ButtonController : MonoBehaviour {
 
 	public void SwitchToScene(string scene)
 	{
+		//reset time scale
+		Time.timeScale = 1.0f;
 		SoundManager.instance.PlaySingle (switchSound);
 		SceneManager.LoadScene (scene);
 
+	}
+
+	/********************************
+	 * Purpose: Speed up moveSpeed and 
+	 * 			arrival speed
+	 * 			Called byt button in phase 1
+	 * ******************************/
+	public void ForwardFast()
+	{
+		Time.timeScale = 3.0f;
 	}
 
 	public void SwitchToSimulation()

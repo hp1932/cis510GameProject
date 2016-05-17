@@ -85,13 +85,10 @@ public class CustomerMover : MonoBehaviour {
 				}
 				if (transform.position == offscreenDestinationTransform.position) 
 				{
-					print ("CUSTOMER LEFT THE SCREEN!!!");
 					if (isLastCustomer) 
 					{
 						restaurant.SaveStats ();
 						GlobalControl.Instance.allCustomersDone = true;
-						print("Last customer. All done = "+ GlobalControl.Instance.allCustomersDone);
-
 					}
 					Destroy (gameObject);
 				}

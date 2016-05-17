@@ -68,7 +68,7 @@ public class ReportController : MonoBehaviour {
 		} else {
 			veggieTotal = 0;
 		}
-		veggieResult_Text.text 	= hamTotal.ToString ();
+		veggieResult_Text.text 	= veggieTotal.ToString ();
 
 		salesResult_Text.text = "$" + (turkeyTotal + hamTotal + veggieTotal).ToString ();
 

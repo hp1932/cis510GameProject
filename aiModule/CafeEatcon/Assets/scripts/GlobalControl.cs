@@ -44,6 +44,7 @@ public class GlobalControl : MonoBehaviour
 	{
 		if (allCustomersDone) 
 		{
+			Time.timeScale = 1.0f;
 			SceneManager.LoadScene ("phase2");
 			allCustomersDone = false;
 		}
