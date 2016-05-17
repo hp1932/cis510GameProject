@@ -8,8 +8,13 @@ public class MoveWith : MonoBehaviour {
 	public float hamSandwichCost;
 	public float turkeySandwichCost;
 	public float veggieSandwichCost;
-	public int PerCustCostY;
-	public int PerCustCostX;
+	public float PerCustCostX = -8.4f;
+	public float PerCustCostY = 14.5f;
+	public float PerCustCostXAnchor = -8.4f;
+	public float PerCustCostYAnchor = 14.5f;
+	public float PerCustCostYMove;
+	public float PerCustCostXMove;
+
 	public int yOfGUI;
 	public int xOfGUI;
 
@@ -24,7 +29,6 @@ public class MoveWith : MonoBehaviour {
 		turkeySandwichCost = localPlayerData.dishPrices[localPlayerData.TURKEY_SANDWICH];
 		veggieSandwichCost = localPlayerData.dishPrices[localPlayerData.VEGGIE_SANDWICH];
 		avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
-		// avgMealCost = Random.Range(18.1f, 0.00f); // this was just for testing before individual item prices were changing - remove later
 
 		// print ("price of ham sandwich: " + hamSandwichCost);
 		// print ("price of turkey sandwich: " + turkeySandwichCost);
@@ -35,9 +39,8 @@ public class MoveWith : MonoBehaviour {
 
 	
 	}
-
-	// 36 total steps from top to bottom of demand line - NEED total of 18 .50 cent steps from top to bottom
-	// Top left of demand line X 115 Y 470
+		
+	// Top left of demand line X -8.4 Y 14.5
 	// Bottom right of demand line X 475 Y 290
 	// avg>smallestNumber&&avg<largestNumber
 
@@ -45,224 +48,224 @@ public class MoveWith : MonoBehaviour {
 	{
 		if (avgMealCost >= 18.00) // STEP 1 TOP
 		{
-			PerCustCostX = 115;
-			PerCustCostY = 470;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 0f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 0f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=17.50&&avgMealCost<=17.99) 
 		{
-			PerCustCostX = 125;
-			PerCustCostY = 465;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * .25f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * .25f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=17.00&&avgMealCost<=17.49) 
 		{
-			PerCustCostX = 135;
-			PerCustCostY = 460;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * .50f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * .50f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=16.50&&avgMealCost<=16.99) 
 		{
-			PerCustCostX = 145;
-			PerCustCostY = 455;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * .75f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * .75f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=16.00&&avgMealCost<=16.49) // 5
 		{
-			PerCustCostX = 155;
-			PerCustCostY = 450;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 1f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 1f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=15.50&&avgMealCost<=15.99) 
 		{
-			PerCustCostX = 165;
-			PerCustCostY = 445;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 1.25f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 1.25f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=15.00&&avgMealCost<=15.49) 
 		{
-			PerCustCostX = 175;
-			PerCustCostY = 440;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 1.50f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 1.50f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=14.50&&avgMealCost<=14.99) 
 		{
-			PerCustCostX = 185;
-			PerCustCostY = 435;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 1.75f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 1.75f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=14.00&&avgMealCost<=14.49) 
 		{
-			PerCustCostX = 195;
-			PerCustCostY = 430;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 2f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 2f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=13.50&&avgMealCost<=13.99) // 10
 		{
-			PerCustCostX = 205;
-			PerCustCostY = 425;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 2.25f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 2.25f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=13.00&&avgMealCost<=13.49) 
 		{
-			PerCustCostX = 215;
-			PerCustCostY = 420;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 2.5f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 2.5f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=12.50&&avgMealCost<=12.99) 
 		{
-			PerCustCostX = 225;
-			PerCustCostY = 415;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 2.75f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 2.75f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=12.00&&avgMealCost<=12.49) 
 		{
-			PerCustCostX = 235;
-			PerCustCostY = 410;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 3f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 3f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=11.50&&avgMealCost<=11.99) 
 		{
-			PerCustCostX = 245;
-			PerCustCostY = 405;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 3.25f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 3.25f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=11.00&&avgMealCost<=11.49) //15
 		{
-			PerCustCostX = 255;
-			PerCustCostY = 400;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 3.5f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 3.5f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=10.50&&avgMealCost<=10.99) 
 		{
-			PerCustCostX = 265;
-			PerCustCostY = 395;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 3.75f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 3.75f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=10.00&&avgMealCost<=10.49) 
 		{
-			PerCustCostX = 275;
-			PerCustCostY = 390;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 4f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 4f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=9.50&&avgMealCost<=9.99) 
 		{
-			PerCustCostX = 285;
-			PerCustCostY = 385;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 4.25f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 4.25f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=9.00&&avgMealCost<=9.49) 
 		{
-			PerCustCostX = 295;
-			PerCustCostY = 380;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 4.5f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 4.5f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=8.50&&avgMealCost<=8.99) // 20
 		{
-			PerCustCostX = 305;
-			PerCustCostY = 375;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 4.75f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 4.75f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=8.00&&avgMealCost<=8.49) 
 		{
-			PerCustCostX = 315;
-			PerCustCostY = 370;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 5f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 5f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=7.50&&avgMealCost<=7.99) 
 		{
-			PerCustCostX = 325;
-			PerCustCostY = 365;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 5.25f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 5.25f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=7.00&&avgMealCost<=7.49) 
 		{
-			PerCustCostX = 335;
-			PerCustCostY = 360;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 5.5f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 5.5f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=6.50&&avgMealCost<=6.99) 
 		{
-			PerCustCostX = 345;
-			PerCustCostY = 355;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 5.75f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 5.75f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=6.00&&avgMealCost<=6.49) // 25
 		{
-			PerCustCostX = 355;
-			PerCustCostY = 350;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 6f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 6f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=5.50&&avgMealCost<=5.99) 
 		{
-			PerCustCostX = 365;
-			PerCustCostY = 345;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 6.25f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 6.25f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=5.00&&avgMealCost<=5.49) 
 		{
-			PerCustCostX = 375;
-			PerCustCostY = 340;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 6.5f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 6.5f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=4.50&&avgMealCost<=4.99) 
 		{
-			PerCustCostX = 385;
-			PerCustCostY = 335;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 6.75f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 6.75f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=4.00&&avgMealCost<=4.49) 
 		{
-			PerCustCostX = 395;
-			PerCustCostY = 330;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 7f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 7f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=3.50&&avgMealCost<=3.99) // 30
 		{
-			PerCustCostX = 405;
-			PerCustCostY = 325;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 7.25f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 7.25f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=3.00&&avgMealCost<=3.49) 
 		{
-			PerCustCostX = 415;
-			PerCustCostY = 320;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 7.50f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 7.50f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=2.50&&avgMealCost<=2.99) 
 		{
-			PerCustCostX = 425;
-			PerCustCostY = 315;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 7.75f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 7.75f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=2.00&&avgMealCost<=2.49) 
 		{
-			PerCustCostX = 435;
-			PerCustCostY = 310;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 8f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 8f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=1.50&&avgMealCost<=1.99) 
 		{
-			PerCustCostX = 445;
-			PerCustCostY = 305;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 8.25f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 8.25f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=1.00&&avgMealCost<=1.49) 
 		{
-			PerCustCostX = 455;
-			PerCustCostY = 300;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 8.5f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 8.5f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=0.50&&avgMealCost<=0.99) // 36
 		{
-			PerCustCostX = 465;
-			PerCustCostY = 295;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 8.75f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 8.75f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 		if (avgMealCost>=0.00&&avgMealCost<=0.49) // 36
 		{
-			PerCustCostX = 475;
-			PerCustCostY = 290;
+			PerCustCostX = PerCustCostXAnchor + PerCustCostXMove * 9f;
+			PerCustCostY = PerCustCostYAnchor - PerCustCostYMove * 9f;
 			transform.position = new Vector3 (PerCustCostX, PerCustCostY, -4);
 		}
 	}
