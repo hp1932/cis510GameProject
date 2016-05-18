@@ -1945,6 +1945,52 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 977390212}
+--- !u!1001 &995588966
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1119543401}
+    m_Modifications:
+    - target: {fileID: 459370, guid: c5149004c80314a4faaae29400de71e5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459370, guid: c5149004c80314a4faaae29400de71e5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 459370, guid: c5149004c80314a4faaae29400de71e5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 459370, guid: c5149004c80314a4faaae29400de71e5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459370, guid: c5149004c80314a4faaae29400de71e5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459370, guid: c5149004c80314a4faaae29400de71e5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459370, guid: c5149004c80314a4faaae29400de71e5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 459370, guid: c5149004c80314a4faaae29400de71e5, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c5149004c80314a4faaae29400de71e5, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &995588967 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 459370, guid: c5149004c80314a4faaae29400de71e5, type: 2}
+  m_PrefabInternal: {fileID: 995588966}
 --- !u!1 &1035979525
 GameObject:
   m_ObjectHideFlags: 0
@@ -2747,6 +2793,7 @@ Transform:
   - {fileID: 1321226652}
   - {fileID: 1735788327}
   - {fileID: 1761780453}
+  - {fileID: 995588967}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!1 &1137245765
