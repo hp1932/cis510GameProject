@@ -11,7 +11,11 @@ public class RestaurantController : MonoBehaviour {
 	public Text bankText;
 	public Text revenueText;
 	public Text inventoryText;
-	
+
+	public Text customersServed;
+	public Text custmomerMood;
+	public bool orderFulfilled;
+
 	void Awake()
 	{
 		//Get the ingredientsOnHand from the global controller
@@ -30,6 +34,13 @@ public class RestaurantController : MonoBehaviour {
 			"\nTurkey x" + localPlayerData.ingredientsOnHand ["Turkey"].ToString () +
 			"\nHam x" + localPlayerData.ingredientsOnHand ["Ham"].ToString () +
 			"\nVeggies x" + localPlayerData.ingredientsOnHand ["Veggie"].ToString ();
+
+		customersServed.text = "Customers Served: " + localPlayerData.numCustomersServed.ToString();
+
+		if (orderFulfilled)
+			custmomerMood.text = ":)";
+		else
+			custmomerMood.text = ":(";
 	}
 		
 	/**************************************
@@ -70,7 +81,10 @@ public class RestaurantController : MonoBehaviour {
 				localPlayerData.dishesServed.Add (food, 1);
 			}
 
-		} 
+			orderFulfilled = true;
+		} else {
+			orderFulfilled = false;
+		}
 	}
 
 	bool DishInDictionary(string food)
