@@ -38,6 +38,7 @@ public class ButtonController : MonoBehaviour {
 		Time.timeScale = 3.0f;
 	}
 
+
 	public void SwitchToSimulation()
 	{
 		GlobalControl.Instance.savedPlayerData.ResetValuesForPhase1 ();
