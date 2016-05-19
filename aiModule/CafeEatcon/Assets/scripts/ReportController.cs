@@ -10,6 +10,9 @@ public class ReportController : MonoBehaviour {
 	public Text balanceText;
 	public Text profitText;
 
+	public Text customersServed;
+	public Text customersMissed;
+
 	public Text turkeyPrice_Text;
 	public Text turkeyUnits_Text;
 	public Text turkeyResult_Text;
@@ -42,6 +45,9 @@ public class ReportController : MonoBehaviour {
 		
 		balanceText.text = "Bank Balance: $" + localPlayerData.currentBalance.ToString ();
 		profitText.text = "Today's Revenue: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent).ToString ();
+
+		customersServed.text = localPlayerData.numCustomersServed.ToString();
+		customersMissed.text = (localPlayerData.numCustomers - localPlayerData.numCustomersServed).ToString();
 
 		turkeyPrice_Text.text 	= "$" + localPlayerData.dishPrices ["Turkey Sandwich"].ToString ();
 		if (localPlayerData.dishesServed.ContainsKey("Turkey Sandwich")) {
