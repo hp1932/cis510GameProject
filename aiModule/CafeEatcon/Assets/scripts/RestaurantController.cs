@@ -63,6 +63,13 @@ public class RestaurantController : MonoBehaviour {
 		localPlayerData.numCustomers++;
 
 		if (HaveAllIngredients (food)) {
+			if (food == "Ham Sandwich") {
+				localPlayerData.dishServedMissedStats [0] += 1;
+			} else if (food == "Turkey Sandwich") {
+				localPlayerData.dishServedMissedStats [2] += 1;
+			} else if (food == "Veggie Sandwich") {
+				localPlayerData.dishServedMissedStats [4] += 1;
+			}
 			//For each ingredient in the recipe...
 			foreach (string ingredient in ingredientList) {
 				localPlayerData.ingredientsOnHand [ingredient]--;
@@ -83,9 +90,18 @@ public class RestaurantController : MonoBehaviour {
 
 			orderFulfilled = true;
 		} else {
+			if (food == "Ham Sandwich") {
+				localPlayerData.dishServedMissedStats [1] += 1;
+			} else if (food == "Turkey Sandwich") {
+				localPlayerData.dishServedMissedStats [3] += 1;
+			} else if (food == "Veggie Sandwich") {
+				localPlayerData.dishServedMissedStats [5] += 1;
+			}
+
 			orderFulfilled = false;
 		}
 	}
+
 
 	bool DishInDictionary(string food)
 	{
