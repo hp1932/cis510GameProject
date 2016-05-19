@@ -19,11 +19,22 @@ public class RestaurantStatistics
 	public Dictionary<string, string[]> recipes;
 	public float favorabilityRating;
 
+	// list holding served and missed stats per each dish
+	// 0,1 are served and missed for ham
+	// 2,3 are served and missed for turkey
+	// 4,5 are served and missed for veggie
+	public List<int> dishServedMissedStats;
+
 	//Variables to be reported in phase 2
+	public int maxCustomers;
+	public int hamCustomers;
+	public int turkeyCustomers;
+	public int veggieCustomers;
 	public int numCustomers;
 	public int numCustomersServed;
 	public float moneySpent;
 	public float moneyEarned;
+	public float balanceIndex;
 	public Dictionary<string, int> dishesServed;	//A list of dishes served and their counts
 
 	//TO DO: Make these into an array or something more dynamic
@@ -40,27 +51,34 @@ public class RestaurantStatistics
 
 	public RestaurantStatistics()
 	{
-		dishDemandsSorted 	= new List<DishDemand>();
-		dishDemands 		= new Dictionary<string, float> ();
-		ingredientPrices 	= new Dictionary<string, float>();
-		dishPrices 			= new Dictionary<string, float>();
-		ingredientsOnHand 	= new Dictionary<string, int>();
-		recipes 			= new Dictionary<string, string[]> ();
-		dishesServed 		= new Dictionary<string, int> ();
+		dishDemandsSorted 	  = new List<DishDemand>();
+		dishServedMissedStats = new List<int> ();
+		dishDemands 		  = new Dictionary<string, float> ();
+		ingredientPrices 	  = new Dictionary<string, float>();
+		dishPrices 			  = new Dictionary<string, float>();
+		ingredientsOnHand 	  = new Dictionary<string, int>();
+		recipes 			  = new Dictionary<string, string[]> ();
+		dishesServed 		  = new Dictionary<string, int> ();
 
 		InitializeIngredientsOnHand ();
 		InitializeIngredientPrices ();
 		InitializeRecipes ();
 		InitializePrices ();
 		InitializeDishDemands ();
+		InitializeDishServedMissedStats ();
 		SortDemands ();
 
 		favorabilityRating = 50f;
 		currentBalance = 10.00f;	//start with some cash just to see the difference from daily profit to start
+		maxCustomers = 20; 			//initially set to 20
+		hamCustomers = 10;
+		turkeyCustomers = 6;
+		veggieCustomers = 4;
 		numCustomers = 0;
 		numCustomersServed = 0;
 		moneyEarned = 0.0f;
 		moneySpent = 0.0f;
+		balanceIndex = 0.90f;
 
 	}
 
@@ -107,9 +125,110 @@ public class RestaurantStatistics
 	private void InitializeDishDemands()
 	{
 		dishDemands.Add (HAM_SANDWICH, 0.50f);
-		dishDemands.Add (TURKEY_SANDWICH, 0.25f);
-		dishDemands.Add (VEGGIE_SANDWICH, 0.25f);
+		dishDemands.Add (TURKEY_SANDWICH, 0.30f);
+		dishDemands.Add (VEGGIE_SANDWICH, 0.20f);
 	}
+
+	private void InitializeDishServedMissedStats()
+	{
+		for (int i = 0; i < 6; i++)
+		{
+			dishServedMissedStats.Add (0);
+		}
+	}
+
+	private float CalculateDemand(int maxCustomers, int dishCustomers)
+	{
+		return((float)dishCustomers / (float)maxCustomers);
+	}
+
+	/**************************************
+	 * Purpose: Update each dishes demand.
+	 * Note: This uses the CalculateDemand function 
+	 * 		 in DishDemand.cs and is called at the 
+	 * 		 conclusion of simulation
+	 * **************************************/
+	public void UpdateDishDemands()
+	{
+		float hamDemand = CalculateDemand(maxCustomers, hamCustomers);
+		float turkeyDemand = CalculateDemand(maxCustomers, turkeyCustomers);
+		float veggieDemand = CalculateDemand(maxCustomers, veggieCustomers);
+
+		Debug.Log ("hamDemand: " + hamDemand);
+		Debug.Log ("turkeyDemand: " + turkeyDemand);
+		Debug.Log ("veggieDemand: " + veggieDemand);
+
+		setDishDemand (HAM_SANDWICH, hamDemand);
+		setDishDemand (TURKEY_SANDWICH, turkeyDemand);
+		setDishDemand (VEGGIE_SANDWICH, veggieDemand);
+	}
+
+	/**************************************
+	 * Purpose: Update number of customers in universe and for dishes.
+	 * **************************************/
+	public void UpdateCustomers()
+	{
+		int hamServed = dishServedMissedStats[0];
+		int hamMissed = dishServedMissedStats[1];
+		int turkeyServed = dishServedMissedStats[2];
+		int turkeyMissed = dishServedMissedStats[3];
+		int veggieServed = dishServedMissedStats[4];
+		int veggieMissed = dishServedMissedStats[5];
+
+		Debug.Log ("hamServed: " + hamServed);
+		Debug.Log ("hamMissed: " + hamMissed);
+		Debug.Log ("turkeyServed: " + turkeyServed);
+		Debug.Log ("turkeyMissed: " + turkeyMissed);
+		Debug.Log ("veggieServed: " + veggieServed);
+		Debug.Log ("veggieMissed: " + veggieMissed);
+
+		float hamChange = ChangeIndex(hamCustomers, hamServed, hamMissed, balanceIndex);
+		float turkeyChange = ChangeIndex(turkeyCustomers, turkeyServed, turkeyMissed, balanceIndex);
+		float veggieChange = ChangeIndex(veggieCustomers, veggieServed, veggieMissed, balanceIndex);
+
+		Debug.Log ("hamChange: " + hamChange);
+		Debug.Log ("turkeyChange: " + turkeyChange);
+		Debug.Log ("veggieChange: " + veggieChange);
+
+		hamCustomers = (int)Math.Floor(hamCustomers * hamChange);
+		turkeyCustomers = (int)Math.Floor(turkeyCustomers * turkeyChange);
+		veggieCustomers = (int)Math.Floor(veggieCustomers * veggieChange);
+		maxCustomers = hamCustomers + turkeyCustomers + veggieCustomers;
+
+		Debug.Log ("hamCustomers: " + hamCustomers);
+		Debug.Log ("turkeyCustomers: " + turkeyCustomers);
+		Debug.Log ("veggieCustomers: " + veggieCustomers);
+	}
+
+	/**************************************
+	 * Purpose: Generate change index.
+	 * **************************************/
+	private float ChangeIndex (int customers, int served, int missed, float index)
+	{
+		int total = served + missed;
+		float changeValue = 1.0f;
+		if (total == 0) {
+			return changeValue;
+		}
+		try
+		{
+			changeValue = 1.0f + (((float)served / (float)total) - index);
+			if(changeValue > 1.2f){
+				changeValue = 1.2f;
+			}else if(changeValue < 0.8f){
+				changeValue = 0.8f;
+			}
+		}
+		catch(Exception e)
+		{
+			//trying to divide by zero, probably because nobody likes veggie pattys =[
+			Debug.Log("Exception caught in ChangeIndex");
+			Console.WriteLine ("Exception caught in ChangeIndex", e);
+			//so don't change the demand for that product (for now at least)
+		}
+		return changeValue;
+	}
+
 
 	/**************************
 	 * Purpose: take dishDemands dictionary
@@ -145,7 +264,7 @@ public class RestaurantStatistics
 	 * Purpose: Update the demand for a dish
 	 * 
 	 * *********************************/
-	public void setDishDemand(string dish, int demand)
+	public void setDishDemand(string dish, float demand)
 	{
 		dishDemands [dish] = demand;
 	}
@@ -160,6 +279,10 @@ public class RestaurantStatistics
 		numCustomers = 0;
 		numCustomersServed = 0;
 		dishesServed = new Dictionary<string, int> ();
+		for (int i = 0; i < 6; i++)
+		{
+			dishServedMissedStats[i] = 0;
+		}
 	}
 
 }
