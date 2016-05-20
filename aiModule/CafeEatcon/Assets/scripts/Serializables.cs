@@ -297,7 +297,6 @@ public class RestaurantStatistics
 	public void ResetValuesForPhase1 ()
 	{
 		moneyEarned = 0;
-		numCustomers = 0;
 		numCustomersServed = 0;
 		dishesServed = new Dictionary<string, int> ();
 		for (int i = 0; i < 6; i++)
