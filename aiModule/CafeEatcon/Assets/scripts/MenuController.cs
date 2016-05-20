@@ -13,6 +13,6 @@ public class MenuController : MonoBehaviour {
 	public void Restart()
 	{
 		Destroy (GlobalControl.Instance);
-		SceneManager.LoadScene ("phase1");
+		SceneManager.LoadScene ("start");
 	}
 }

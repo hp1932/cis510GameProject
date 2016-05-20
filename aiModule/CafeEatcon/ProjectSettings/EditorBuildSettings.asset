@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/scenes/Demand Draw.unity
   - enabled: 1
     path: Assets/scenes/phase3.unity
+  - enabled: 1
+    path: Assets/scenes/start.unity

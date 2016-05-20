@@ -35,7 +35,7 @@ public class ButtonController : MonoBehaviour {
 	 * ******************************/
 	public void ForwardFast()
 	{
-		Time.timeScale = 3.0f;
+		Time.timeScale = 8.0f;
 	}
 
 
