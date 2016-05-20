@@ -454,6 +454,7 @@ public class MoveWith : MonoBehaviour {
 			localPlayerData.dishPrices[localPlayerData.HAM_SANDWICH] = hamSandwichCost;
 			localPlayerData.dishPrices[localPlayerData.TURKEY_SANDWICH] = turkeySandwichCost;
 			localPlayerData.dishPrices[localPlayerData.VEGGIE_SANDWICH] = veggieSandwichCost;
+			localPlayerData.updateAveragePrice ();
 			GlobalControl.Instance.savedPlayerData = localPlayerData;
 			SceneManager.LoadScene ("phase2");
 			print ("Well, that might have worked");
