@@ -274,7 +274,7 @@ public class RestaurantStatistics
 	}
 
 
-	private void updateAveragePrice()
+	public void updateAveragePrice()
 	{
 		float hamPrice = dishPrices[HAM_SANDWICH];
 		float turkeyPrice = dishPrices[TURKEY_SANDWICH];
@@ -283,7 +283,7 @@ public class RestaurantStatistics
 	}
 
 
-	private void updateNumCustomers()
+	public void updateNumCustomers()
 	{
 		//Q = maxCustomers - Slope * (AvgPrice)
 		int temp = (int)(slope * averagePrice);
