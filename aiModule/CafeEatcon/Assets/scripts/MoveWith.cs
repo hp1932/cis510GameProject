@@ -20,15 +20,10 @@ public class MoveWith : MonoBehaviour {
 	double customerSlice;
 	public double maxCustomers = 50;
 	public double potentialCustomers; // can this be public
-	double potentialIncome;
+	//double potentialIncome;
 	public float startYAnchor;
 	public float startXAnchor;
 	float yVal;
-	// Vector3 offSetCustomers = new Vector3(0, ;
-	// Vector3 offSetAvgCost = ;
-
-
-
 
 	public int yOfGUI;
 	public int xOfGUI;
@@ -423,7 +418,7 @@ public class MoveWith : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		potentialIncome = potentialCustomers * avgMealCost;
+		//potentialIncome = potentialCustomers * avgMealCost;
 
 	}
 
