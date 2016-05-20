@@ -42,6 +42,7 @@ public class ButtonController : MonoBehaviour {
 	public void SwitchToSimulation()
 	{
 		GlobalControl.Instance.savedPlayerData.ResetValuesForPhase1 ();
+		GlobalControl.Instance.savedPlayerData.updateNumCustomers ();
 		SoundManager.instance.PlaySingle (switchSound);
 		SceneManager.LoadScene ("phase1");
 	}
