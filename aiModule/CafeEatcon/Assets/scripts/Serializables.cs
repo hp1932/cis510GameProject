@@ -256,12 +256,12 @@ public class RestaurantStatistics
 	private void InitializeIngredientsOnHand()
 	{
 		//Set up ingredients on hand for first round.
-		ingredientsOnHand.Add(BREAD, 5);
+		ingredientsOnHand.Add(BREAD, 25);
 		ingredientsOnHand.Add(CHEESE, 5);
 		ingredientsOnHand.Add(CONDIMENTS, 5);
-		ingredientsOnHand.Add(TURKEY, 2);
-		ingredientsOnHand.Add(HAM, 3);
-		ingredientsOnHand.Add(VEGGIE, 2);
+		ingredientsOnHand.Add(TURKEY, 8);
+		ingredientsOnHand.Add(HAM, 12);
+		ingredientsOnHand.Add(VEGGIE, 5);
 	}
 
 	/***********************************
@@ -286,7 +286,13 @@ public class RestaurantStatistics
 	private void updateNumCustomers()
 	{
 		//Q = maxCustomers - Slope * (AvgPrice)
-		numCustomers = (int) ((float) maxCustomers - (slope * averagePrice));
+		int temp = (int)(slope * averagePrice);
+		Debug.Log ("Slope * AveragePrice = " + temp);
+		numCustomers = ( maxCustomers - temp );
+		if (numCustomers < 1) 
+		{
+			numCustomers = 1;
+		}
 		Debug.Log ("numCustomers: " + numCustomers);
 	}
 
