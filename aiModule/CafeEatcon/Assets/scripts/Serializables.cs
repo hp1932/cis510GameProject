@@ -35,6 +35,8 @@ public class RestaurantStatistics
 	public float moneySpent;
 	public float moneyEarned;
 	public float balanceIndex;
+	public float averagePrice;
+	public float slope;
 	public Dictionary<string, int> dishesServed;	//A list of dishes served and their counts
 
 	//TO DO: Make these into an array or something more dynamic
@@ -70,15 +72,17 @@ public class RestaurantStatistics
 
 		favorabilityRating = 50f;
 		currentBalance = 10.00f;	//start with some cash just to see the difference from daily profit to start
-		maxCustomers = 20; 			//initially set to 20
-		hamCustomers = 10;
-		turkeyCustomers = 6;
-		veggieCustomers = 4;
-		numCustomers = 0;
+		maxCustomers = 50; 			//initially set to 20
+		hamCustomers = 25;
+		turkeyCustomers = 15;
+		veggieCustomers = 10;
+		numCustomers = 25;
+		averagePrice = 4.33f;
 		numCustomersServed = 0;
 		moneyEarned = 0.0f;
 		moneySpent = 0.0f;
 		balanceIndex = 0.90f;
+		slope = 5.55f;
 
 	}
 
@@ -252,12 +256,12 @@ public class RestaurantStatistics
 	private void InitializeIngredientsOnHand()
 	{
 		//Set up ingredients on hand for first round.
-		ingredientsOnHand.Add(BREAD, 5);
+		ingredientsOnHand.Add(BREAD, 25);
 		ingredientsOnHand.Add(CHEESE, 5);
 		ingredientsOnHand.Add(CONDIMENTS, 5);
-		ingredientsOnHand.Add(TURKEY, 2);
-		ingredientsOnHand.Add(HAM, 3);
-		ingredientsOnHand.Add(VEGGIE, 2);
+		ingredientsOnHand.Add(TURKEY, 8);
+		ingredientsOnHand.Add(HAM, 12);
+		ingredientsOnHand.Add(VEGGIE, 5);
 	}
 
 	/***********************************
@@ -269,6 +273,29 @@ public class RestaurantStatistics
 		dishDemands [dish] = demand;
 	}
 
+
+	private void updateAveragePrice()
+	{
+		float hamPrice = dishPrices[HAM_SANDWICH];
+		float turkeyPrice = dishPrices[TURKEY_SANDWICH];
+		float veggiePrice = dishPrices [VEGGIE_SANDWICH];
+		averagePrice = (hamPrice + turkeyPrice + veggiePrice) / 3;
+	}
+
+
+	private void updateNumCustomers()
+	{
+		//Q = maxCustomers - Slope * (AvgPrice)
+		int temp = (int)(slope * averagePrice);
+		Debug.Log ("Slope * AveragePrice = " + temp);
+		numCustomers = ( maxCustomers - temp );
+		if (numCustomers < 1) 
+		{
+			numCustomers = 1;
+		}
+		Debug.Log ("numCustomers: " + numCustomers);
+	}
+
 	/**********************************
 	 * Purpose: Reset daily variables
 	 * 			for phase 1
@@ -276,7 +303,6 @@ public class RestaurantStatistics
 	public void ResetValuesForPhase1 ()
 	{
 		moneyEarned = 0;
-		numCustomers = 0;
 		numCustomersServed = 0;
 		dishesServed = new Dictionary<string, int> ();
 		for (int i = 0; i < 6; i++)
