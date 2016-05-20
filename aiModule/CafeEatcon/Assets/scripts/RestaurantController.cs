@@ -60,7 +60,7 @@ public class RestaurantController : MonoBehaviour {
 	{
 		string[] ingredientList = localPlayerData.recipes [food];
 
-		localPlayerData.numCustomers++;
+		//localPlayerData.numCustomers++;
 
 		if (HaveAllIngredients (food)) {
 			if (food == "Ham Sandwich") {
