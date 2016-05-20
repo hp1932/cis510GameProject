@@ -76,8 +76,8 @@ public class RestaurantStatistics
 		hamCustomers = 25;
 		turkeyCustomers = 15;
 		veggieCustomers = 10;
-		numCustomers = 0;
-		updateNumCustomers ();
+		numCustomers = 25;
+		averagePrice = 4.33f;
 		numCustomersServed = 0;
 		moneyEarned = 0.0f;
 		moneySpent = 0.0f;
@@ -287,6 +287,7 @@ public class RestaurantStatistics
 	{
 		//Q = maxCustomers - Slope * (AvgPrice)
 		numCustomers = (int) ((float) maxCustomers - (slope * averagePrice));
+		Debug.Log ("numCustomers: " + numCustomers);
 	}
 
 	/**********************************
