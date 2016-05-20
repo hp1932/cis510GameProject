@@ -68,7 +68,7 @@ public class PurchaseController : MonoBehaviour {
 		veggieResult_Text.text 	= "x                =   $" + (localPlayerData.ingredientPrices ["Veggie"] * purchaseCount ["Veggie"]).ToString ();
 
 		balanceText.text = "Bank Balance: $" + localPlayerData.currentBalance.ToString ();
-		profitText.text = "Today's Revenue: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent).ToString ();
+		profitText.text = "Today's Revenue: $" + (localPlayerData.moneyEarned).ToString ();
 	}
 
 	private void InitializePurchaseCount()
