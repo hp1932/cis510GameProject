@@ -23,6 +23,7 @@ public class MoveWith : MonoBehaviour {
 	double potentialIncome;
 	public float startYAnchor;
 	public float startXAnchor;
+	float yVal;
 	// Vector3 offSetCustomers = new Vector3(0, ;
 	// Vector3 offSetAvgCost = ;
 
@@ -440,8 +441,8 @@ public class MoveWith : MonoBehaviour {
 	
 
 	Vector3 point = Camera.main.WorldToScreenPoint (transform.position);
-
-		GUI.Label (new Rect (startXAnchor - 150, point.y, 35, 20), "$" + avgMealCost.ToString());
+		yVal = Screen.height - point.y - 20;
+		GUI.Label (new Rect (startXAnchor - 150, yVal, 35, 20), "$" + avgMealCost.ToString());
 		GUI.Label (new Rect (point.x, startYAnchor + 44, 40, 20), potentialCustomers.ToString ());
 	
 	}
