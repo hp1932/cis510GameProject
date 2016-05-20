@@ -35,6 +35,8 @@ public class RestaurantStatistics
 	public float moneySpent;
 	public float moneyEarned;
 	public float balanceIndex;
+	public float averagePrice;
+	public float slope;
 	public Dictionary<string, int> dishesServed;	//A list of dishes served and their counts
 
 	//TO DO: Make these into an array or something more dynamic
@@ -70,15 +72,17 @@ public class RestaurantStatistics
 
 		favorabilityRating = 50f;
 		currentBalance = 10.00f;	//start with some cash just to see the difference from daily profit to start
-		maxCustomers = 20; 			//initially set to 20
-		hamCustomers = 10;
-		turkeyCustomers = 6;
-		veggieCustomers = 4;
+		maxCustomers = 50; 			//initially set to 20
+		hamCustomers = 25;
+		turkeyCustomers = 15;
+		veggieCustomers = 10;
 		numCustomers = 0;
+		updateNumCustomers ();
 		numCustomersServed = 0;
 		moneyEarned = 0.0f;
 		moneySpent = 0.0f;
 		balanceIndex = 0.90f;
+		slope = 5.55f;
 
 	}
 
@@ -267,6 +271,22 @@ public class RestaurantStatistics
 	public void setDishDemand(string dish, float demand)
 	{
 		dishDemands [dish] = demand;
+	}
+
+
+	private void updateAveragePrice()
+	{
+		float hamPrice = dishPrices[HAM_SANDWICH];
+		float turkeyPrice = dishPrices[TURKEY_SANDWICH];
+		float veggiePrice = dishPrices [VEGGIE_SANDWICH];
+		averagePrice = (hamPrice + turkeyPrice + veggiePrice) / 3;
+	}
+
+
+	private void updateNumCustomers()
+	{
+		//Q = maxCustomers - Slope * (AvgPrice)
+		numCustomers = maxCustomers - (slope * averagePrice);
 	}
 
 	/**********************************
