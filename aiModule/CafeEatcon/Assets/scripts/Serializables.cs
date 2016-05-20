@@ -286,7 +286,7 @@ public class RestaurantStatistics
 	private void updateNumCustomers()
 	{
 		//Q = maxCustomers - Slope * (AvgPrice)
-		numCustomers = maxCustomers - (slope * averagePrice);
+		numCustomers = (int) ((float) maxCustomers - (slope * averagePrice));
 	}
 
 	/**********************************
