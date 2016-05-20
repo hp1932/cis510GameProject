@@ -17,10 +17,15 @@ public class MoveWith : MonoBehaviour {
 	public float yforAvgCostPrint;
 	public float guiLabelMultiplier;
 	public float middleZPos;
-	private double customerSlice;
-	private double maxCustomers = 50;
-	private double potentialCustomers;
-	private double potentialIncome;
+	double customerSlice;
+	public double maxCustomers = 50;
+	public double potentialCustomers; // can this be public
+	double potentialIncome;
+	public float startYAnchor;
+	public float startXAnchor;
+	// Vector3 offSetCustomers = new Vector3(0, ;
+	// Vector3 offSetAvgCost = ;
+
 
 
 
@@ -38,15 +43,15 @@ public class MoveWith : MonoBehaviour {
 		turkeySandwichCost = localPlayerData.dishPrices[localPlayerData.TURKEY_SANDWICH];
 		veggieSandwichCost = localPlayerData.dishPrices[localPlayerData.VEGGIE_SANDWICH];
 		avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
+		Vector3 point = Camera.main.WorldToScreenPoint (transform.position);
+		startYAnchor = point.y;
+		startXAnchor = point.x;
+
 
 		moveMiddle ();
 
 
 	}
-
-	// Top left of demand line X -8.4 Y 14.5
-	// Bottom right of demand line X 475 Y 290
-	// avg>smallestNumber&&avg<largestNumber
 
 	void moveMiddle ()
 	{
@@ -423,18 +428,22 @@ public class MoveWith : MonoBehaviour {
 
 	void OnGUI ()
 	{
-
-		GUI.color = Color.black;
-		GUI.Label (new Rect (40, 105, 308, 20), "Potential Total Next Day Sales: $ " + potentialIncome.ToString("#.00"));
+	// 
+	// 	GUI.color = Color.black;
+	//	GUI.Label (new Rect (40, 105, 308, 20), "Potential Total Next Day Sales: $ " + potentialIncome.ToString("#.00"));
 		GUI.color = Color.red;
-		GUI.Label(new Rect(xOfGUI,yOfGUI,200,20), "Price of Ham Sandwich: $ " + hamSandwichCost.ToString());
-		GUI.Label(new Rect(xOfGUI,yOfGUI + 25,200,20), "Price of Turkey Sandwich: $ " + turkeySandwichCost.ToString());
-		GUI.Label(new Rect(xOfGUI,yOfGUI + 50,200,20), "Price of Veggie Sandwich: $ " + veggieSandwichCost.ToString());
-		GUI.Label(new Rect(xOfGUI,yOfGUI - 25,200,20), "Average Meal Cost: $ ");
-		GUI.Label(new Rect(xOfGUI + 130,yOfGUI - 25,30,20), avgMealCost.ToString());
-		GUI.Label(new Rect(23, 435 - (PerCustCostY * guiLabelMultiplier), 35, 20), "$" + avgMealCost.ToString()); // Not sure why PerCustCostY is not working on its own here...
-		GUI.Label (new Rect (200 + (PerCustCostX * guiLabelMultiplier), 373, 40, 20), potentialCustomers.ToString ()); // Not sure why PerCustCostX is not working on its own here either...
+	// 	GUI.Label(new Rect(xOfGUI,yOfGUI,200,20), "Price of Ham Sandwich: $ " + hamSandwichCost.ToString());
+	// 	GUI.Label(new Rect(xOfGUI,yOfGUI + 25,200,20), "Price of Turkey Sandwich: $ " + turkeySandwichCost.ToString());
+	// 	GUI.Label(new Rect(xOfGUI,yOfGUI + 50,200,20), "Price of Veggie Sandwich: $ " + veggieSandwichCost.ToString());
+	// 	GUI.Label(new Rect(xOfGUI,yOfGUI - 25,200,20), "Average Meal Cost: $ ");
+	// 	GUI.Label(new Rect(xOfGUI + 130,yOfGUI - 25,30,20), avgMealCost.ToString());
+	
 
+	Vector3 point = Camera.main.WorldToScreenPoint (transform.position);
+
+		GUI.Label (new Rect (startXAnchor - 150, point.y, 35, 20), "$" + avgMealCost.ToString());
+		GUI.Label (new Rect (point.x, startYAnchor + 44, 40, 20), potentialCustomers.ToString ());
+	
 	}
 
 
@@ -448,21 +457,7 @@ public class MoveWith : MonoBehaviour {
 			SceneManager.LoadScene ("phase2");
 			print ("Well, that might have worked");
 
-
-			// **** NEED COMMAND TO SWTICH SCENES HERE ****
 		}
 	}
 
-	// From Adam's button controller
-
-	// public void SwitchToScene(string scene)
-	// {
-	// 	SceneManager.LoadScene (scene);
-	// }
-	//
-	// public void SwitchToSimulation()
-	// {
-	// 	SceneManager.LoadScene ("phase1");
-	// 	GlobalControl.Instance.savedPlayerData.ResetValuesForPhase1 ();
-	// }
 }
