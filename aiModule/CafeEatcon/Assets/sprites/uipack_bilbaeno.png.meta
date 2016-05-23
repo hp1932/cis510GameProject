@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4cdf013d9f8f1234cbb3cd0590a6c3dd
-timeCreated: 1463438260
+timeCreated: 1464046040
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -64,6 +64,18 @@ TextureImporter:
     21300114: uipack_bilbaeno_57
     21300116: uipack_bilbaeno_58
     21300118: uipack_bilbaeno_59
+    21300120: uipack_bilbaeno_60
+    21300122: uipack_bilbaeno_61
+    21300124: uipack_bilbaeno_62
+    21300126: uipack_bilbaeno_63
+    21300128: uipack_bilbaeno_64
+    21300130: uipack_bilbaeno_65
+    21300132: uipack_bilbaeno_66
+    21300134: uipack_bilbaeno_67
+    21300136: uipack_bilbaeno_68
+    21300138: uipack_bilbaeno_69
+    21300140: uipack_bilbaeno_70
+    21300142: uipack_bilbaeno_71
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -698,6 +710,204 @@ TextureImporter:
         serializedVersion: 2
         x: 90
         y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 78
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_55
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 78
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_56
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 78
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_57
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 78
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_58
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 78
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_59
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 78
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_61
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_62
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_63
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_64
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_65
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_66
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 42
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_67
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 42
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_68
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 42
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_69
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 42
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_70
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 42
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: uipack_bilbaeno_71
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 42
         width: 16
         height: 16
       alignment: 0
