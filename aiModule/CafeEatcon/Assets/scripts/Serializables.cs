@@ -50,6 +50,11 @@ public class RestaurantStatistics
 	public readonly string HAM = "Ham";
 	public readonly string VEGGIE = "Veggie";
 
+	//FOR ACHIEVEMENTS
+	public int lastCustomerAchievementLevel;
+	public int nextCustomerAchievementLevel;
+	public readonly int CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT = 25;
+
 
 	public RestaurantStatistics()
 	{
@@ -83,6 +88,9 @@ public class RestaurantStatistics
 		moneySpent = 0.0f;
 		balanceIndex = 0.90f;
 		slope = 5.55f;
+
+		lastCustomerAchievementLevel = 0;
+		nextCustomerAchievementLevel = 25;
 
 	}
 
@@ -311,6 +319,24 @@ public class RestaurantStatistics
 		}
 	}
 
+	/***********************************************
+	 * Purpose: Check for achievement progress
+	 * 			Updates achievement levels
+	 * *********************************************/
+	public void checkAchievementProgress()
+	{
+		//Customer achievement check
+		if (maxCustomers > nextCustomerAchievementLevel) 
+		{
+			lastCustomerAchievementLevel = nextCustomerAchievementLevel;
+			nextCustomerAchievementLevel += CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT;
+
+			//DEBUG
+			Debug.Log("Achievement unlocked! Got to "+nextCustomerAchievementLevel + " customers!");
+
+			//THIS WOULD BE WHERE A FLAG WOULD BE SET TO SHOW THE ACHIEVEMENT TO BE SHOWN ON THE NEWSPAPER
+		}
+	}
 }
 
 	

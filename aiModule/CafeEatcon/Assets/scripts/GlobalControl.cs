@@ -47,6 +47,7 @@ public class GlobalControl : MonoBehaviour
 			Time.timeScale = 1.0f;
 			savedPlayerData.UpdateCustomers();
 			savedPlayerData.UpdateDishDemands();
+			savedPlayerData.checkAchievementProgress (); 
 			SceneManager.LoadScene ("phase2");
 			allCustomersDone = false;
 		}
