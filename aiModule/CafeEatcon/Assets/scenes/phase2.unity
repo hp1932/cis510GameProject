@@ -486,7 +486,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 82729b3928a98214298c93f2828f75bc, type: 3}
-    m_FontSize: 24
+    m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -612,8 +612,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -45.29}
-  m_SizeDelta: {x: 450, y: 40}
+  m_AnchoredPosition: {x: 0, y: -774}
+  m_SizeDelta: {x: 465, y: 46}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &233695519
 MonoBehaviour:
@@ -635,9 +635,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.9632353, g: 0.94711626, b: 0.7295091, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.9705882, g: 0.9444204, b: 0.57807094, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -681,7 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8196079, g: 0.8196079, b: 0.8196079, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2579,10 +2579,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 82729b3928a98214298c93f2828f75bc, type: 3}
-    m_FontSize: 24
+    m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -2885,8 +2885,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 135, y: 730}
-  m_SizeDelta: {x: 175, y: 40}
+  m_AnchoredPosition: {x: 135, y: 0}
+  m_SizeDelta: {x: 200, y: 45}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1067641818
 MonoBehaviour:
@@ -2908,9 +2908,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.8430621, g: 0.9558824, b: 0.82233995, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.64396626, g: 0.8088235, b: 0.61256486, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2954,7 +2954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8196079, g: 0.8196079, b: 0.8196079, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3402,7 +3402,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -363.07}
+  m_AnchoredPosition: {x: 0, y: 362.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1428207979
@@ -3549,8 +3549,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -135, y: 730}
-  m_SizeDelta: {x: 175, y: 40}
+  m_AnchoredPosition: {x: -133, y: 0}
+  m_SizeDelta: {x: 200, y: 45}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1481975168
 MonoBehaviour:
@@ -3572,9 +3572,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.8430621, g: 0.9558824, b: 0.82233995, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.64396626, g: 0.8088235, b: 0.61256486, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3618,7 +3618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8196079, g: 0.8196079, b: 0.8196079, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3769,7 +3769,7 @@ SpriteRenderer:
   m_SortingLayerID: 875386121
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300014, guid: 4cdf013d9f8f1234cbb3cd0590a6c3dd, type: 3}
-  m_Color: {r: 0.70826125, g: 0.8788302, b: 0.9632353, a: 1}
+  m_Color: {r: 0.7474049, g: 0.8770313, b: 0.9411765, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!1 &1538164680
