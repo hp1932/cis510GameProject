@@ -508,7 +508,9 @@ MonoBehaviour:
 
     Ham     x
 
-    Veggies x'
+    Veggies x
+
+    Soda x'
 --- !u!222 &64449379
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1029,7 +1031,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -390.26}
+  m_AnchoredPosition: {x: 0, y: -377.91}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &202834670
