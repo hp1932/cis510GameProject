@@ -328,7 +328,7 @@ public class RestaurantStatistics
 	public void checkAchievementProgress()
 	{
 		//Customer achievement check
-		if (maxCustomers > nextCustomerAchievementLevel) 
+		if (maxCustomers >= nextCustomerAchievementLevel) 
 		{
 			lastCustomerAchievementLevel = nextCustomerAchievementLevel;
 			//DEBUG
@@ -340,7 +340,7 @@ public class RestaurantStatistics
 		}
 		customerAchievementProgress = (float)maxCustomers / (float)nextCustomerAchievementLevel;
 		//Make sure progress never goes over 100% for last achievement tiers
-		customerAchievementProgress = Mathf.Clamp (customerAchievementProgress, 0.0f, 100.0f);
+		customerAchievementProgress = Mathf.Clamp (customerAchievementProgress, 0.0f, 1.0f);
 	}
 }
 
