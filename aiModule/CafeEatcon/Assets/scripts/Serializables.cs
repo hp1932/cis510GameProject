@@ -53,6 +53,7 @@ public class RestaurantStatistics
 	//FOR ACHIEVEMENTS
 	public int lastCustomerAchievementLevel;
 	public int nextCustomerAchievementLevel;
+	public float customerAchievementProgress;
 	public readonly int CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT = 25;
 
 
@@ -90,7 +91,8 @@ public class RestaurantStatistics
 		slope = 5.55f;
 
 		lastCustomerAchievementLevel = 0;
-		nextCustomerAchievementLevel = 25;
+		nextCustomerAchievementLevel = 50;
+		customerAchievementProgress = 0;
 
 	}
 
@@ -329,13 +331,16 @@ public class RestaurantStatistics
 		if (maxCustomers > nextCustomerAchievementLevel) 
 		{
 			lastCustomerAchievementLevel = nextCustomerAchievementLevel;
-			nextCustomerAchievementLevel += CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT;
-
 			//DEBUG
 			Debug.Log("Achievement unlocked! Got to "+nextCustomerAchievementLevel + " customers!");
 
+			nextCustomerAchievementLevel += CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT;
+
 			//THIS WOULD BE WHERE A FLAG WOULD BE SET TO SHOW THE ACHIEVEMENT TO BE SHOWN ON THE NEWSPAPER
 		}
+		customerAchievementProgress = (float)maxCustomers / (float)nextCustomerAchievementLevel;
+		//Make sure progress never goes over 100% for last achievement tiers
+		customerAchievementProgress = Mathf.Clamp (customerAchievementProgress, 0.0f, 100.0f);
 	}
 }
 
