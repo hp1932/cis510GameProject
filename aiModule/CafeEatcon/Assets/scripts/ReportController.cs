@@ -32,11 +32,7 @@ public class ReportController : MonoBehaviour {
 	private float veggieTotal;
 	private float sodaTotal;
 
-	public Text breadInv_Text;
-	public Text turkeyInv_Text;
-	public Text hamInv_Text;
-	public Text veggieInv_Text;
-	public Text sodaInv_Text;
+	public Text inventoryText;
 
 	// Use this for initialization
 	void Awake ()
@@ -97,11 +93,12 @@ public class ReportController : MonoBehaviour {
 		salesResult_Text.text = "$" + (turkeyTotal + hamTotal + veggieTotal).ToString ();
 
 		//-----INVENTORY----
-		breadInv_Text.text = localPlayerData.ingredientsOnHand ["Bread"].ToString();
-		turkeyInv_Text.text = localPlayerData.ingredientsOnHand ["Turkey"].ToString();
-		hamInv_Text.text = localPlayerData.ingredientsOnHand ["Ham"].ToString();
-		veggieInv_Text.text = localPlayerData.ingredientsOnHand ["Veggie"].ToString();
-		sodaInv_Text.text = localPlayerData.ingredientsOnHand ["Soda"].ToString();
+		inventoryText.text = 
+			localPlayerData.ingredientsOnHand ["Bread"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Turkey"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Ham"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Veggie"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Soda"].ToString ();
 
 	}
 

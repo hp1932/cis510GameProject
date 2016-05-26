@@ -9,8 +9,8 @@ public class RestaurantController : MonoBehaviour {
 	public RestaurantStatistics localPlayerData;
 
 	public Text bankText;
-	public Text revenueText;
-	public Text inventoryText;
+	public Text profitText;
+	public Text inventoryCounts;
 
 	public Text customersServed;
 	public Text custmomerMood;
@@ -25,17 +25,17 @@ public class RestaurantController : MonoBehaviour {
 
 	void Update()
 	{
-		revenueText.text = "Today's Profit: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent);
+		profitText.text = "Today's Profit: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent);
 
 		bankText.text = "Bank Balance: $" 	+ localPlayerData.currentBalance;
 
-		inventoryText.text = 
-			"Bread x" + localPlayerData.ingredientsOnHand ["Bread"].ToString () +
-			"\nTurkey x" + localPlayerData.ingredientsOnHand ["Turkey"].ToString () +
-			"\nHam x" + localPlayerData.ingredientsOnHand ["Ham"].ToString () +
-			"\nVeggies x" + localPlayerData.ingredientsOnHand ["Veggie"].ToString () +
-			"\nSoda x" + localPlayerData.ingredientsOnHand ["Soda"].ToString ();
-
+		inventoryCounts.text = 
+			localPlayerData.ingredientsOnHand ["Bread"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Turkey"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Ham"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Veggie"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Soda"].ToString ();
+		
 		customersServed.text = "Customers Served: " + localPlayerData.numCustomersServed.ToString();
 
 		if (orderFulfilled)

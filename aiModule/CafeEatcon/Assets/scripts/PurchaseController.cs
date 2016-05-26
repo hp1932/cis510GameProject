@@ -8,11 +8,7 @@ public class PurchaseController : MonoBehaviour {
 	public RestaurantStatistics localPlayerData;
 	public Dictionary<string,int> purchaseCount;
 
-	public Text breadStock_Text;
-	public Text turkeyStock_Text;
-	public Text hamStock_Text;
-	public Text veggieStock_Text;
-	public Text sodaStock_Text;
+	public Text inventoryText;
 
 	public Text breadCount_Text;
 	public Text turkeyCount_Text;
@@ -51,12 +47,6 @@ public class PurchaseController : MonoBehaviour {
 
 	void Update()
 	{
-		breadStock_Text.text 	= localPlayerData.ingredientsOnHand ["Bread"].ToString();
-		turkeyStock_Text.text 	= localPlayerData.ingredientsOnHand ["Turkey"].ToString();
-		hamStock_Text.text 		= localPlayerData.ingredientsOnHand ["Ham"].ToString();
-		veggieStock_Text.text 	= localPlayerData.ingredientsOnHand ["Veggie"].ToString();
-		sodaStock_Text.text 	= localPlayerData.ingredientsOnHand ["Soda"].ToString();
-
 		breadPrice_Text.text 	= "$" + localPlayerData.ingredientPrices ["Bread"].ToString ();
 		turkeyPrice_Text.text 	= "$" + localPlayerData.ingredientPrices ["Turkey"].ToString ();
 		hamPrice_Text.text 		= "$" + localPlayerData.ingredientPrices ["Ham"].ToString ();
@@ -78,6 +68,13 @@ public class PurchaseController : MonoBehaviour {
 
 		balanceText.text = "Bank Balance: $" + localPlayerData.currentBalance.ToString ();
 		profitText.text = "Today's Revenue: $" + (localPlayerData.moneyEarned).ToString ();
+
+		inventoryText.text = 
+			localPlayerData.ingredientsOnHand ["Bread"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Turkey"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Ham"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Veggie"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Soda"].ToString ();
 	}
 
 	private void InitializePurchaseCount()
