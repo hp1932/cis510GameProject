@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AvgCostScript : MonoBehaviour {
 
-	public float avgMealCost;
+	public double avgMealCost;
 	public double maxCustomers;
 	public double potentialCustomers;
 	public double potentialIncome;
