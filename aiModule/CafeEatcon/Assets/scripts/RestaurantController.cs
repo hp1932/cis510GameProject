@@ -83,7 +83,7 @@ public class RestaurantController : MonoBehaviour {
 				processOrder (food);
 				localPlayerData.numCustomersServed++;
 			}
-
+			localPlayerData.levelFavorability += calculateCustomerFavorability (true, food);
 		} 
 		//If we don't have enough ingredients, add to missed stats
 		else 
@@ -100,8 +100,24 @@ public class RestaurantController : MonoBehaviour {
 			{
 				localPlayerData.dishServedMissedStats [5] += 1;
 			}
-
+			//levelFavorability only here in case we want a non zero result on missed dish
+			localPlayerData.levelFavorability += calculateCustomerFavorability (false, food);
 			orderFulfilled = false;
+		}
+	}
+
+	private float calculateCustomerFavorability(bool served, string food){
+		if (served == true) {
+			float tempPrice = localPlayerData.dishPrices [food];
+			float halfMax =  localPlayerData.maxPrice * 0.5f;
+			float favorability = (1.0f - ((tempPrice - halfMax)/halfMax));
+			if (favorability > 1.0f) {
+				favorability = 1.0f;
+			}
+			return favorability;
+			//calculate
+		} else {
+			return 0f;
 		}
 	}
 
@@ -180,6 +196,7 @@ public class RestaurantController : MonoBehaviour {
 		localPlayerData.checkAchievementProgress (); 
 		localPlayerData.UpdateCustomers();
 		localPlayerData.UpdateDishDemands();
+		localPlayerData.updateFavorabilityRating ();
 		newspaper.SetActive (true);
 	}
 

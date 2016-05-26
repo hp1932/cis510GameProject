@@ -18,7 +18,6 @@ public class RestaurantStatistics
 	public Dictionary<string, float> dishPrices;		//Cost of each dish.
 	public Dictionary<string, int> ingredientsOnHand;	//Name of eahc ingredient and count 
 	public Dictionary<string, string[]> recipes;
-	public float favorabilityRating;
 
 	// list holding served and missed stats per each dish
 	// 0,1 are served and missed for ham
@@ -36,6 +35,7 @@ public class RestaurantStatistics
 	public float moneySpent;
 	public float moneyEarned;
 	public float balanceIndex;
+	public float maxPrice;
 	public float averagePrice;
 	public float slope;
 	public Dictionary<string, int> dishesServed;	//A list of dishes served and their counts
@@ -56,7 +56,12 @@ public class RestaurantStatistics
 	public int lastCustomerAchievementLevel;
 	public int nextCustomerAchievementLevel;
 	public float customerAchievementProgress;
-	public readonly int CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT = 25;
+	public readonly int CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT = 20;
+	public readonly float MAX_PRICE_INCREMENT = 2f;
+
+	//Favorability Variables
+	public float levelFavorability;
+	public float favorabilityRating;
 
 
 	public RestaurantStatistics()
@@ -78,22 +83,24 @@ public class RestaurantStatistics
 		InitializeDishServedMissedStats ();
 		SortDemands ();
 
-		favorabilityRating = 50f;
+		favorabilityRating = 1.0f;
+		levelFavorability = 0f;
 		currentBalance = 10.00f;	//start with some cash just to see the difference from daily profit to start
-		maxCustomers = 50; 			//initially set to 20
-		hamCustomers = 25;
-		turkeyCustomers = 15;
+		maxCustomers = 40; 			//initially set to 40
+		hamCustomers = 20;
+		turkeyCustomers = 10;
 		veggieCustomers = 10;
 		numCustomers = 25;
-		averagePrice = 4.33f;
+		averagePrice = 3.40f;
+		maxPrice = 6.00f;
 		numCustomersServed = 0;
 		moneyEarned = 0.0f;
 		moneySpent = 0.0f;
 		balanceIndex = 0.90f;
-		slope = 5.55f;
+		slope = 6.66f;
 
 		lastCustomerAchievementLevel = 0;
-		nextCustomerAchievementLevel = 50;
+		nextCustomerAchievementLevel = 60;
 		customerAchievementProgress = 0f;
 
 	}
@@ -116,9 +123,9 @@ public class RestaurantStatistics
 	 * **************************************/
 	private void InitializePrices()
 	{
-		dishPrices.Add (HAM_SANDWICH, 4.50f);
-		dishPrices.Add (TURKEY_SANDWICH, 5.00f);
-		dishPrices.Add (VEGGIE_SANDWICH,  3.50f);	
+		dishPrices.Add (HAM_SANDWICH, 3.60f);
+		dishPrices.Add (TURKEY_SANDWICH, 3.60f);
+		dishPrices.Add (VEGGIE_SANDWICH,  3.00f);	
 		dishPrices.Add (SODA, 1.00f);
 	}
 
@@ -144,8 +151,8 @@ public class RestaurantStatistics
 	private void InitializeDishDemands()
 	{
 		dishDemands.Add (HAM_SANDWICH, 0.50f);
-		dishDemands.Add (TURKEY_SANDWICH, 0.30f);
-		dishDemands.Add (VEGGIE_SANDWICH, 0.20f);
+		dishDemands.Add (TURKEY_SANDWICH, 0.25f);
+		dishDemands.Add (VEGGIE_SANDWICH, 0.25f);
 		sodaDemand = 0.6f;
 	}
 
@@ -290,7 +297,11 @@ public class RestaurantStatistics
 		dishDemands [dish] = demand;
 	}
 
-
+	/***********************************
+	 * Purpose: Update the average price after pricing
+	 * 			changes finalized.
+	 * 
+	 * *********************************/
 	public void updateAveragePrice()
 	{
 		float hamPrice = dishPrices[HAM_SANDWICH];
@@ -299,18 +310,36 @@ public class RestaurantStatistics
 		averagePrice = (hamPrice + turkeyPrice + veggiePrice) / 3;
 	}
 
-
+	/***********************************
+	 * Purpose: Update number of customers based
+	 * 			on average price and favorability rating
+	 * 
+	 * *********************************/
 	public void updateNumCustomers()
 	{
 		//Q = maxCustomers - Slope * (AvgPrice)
 		int temp = (int)(slope * averagePrice);
 		Debug.Log ("Slope * AveragePrice = " + temp);
-		numCustomers = ( maxCustomers - temp );
+		//recalculate favorability rating
+		float tempCustomers = ((float) maxCustomers - (float)temp ) * favorabilityRating;
+		numCustomers = (int)tempCustomers;
 		if (numCustomers < 1) 
 		{
 			numCustomers = 1;
 		}
 		Debug.Log ("numCustomers: " + numCustomers);
+	}
+
+	/***********************************
+	 * Purpose: Update favorability rating at end of
+	 * 			simulation 
+	 * 			TO-DO:
+	 * 			[]Code
+	 * 				Favor Rating Updating
+	 * 
+	 * *********************************/
+	public void updateFavorabilityRating(){
+		favorabilityRating = levelFavorability / numCustomersServed;
 	}
 
 	/**********************************
@@ -322,6 +351,7 @@ public class RestaurantStatistics
 		moneyEarned = 0;
 		numCustomersServed = 0;
 		dishesServed = new Dictionary<string, int> ();
+		levelFavorability = 0f;
 		for (int i = 0; i < 6; i++)
 		{
 			dishServedMissedStats[i] = 0;
@@ -343,6 +373,7 @@ public class RestaurantStatistics
 			Debug.Log("Achievement unlocked! Got to "+nextCustomerAchievementLevel + " customers!");
 
 			nextCustomerAchievementLevel += CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT;
+			maxPrice += MAX_PRICE_INCREMENT;
 
 			//THIS WOULD BE WHERE A FLAG WOULD BE SET TO SHOW THE ACHIEVEMENT TO BE SHOWN ON THE NEWSPAPER
 		}
