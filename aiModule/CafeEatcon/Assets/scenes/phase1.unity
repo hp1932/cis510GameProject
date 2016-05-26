@@ -9715,6 +9715,7 @@ MonoBehaviour:
   bankText: {fileID: 581239583}
   profitText: {fileID: 360071348}
   inventoryCounts: {fileID: 496198223}
+  newspaper: {fileID: 1200857455}
   customersServed: {fileID: 1396484173}
   custmomerMood: {fileID: 894621667}
   orderFulfilled: 0

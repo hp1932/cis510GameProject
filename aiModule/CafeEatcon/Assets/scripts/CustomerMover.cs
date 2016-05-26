@@ -88,7 +88,7 @@ public class CustomerMover : MonoBehaviour {
 					if (isLastCustomer) 
 					{
 						restaurant.SaveStats ();
-						GlobalControl.Instance.allCustomersDone = true;
+						restaurant.finishScene ();
 					}
 					Destroy (gameObject);
 				}

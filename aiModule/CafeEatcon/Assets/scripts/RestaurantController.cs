@@ -11,6 +11,7 @@ public class RestaurantController : MonoBehaviour {
 	public Text bankText;
 	public Text profitText;
 	public Text inventoryCounts;
+	public GameObject newspaper;
 
 	public Text customersServed;
 	public Text custmomerMood;
@@ -171,6 +172,15 @@ public class RestaurantController : MonoBehaviour {
 			}
 		}
 		return true;
+	}
+
+	public void finishScene()
+	{
+		Time.timeScale = 1.0f;
+		localPlayerData.checkAchievementProgress (); 
+		localPlayerData.UpdateCustomers();
+		localPlayerData.UpdateDishDemands();
+		newspaper.SetActive (true);
 	}
 
 }
