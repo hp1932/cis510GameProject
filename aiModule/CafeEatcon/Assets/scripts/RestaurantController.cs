@@ -9,8 +9,9 @@ public class RestaurantController : MonoBehaviour {
 	public RestaurantStatistics localPlayerData;
 
 	public Text bankText;
-	public Text revenueText;
-	public Text inventoryText;
+	public Text profitText;
+	public Text inventoryCounts;
+	public GameObject newspaper;
 
 	public Text customersServed;
 	public Text custmomerMood;
@@ -25,16 +26,17 @@ public class RestaurantController : MonoBehaviour {
 
 	void Update()
 	{
-		revenueText.text = "Today's Profit: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent);
+		profitText.text = "Today's Profit: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent);
 
 		bankText.text = "Bank Balance: $" 	+ localPlayerData.currentBalance;
 
-		inventoryText.text = 
-			"Bread x" + localPlayerData.ingredientsOnHand ["Bread"].ToString () +
-			"\nTurkey x" + localPlayerData.ingredientsOnHand ["Turkey"].ToString () +
-			"\nHam x" + localPlayerData.ingredientsOnHand ["Ham"].ToString () +
-			"\nVeggies x" + localPlayerData.ingredientsOnHand ["Veggie"].ToString ();
-
+		inventoryCounts.text = 
+			localPlayerData.ingredientsOnHand ["Bread"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Turkey"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Ham"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Veggie"].ToString () +
+			"\n" + localPlayerData.ingredientsOnHand ["Soda"].ToString ();
+		
 		customersServed.text = "Customers Served: " + localPlayerData.numCustomersServed.ToString();
 
 		if (orderFulfilled)
@@ -55,46 +57,47 @@ public class RestaurantController : MonoBehaviour {
 	 * Purpose: Check ingredient supply
 	 * 			Reduce ingredient count
 	 * 			Increase balance
+	 * 			Also order soda if applicable
 	 * **************************************/
 	public void Order(string food)
 	{
-		string[] ingredientList = localPlayerData.recipes [food];
+		float rand = UnityEngine.Random.Range (0f, 1f);
 
-		//localPlayerData.numCustomers++;
-
-		if (HaveAllIngredients (food)) {
-			if (food == "Ham Sandwich") {
-				localPlayerData.dishServedMissedStats [0] += 1;
-			} else if (food == "Turkey Sandwich") {
-				localPlayerData.dishServedMissedStats [2] += 1;
-			} else if (food == "Veggie Sandwich") {
-				localPlayerData.dishServedMissedStats [4] += 1;
-			}
-			//For each ingredient in the recipe...
-			foreach (string ingredient in ingredientList) {
-				localPlayerData.ingredientsOnHand [ingredient]--;
+		//If we have all the ingredients,
+		if (HaveAllIngredients (food)) 
+		{
+			//Check if we want to order a soda.
+			if (rand < localPlayerData.sodaDemand) 
+			{
+				//If so, check to make sure we have enough soda
+				if (HaveAllIngredients ("Soda")) 
+				{
+					processOrder (food);
+					processOrder ("Soda");
+					localPlayerData.numCustomersServed++;
+				}
 			} 
-			//Update the totals from the transaction
-			localPlayerData.currentBalance += localPlayerData.dishPrices [food];
-			localPlayerData.numCustomersServed++;
-			localPlayerData.moneyEarned += localPlayerData.dishPrices [food];
-
-			//Add to the dishesServed counter
-			if (DishInDictionary (food)) {
-				localPlayerData.dishesServed [food]++;
-			} 
+			//If we don't want soda, just serve the food
 			else 
 			{
-				localPlayerData.dishesServed.Add (food, 1);
+				processOrder (food);
+				localPlayerData.numCustomersServed++;
 			}
 
-			orderFulfilled = true;
-		} else {
-			if (food == "Ham Sandwich") {
+		} 
+		//If we don't have enough ingredients, add to missed stats
+		else 
+		{
+			if (food == "Ham Sandwich") 
+			{
 				localPlayerData.dishServedMissedStats [1] += 1;
-			} else if (food == "Turkey Sandwich") {
+			} 
+			else if (food == "Turkey Sandwich") 
+			{
 				localPlayerData.dishServedMissedStats [3] += 1;
-			} else if (food == "Veggie Sandwich") {
+			} 
+			else if (food == "Veggie Sandwich") 
+			{
 				localPlayerData.dishServedMissedStats [5] += 1;
 			}
 
@@ -102,7 +105,47 @@ public class RestaurantController : MonoBehaviour {
 		}
 	}
 
+	/********************************************************
+	 * Purpose: Helper method to subtract the ingredients
+	 * 			And add the cash for a dish
+	 * Called by: To be called only by Order()
+	 * *****************************************************/
+	private void processOrder(string food)
+	{
+		string[] ingredientList = localPlayerData.recipes [food];
 
+		if (food == "Ham Sandwich") {
+			localPlayerData.dishServedMissedStats [0] += 1;
+		} else if (food == "Turkey Sandwich") {
+			localPlayerData.dishServedMissedStats [2] += 1;
+		} else if (food == "Veggie Sandwich") {
+			localPlayerData.dishServedMissedStats [4] += 1;
+		}
+		//For each ingredient in the recipe...
+		foreach (string ingredient in ingredientList) {
+			localPlayerData.ingredientsOnHand [ingredient]--;
+		} 
+		//Update the totals from the transaction
+		localPlayerData.currentBalance += localPlayerData.dishPrices [food];
+		localPlayerData.moneyEarned += localPlayerData.dishPrices [food];
+
+		//Add to the dishesServed counter
+		if (DishInDictionary (food)) {
+			localPlayerData.dishesServed [food]++;
+		} 
+		else 
+		{
+			localPlayerData.dishesServed.Add (food, 1);
+		}
+
+		orderFulfilled = true;
+		print("Served "+food+" left: "+ localPlayerData.ingredientsOnHand ["Soda"]);
+	}
+
+	/********************************************************************
+	 * Check to see if a dish is already in the dishesServed dictionary
+	 * TO DO: Rename this function to be more intuitive
+	 * *****************************************************************/
 	bool DishInDictionary(string food)
 	{
 		return localPlayerData.dishesServed.ContainsKey (food);
@@ -129,6 +172,15 @@ public class RestaurantController : MonoBehaviour {
 			}
 		}
 		return true;
+	}
+
+	public void finishScene()
+	{
+		Time.timeScale = 1.0f;
+		localPlayerData.checkAchievementProgress (); 
+		localPlayerData.UpdateCustomers();
+		localPlayerData.UpdateDishDemands();
+		newspaper.SetActive (true);
 	}
 
 }

@@ -13,6 +13,7 @@ public class RestaurantStatistics
 	//NOTE May want to change string name identifier to enum later in each dictionary
 	public List<DishDemand> dishDemandsSorted; 		// demand for each dish
 	public Dictionary<string, float> dishDemands;
+	public float sodaDemand;
 	public Dictionary<string, float> ingredientPrices;	// Cost of each ingredient
 	public Dictionary<string, float> dishPrices;		//Cost of each dish.
 	public Dictionary<string, int> ingredientsOnHand;	//Name of eahc ingredient and count 
@@ -49,6 +50,13 @@ public class RestaurantStatistics
 	public readonly string TURKEY = "Turkey";
 	public readonly string HAM = "Ham";
 	public readonly string VEGGIE = "Veggie";
+	public readonly string SODA = "Soda";
+
+	//FOR ACHIEVEMENTS
+	public int lastCustomerAchievementLevel;
+	public int nextCustomerAchievementLevel;
+	public float customerAchievementProgress;
+	public readonly int CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT = 25;
 
 
 	public RestaurantStatistics()
@@ -84,6 +92,10 @@ public class RestaurantStatistics
 		balanceIndex = 0.90f;
 		slope = 5.55f;
 
+		lastCustomerAchievementLevel = 0;
+		nextCustomerAchievementLevel = 50;
+		customerAchievementProgress = 0f;
+
 	}
 
 	/**************************************
@@ -95,6 +107,7 @@ public class RestaurantStatistics
 		recipes.Add (HAM_SANDWICH, new string[] {BREAD, HAM });
 		recipes.Add (TURKEY_SANDWICH, new string[] {BREAD, TURKEY });
 		recipes.Add (VEGGIE_SANDWICH, new string[] {BREAD, VEGGIE });	
+		recipes.Add (SODA, new string[] { SODA });
 	}
 
 	/**************************************
@@ -106,6 +119,7 @@ public class RestaurantStatistics
 		dishPrices.Add (HAM_SANDWICH, 4.50f);
 		dishPrices.Add (TURKEY_SANDWICH, 5.00f);
 		dishPrices.Add (VEGGIE_SANDWICH,  3.50f);	
+		dishPrices.Add (SODA, 1.00f);
 	}
 
 	/**************************************
@@ -120,6 +134,7 @@ public class RestaurantStatistics
 		ingredientPrices.Add (TURKEY, 1.5f);
 		ingredientPrices.Add (HAM, 1.0f);
 		ingredientPrices.Add (VEGGIE, 0.5f);
+		ingredientPrices.Add (SODA, 0.5f);
 	}
 
 	/**************************************
@@ -131,6 +146,7 @@ public class RestaurantStatistics
 		dishDemands.Add (HAM_SANDWICH, 0.50f);
 		dishDemands.Add (TURKEY_SANDWICH, 0.30f);
 		dishDemands.Add (VEGGIE_SANDWICH, 0.20f);
+		sodaDemand = 0.6f;
 	}
 
 	private void InitializeDishServedMissedStats()
@@ -262,6 +278,7 @@ public class RestaurantStatistics
 		ingredientsOnHand.Add(TURKEY, 8);
 		ingredientsOnHand.Add(HAM, 12);
 		ingredientsOnHand.Add(VEGGIE, 5);
+		ingredientsOnHand.Add (SODA, 15);
 	}
 
 	/***********************************
@@ -311,6 +328,28 @@ public class RestaurantStatistics
 		}
 	}
 
+	/***********************************************
+	 * Purpose: Check for achievement progress
+	 * 			Updates achievement levels
+	 * *********************************************/
+	public void checkAchievementProgress()
+	{
+		//Customer achievement check
+		Debug.Log("Num customers: "+ maxCustomers);
+		if (maxCustomers >= nextCustomerAchievementLevel) 
+		{
+			lastCustomerAchievementLevel = nextCustomerAchievementLevel;
+			//DEBUG
+			Debug.Log("Achievement unlocked! Got to "+nextCustomerAchievementLevel + " customers!");
+
+			nextCustomerAchievementLevel += CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT;
+
+			//THIS WOULD BE WHERE A FLAG WOULD BE SET TO SHOW THE ACHIEVEMENT TO BE SHOWN ON THE NEWSPAPER
+		}
+		customerAchievementProgress = (float)maxCustomers / (float)nextCustomerAchievementLevel;
+		//Make sure progress never goes over 100% for last achievement tiers
+		customerAchievementProgress = Mathf.Clamp (customerAchievementProgress, 0.0f, 1.0f);
+	}
 }
 
 	

@@ -123,19 +123,6 @@ public class CustomerController : MonoBehaviour {
 			}
 		}
 		openSpaceIndex = openSpaceIndex - 1;
-		/*if((customersSpawned >= numCustomers) && (openSpaceIndex == 0))
-		{
-			//TO DO: Make this smarter than just putting it on a timer
-			Invoke ("AllSpawned", 4);
-		}*/
 	}
-	/********************************************
-	 * PURPOSE: Sets variable in global control
-	 * 			which triggers scene change.
-	 * ******************************************/
-	/*void AllSpawned()
-	{
-		//Let GlobalControl know we've spawned everyone.
-		GlobalControl.Instance.allCustomersDone = true;
-	}*/
+
 }
