@@ -27,6 +27,13 @@ public class MoveWith : MonoBehaviour {
 	float priceincrease;
 	float maxSandwichPrice;
 	float menuMinus; //The small fraction off each max and min to calculate correctly when rounding
+	public float originX;
+	public float originY;
+	public float originZ;
+	public float destX;
+	public float destY;
+	public float destZ;
+
 
 	public int yOfGUI;
 	public int xOfGUI;
@@ -41,12 +48,11 @@ public class MoveWith : MonoBehaviour {
 
 	{ 
 		localPlayerData = GlobalControl.Instance.savedPlayerData;
+		GameObject Origin = GameObject.Find ("Origin");
+		GameObject Destination = GameObject.Find ("Destination");
 		// hamSandwichCost = localPlayerData.dishPrices[localPlayerData.HAM_SANDWICH];
 		// turkeySandwichCost = localPlayerData.dishPrices[localPlayerData.TURKEY_SANDWICH];
 		// veggieSandwichCost = localPlayerData.dishPrices[localPlayerData.VEGGIE_SANDWICH];
-		hamSandwichCost = 6f;
-		turkeySandwichCost = 6f;
-		veggieSandwichCost = 6f;
 		avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
 		PerCustCostYMove = .50;
 		PerCustCostXMove = .75;
@@ -54,6 +60,12 @@ public class MoveWith : MonoBehaviour {
 		startYAnchor = point.y;
 		startXAnchor = point.x;
 		maxCustomers = localPlayerData.maxCustomers;
+		originX = Origin.GetComponent<CostMove> ().originX;
+		originY = Origin.GetComponent<CostMove> ().originY;
+		originZ = Origin.GetComponent<CostMove> ().originZ;
+		destX = Destination.GetComponent<destinationMove> ().destX;
+		destY = Destination.GetComponent<destinationMove> ().destY;
+		destZ = Destination.GetComponent<destinationMove> ().destZ;
 		print (maxCustomers);
 
 
