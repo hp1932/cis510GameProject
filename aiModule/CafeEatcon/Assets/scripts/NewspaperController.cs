@@ -13,6 +13,7 @@ public class NewspaperController : MonoBehaviour {
 
 	public Text newsText;
 	public Text dayText;
+	public Text ratingText;
 
 	// Use this for initialization
 	void Start () 
@@ -30,6 +31,24 @@ public class NewspaperController : MonoBehaviour {
 		econStoryRate = 0.3f;
 
 		dayText.text = "Day " + localPlayerData.currentDay;
+
+		if (localPlayerData.favorabilityRating == 0f) {
+			ratingText.text = ":(";
+		} else if (localPlayerData.favorabilityRating < 0.2f) {
+			ratingText.text = "*";
+		} else if (localPlayerData.favorabilityRating < 0.4f) {
+			ratingText.text = "**";
+		} else if (localPlayerData.favorabilityRating < 0.6f) {
+			ratingText.text = "***";
+		} else if (localPlayerData.favorabilityRating < 0.8f) {
+			ratingText.text = "****";
+		} else if (localPlayerData.favorabilityRating <= 1.0f) {
+			ratingText.text = "*****";
+		} else {
+			ratingText.text = localPlayerData.favorabilityRating.ToString();
+		}
+
+		
 	}
 
 	private void initializeStories()
