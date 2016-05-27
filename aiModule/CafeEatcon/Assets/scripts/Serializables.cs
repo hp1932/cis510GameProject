@@ -224,26 +224,26 @@ public class RestaurantStatistics
 				tempCustomers = (float)numCustomers * 0.7f;
 				numCustomers = (int)tempCustomers;
 				break;
+			
 			case 1:
-				//poultry unsanitary, minus 90% turkey demand
-				tempDemand = true;
-				tempDemands[HAM_SANDWICH] = 0.5f;
-				tempDemands[TURKEY_SANDWICH] = 0.1f;
-				tempDemands[VEGGIE_SANDWICH] = 0.4f;
-				break;
-			case 2:
 				//Comic Con, up 60% customers
 				tempCustomers = (float)numCustomers * 1.6f;
 				numCustomers = (int)tempCustomers;
 				break;
-			case 3:
+			case 2:
 				//Strike, down 10% customers
 				tempCustomers = (float)numCustomers * 0.9f;
 				numCustomers = (int)tempCustomers;
 				break;
-			case 4:
+			case 3:
 				//farmers market, down 10% customers
 				tempCustomers = (float)numCustomers * 0.9f;
+				numCustomers = (int)tempCustomers;
+				break;
+			
+			case 4:
+				//gardening conference, up 30% customers
+				tempCustomers = (float)numCustomers * 1.3f;
 				numCustomers = (int)tempCustomers;
 				break;
 			case 5:
@@ -254,9 +254,11 @@ public class RestaurantStatistics
 				tempDemands[VEGGIE_SANDWICH] = 0.6f;
 				break;
 			case 6:
-				//gardening conference, up 30% customers
-				tempCustomers = (float)numCustomers * 1.3f;
-				numCustomers = (int)tempCustomers;
+				//poultry unsanitary, minus 90% turkey demand
+				tempDemand = true;
+				tempDemands[HAM_SANDWICH] = 0.5f;
+				tempDemands[TURKEY_SANDWICH] = 0.1f;
+				tempDemands[VEGGIE_SANDWICH] = 0.4f;
 				break;
 			case 7:
 				//hoof and mouth disease Ham down 80%, Turkey down 10 percent, veggie up 30%
@@ -435,7 +437,7 @@ public class RestaurantStatistics
 	{
 		//Q = maxCustomers - Slope * (AvgPrice)
 		int temp = (int)(slope * averagePrice);
-		Debug.Log ("Slope * AveragePrice = " + temp);
+		//Debug.Log ("Slope * AveragePrice = " + temp);
 		//recalculate favorability rating
 		float tempCustomers = ((float) maxCustomers - (float)temp ) * favorabilityRating;
 		numCustomers = (int)tempCustomers;

@@ -49,12 +49,21 @@ public class CustomerController : MonoBehaviour {
 		List<DishDemand> sortedDemands;
 		Vector3 spawnPosition;
 		Quaternion spawnRotation;
+
+		/* Yarrr Matey, Tharr be some BUGGY Code below. Watch Yer Footing.
 		if (GlobalControl.Instance.savedPlayerData.tempDemand) {
 			GlobalControl.Instance.savedPlayerData.SortTempDemands ();
 			sortedDemands = GlobalControl.Instance.savedPlayerData.tempDemandsSorted;
 		} else {
 			sortedDemands = GlobalControl.Instance.savedPlayerData.dishDemandsSorted;
 		}
+		*/
+		sortedDemands = GlobalControl.Instance.savedPlayerData.dishDemandsSorted;
+
+		/* This 'ere be a map ter 'elp find BUGS
+		foreach (DishDemand db in sortedDemands){
+			Debug.Log ("Demand" + db.name + ": " + db.probability);
+		}*/
 
 		float rand;
 
@@ -98,10 +107,10 @@ public class CustomerController : MonoBehaviour {
 				}
 
 				//Set flag on last customer
-				print("Customer "+customersSpawned+ "/"+numCustomers);
+				//print("Customer "+customersSpawned+ "/"+numCustomers);
 				if (customersSpawned == numCustomers) 
 				{
-					print ("SET LAST CUSTOMER!");
+					//print ("SET LAST CUSTOMER!");
 					spawnedCustomerMover.SetLastCustomer (true);
 				}
 
