@@ -75,16 +75,25 @@ public class NewspaperController : MonoBehaviour {
 		string retVal = "";
 		int randIndex;
 
-		if (percentRand < econStoryRate) {
-			randIndex = Random.Range (0, economyStories.Count);
-			retVal = economyStories [randIndex];
-			GlobalControl.Instance.savedPlayerData.economyEventCond = true;
-			GlobalControl.Instance.savedPlayerData.randEvent = randIndex;
+		if (percentRand < econStoryRate) 
+		{
+			if (economyStories.Count > 0) 
+			{
+				randIndex = Random.Range (0, economyStories.Count);
+				retVal = economyStories [randIndex];
+				GlobalControl.Instance.savedPlayerData.economyEventCond = true;
+				GlobalControl.Instance.savedPlayerData.randEvent = randIndex;
+				economyStories.Remove (randIndex);
+			}
 		} 
 		else 
 		{
-			randIndex = Random.Range (0, normalStories.Count);
-			retVal = normalStories [randIndex];
+			if (normalStories.Count > 0) 
+			{
+				randIndex = Random.Range (0, normalStories.Count);
+				retVal = normalStories [randIndex];
+				normalStories.Remove (randIndex);
+			}
 		}
 		newsText.text = retVal;
 		return retVal;
