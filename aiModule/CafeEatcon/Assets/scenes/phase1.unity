@@ -3022,7 +3022,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22481732, guid: 88e3464fdb613fe4391ba0be775cb294, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -279.5
+      value: -299.05
       objectReference: {fileID: 0}
     - target: {fileID: 22481732, guid: 88e3464fdb613fe4391ba0be775cb294, type: 2}
       propertyPath: m_AnchoredPosition.y
