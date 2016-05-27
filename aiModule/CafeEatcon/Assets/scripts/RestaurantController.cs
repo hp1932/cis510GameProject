@@ -28,8 +28,8 @@ public class RestaurantController : MonoBehaviour {
 
 	void Update()
 	{
-		profit = localPlayerData.moneyEarned - localPlayerData.moneySpent;
-		profitText.text = "Today's Profit: " + profit.ToString("C2");
+		localPlayerData.profit = localPlayerData.moneyEarned - localPlayerData.moneySpent;
+		profitText.text = "Today's Profit: " + localPlayerData.profit.ToString("C2");
 
 		bankText.text = "Bank Balance: " + localPlayerData.currentBalance.ToString("C2");
 

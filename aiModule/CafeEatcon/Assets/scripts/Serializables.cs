@@ -40,6 +40,7 @@ public class RestaurantStatistics
 	public int numCustomersServed;
 	public float moneySpent;
 	public float moneyEarned;
+	public float profit;
 	public float balanceIndex;
 	public float maxPrice;
 	public float averagePrice;
@@ -464,7 +465,7 @@ public class RestaurantStatistics
 	public void updateFavorabilityRating(){
 		favorabilityRating = levelFavorability / lastNumCustomers;
 	}
-
+		
 	/**********************************
 	 * Purpose: Reset daily variables
 	 * 			for phase 1
@@ -473,6 +474,7 @@ public class RestaurantStatistics
 	{
 		moneyEarned = 0;
 		numCustomersServed = 0;
+		profit = 0;
 		dishesServed = new Dictionary<string, int> ();
 		levelFavorability = 0f;
 		for (int i = 0; i < 6; i++)

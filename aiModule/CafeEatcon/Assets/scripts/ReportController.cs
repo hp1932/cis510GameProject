@@ -45,7 +45,7 @@ public class ReportController : MonoBehaviour {
 	{
 		
 		balanceText.text = "Bank Balance: " + localPlayerData.currentBalance.ToString ("C2");
-		profitText.text = "Today's Revenue: " + (localPlayerData.moneyEarned - localPlayerData.moneySpent).ToString ("C2");
+		profitText.text = "Today's Profit: " + localPlayerData.profit.ToString ("C2");
 
 		customersServed.text = localPlayerData.numCustomersServed.ToString();
 		customersMissed.text = (localPlayerData.numCustomers - localPlayerData.numCustomersServed).ToString();
