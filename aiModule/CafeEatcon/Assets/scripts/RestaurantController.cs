@@ -16,6 +16,7 @@ public class RestaurantController : MonoBehaviour {
 	public Text customersServed;
 	public Text custmomerMood;
 	public bool orderFulfilled;
+	private float profit;
 
 	void Awake()
 	{
@@ -26,9 +27,10 @@ public class RestaurantController : MonoBehaviour {
 
 	void Update()
 	{
-		profitText.text = "Today's Profit: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent);
+		profit = localPlayerData.moneyEarned - localPlayerData.moneySpent;
+		profitText.text = "Today's Profit: " + profit.ToString("C2");
 
-		bankText.text = "Bank Balance: $" 	+ localPlayerData.currentBalance;
+		bankText.text = "Bank Balance: " + localPlayerData.currentBalance.ToString("C2");
 
 		inventoryCounts.text = 
 			localPlayerData.ingredientsOnHand ["Bread"].ToString () +

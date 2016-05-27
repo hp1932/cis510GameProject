@@ -47,11 +47,11 @@ public class PurchaseController : MonoBehaviour {
 
 	void Update()
 	{
-		breadPrice_Text.text 	= "$" + localPlayerData.ingredientPrices ["Bread"].ToString ();
-		turkeyPrice_Text.text 	= "$" + localPlayerData.ingredientPrices ["Turkey"].ToString ();
-		hamPrice_Text.text 		= "$" + localPlayerData.ingredientPrices ["Ham"].ToString ();
-		veggiePrice_Text.text 	= "$" + localPlayerData.ingredientPrices ["Veggie"].ToString ();
-		sodaPrice_Text.text 	= "$" + localPlayerData.ingredientPrices ["Soda"].ToString ();
+		breadPrice_Text.text 	= localPlayerData.ingredientPrices ["Bread"].ToString ("C2");
+		turkeyPrice_Text.text 	= localPlayerData.ingredientPrices ["Turkey"].ToString ("C2");
+		hamPrice_Text.text 		= localPlayerData.ingredientPrices ["Ham"].ToString ("C2");
+		veggiePrice_Text.text 	= localPlayerData.ingredientPrices ["Veggie"].ToString ("C2");
+		sodaPrice_Text.text 	= localPlayerData.ingredientPrices ["Soda"].ToString ("C2");
 
 		breadCount_Text.text 	= purchaseCount ["Bread"].ToString ();
 		turkeyCount_Text.text 	= purchaseCount ["Turkey"].ToString ();
@@ -59,11 +59,11 @@ public class PurchaseController : MonoBehaviour {
 		veggieCount_Text.text 	= purchaseCount ["Veggie"].ToString ();
 		sodaCount_Text.text 	= purchaseCount ["Soda"].ToString ();
 
-		breadResult_Text.text 	= "x                =   $" + (localPlayerData.ingredientPrices ["Bread"] * purchaseCount ["Bread"]).ToString ();
-		turkeyResult_Text.text 	= "x                =   $" + (localPlayerData.ingredientPrices ["Turkey"] * purchaseCount ["Turkey"]).ToString ();
-		hamResult_Text.text 	= "x                =   $" + (localPlayerData.ingredientPrices ["Ham"] * purchaseCount ["Ham"]).ToString ();
-		veggieResult_Text.text 	= "x                =   $" + (localPlayerData.ingredientPrices ["Veggie"] * purchaseCount ["Veggie"]).ToString ();
-		sodaResult_Text.text 	= "x                =   $" + (localPlayerData.ingredientPrices ["Soda"] * purchaseCount ["Soda"]).ToString ();
+		breadResult_Text.text 	= "x                =   " + (localPlayerData.ingredientPrices ["Bread"] * purchaseCount ["Bread"]).ToString ("C2");
+		turkeyResult_Text.text 	= "x                =   " + (localPlayerData.ingredientPrices ["Turkey"] * purchaseCount ["Turkey"]).ToString ("C2");
+		hamResult_Text.text 	= "x                =   " + (localPlayerData.ingredientPrices ["Ham"] * purchaseCount ["Ham"]).ToString ("C2");
+		veggieResult_Text.text 	= "x                =   " + (localPlayerData.ingredientPrices ["Veggie"] * purchaseCount ["Veggie"]).ToString ("C2");
+		sodaResult_Text.text 	= "x                =   " + (localPlayerData.ingredientPrices ["Soda"] * purchaseCount ["Soda"]).ToString ("C2");
 
 
 		balanceText.text = "Bank Balance: $" + localPlayerData.currentBalance.ToString ();
