@@ -14,7 +14,7 @@ public class CustomerController : MonoBehaviour {
 	private GameObject[] customersInLine;	//Tracks all the customers on screen/ in line
 	private int customersSpawned;			// The number of customers actually spawned 
 	private int openSpaceIndex;				//The index of the next open space in line
-	private readonly int MAX_LINE_LENGTH = 5;	//The max number of customers in line
+	private readonly int MAX_LINE_LENGTH = 8;	//The max number of customers in line
 	/*************************************************
 	 * Function: Start
 	 * Purpose: Instantiate variables. 
@@ -69,7 +69,7 @@ public class CustomerController : MonoBehaviour {
 		float rand;
 
 		//While there are customers left
-		while (customersSpawned <= numCustomers) 
+		while (customersSpawned < numCustomers) 
 		{
 			//Figure out the actual spawn wait between the min and max
 			actualSpawnWait = Random.Range (minSpawnWait, maxSpawnWait);
@@ -139,6 +139,7 @@ public class CustomerController : MonoBehaviour {
 				customersInLine [i].GetComponent<CustomerMover> ().SetTarget (customerWaitPositions [i]);
 			}
 		}
+		customersInLine [customersInLine.Length - 1] = null;
 		openSpaceIndex = openSpaceIndex - 1;
 	}
 
