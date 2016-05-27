@@ -44,53 +44,53 @@ public class ReportController : MonoBehaviour {
 	void UpdateSalesReport() 
 	{
 		
-		balanceText.text = "Bank Balance: $" + localPlayerData.currentBalance.ToString ();
-		profitText.text = "Today's Revenue: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent).ToString ();
+		balanceText.text = "Bank Balance: " + localPlayerData.currentBalance.ToString ("C2");
+		profitText.text = "Today's Revenue: " + (localPlayerData.moneyEarned - localPlayerData.moneySpent).ToString ("C2");
 
 		customersServed.text = localPlayerData.numCustomersServed.ToString();
 		customersMissed.text = (localPlayerData.numCustomers - localPlayerData.numCustomersServed).ToString();
 
 		//-----TURKEY-----
-		turkeyPrice_Text.text 	= "$" + localPlayerData.dishPrices ["Turkey Sandwich"].ToString ();
+		turkeyPrice_Text.text 	= "" + localPlayerData.dishPrices ["Turkey Sandwich"].ToString ("C2");
 		if (localPlayerData.dishesServed.ContainsKey("Turkey Sandwich")) {
 			turkeyUnits_Text.text = localPlayerData.dishesServed ["Turkey Sandwich"].ToString ();
 			turkeyTotal = localPlayerData.dishPrices ["Turkey Sandwich"] * localPlayerData.dishesServed ["Turkey Sandwich"];
 		} else {
 			turkeyTotal = 0;
 		}
-		turkeyResult_Text.text 	= turkeyTotal.ToString ();
+		turkeyResult_Text.text 	= turkeyTotal.ToString ("C2");
 
 		//-------HAM----
-		hamPrice_Text.text 	= "$" + localPlayerData.dishPrices ["Ham Sandwich"].ToString ();
+		hamPrice_Text.text 	= "" + localPlayerData.dishPrices ["Ham Sandwich"].ToString ("C2");
 		if (localPlayerData.dishesServed.ContainsKey("Ham Sandwich")) {
 			hamUnits_Text.text = localPlayerData.dishesServed ["Ham Sandwich"].ToString ();
 			hamTotal = localPlayerData.dishPrices ["Ham Sandwich"] * localPlayerData.dishesServed ["Ham Sandwich"];
 		} else {
 			hamTotal = 0;
 		}
-		hamResult_Text.text = hamTotal.ToString ();
+		hamResult_Text.text = hamTotal.ToString ("C2");
 
 		//------VEGGIE-----
-		veggiePrice_Text.text 	= "$" + localPlayerData.dishPrices ["Veggie Sandwich"].ToString ();
+		veggiePrice_Text.text 	= "" + localPlayerData.dishPrices ["Veggie Sandwich"].ToString ("C2");
 		if (localPlayerData.dishesServed.ContainsKey("Veggie Sandwich")) {
 			veggieUnits_Text.text = localPlayerData.dishesServed ["Veggie Sandwich"].ToString ();
 			veggieTotal = localPlayerData.dishPrices ["Veggie Sandwich"] * localPlayerData.dishesServed ["Veggie Sandwich"];
 		} else {
 			veggieTotal = 0;
 		}
-		veggieResult_Text.text 	= veggieTotal.ToString ();
+		veggieResult_Text.text 	= veggieTotal.ToString ("C2");
 
 		//-------SODA----
-		sodaPrice_Text.text 	= "$" + localPlayerData.dishPrices ["Soda"].ToString ();
+		sodaPrice_Text.text 	= "" + localPlayerData.dishPrices ["Soda"].ToString ("C2");
 		if (localPlayerData.dishesServed.ContainsKey("Soda")) {
 			sodaUnits_Text.text = localPlayerData.dishesServed ["Soda"].ToString ();
 			sodaTotal = localPlayerData.dishPrices ["Soda"] * localPlayerData.dishesServed ["Soda"];
 		} else {
 			sodaTotal = 0;
 		}
-		sodaResult_Text.text 	= sodaTotal.ToString ();
+		sodaResult_Text.text 	= sodaTotal.ToString ("C2");
 
-		salesResult_Text.text = "$" + (turkeyTotal + hamTotal + veggieTotal).ToString ();
+		salesResult_Text.text = "" + (turkeyTotal + hamTotal + veggieTotal).ToString ("C2");
 
 		//-----INVENTORY----
 		inventoryText.text = 

@@ -15,7 +15,9 @@ public class RestaurantController : MonoBehaviour {
 
 	public Text customersServed;
 	public Text custmomerMood;
+	public Text customerOrder;
 	public bool orderFulfilled;
+	private float profit;
 
 	void Awake()
 	{
@@ -26,9 +28,10 @@ public class RestaurantController : MonoBehaviour {
 
 	void Update()
 	{
-		profitText.text = "Today's Profit: $" + (localPlayerData.moneyEarned - localPlayerData.moneySpent);
+		profit = localPlayerData.moneyEarned - localPlayerData.moneySpent;
+		profitText.text = "Today's Profit: " + profit.ToString("C2");
 
-		bankText.text = "Bank Balance: $" 	+ localPlayerData.currentBalance;
+		bankText.text = "Bank Balance: " + localPlayerData.currentBalance.ToString("C2");
 
 		inventoryCounts.text = 
 			localPlayerData.ingredientsOnHand ["Bread"].ToString () +
@@ -37,7 +40,7 @@ public class RestaurantController : MonoBehaviour {
 			"\n" + localPlayerData.ingredientsOnHand ["Veggie"].ToString () +
 			"\n" + localPlayerData.ingredientsOnHand ["Soda"].ToString ();
 		
-		customersServed.text = "Customers Served: " + localPlayerData.numCustomersServed.ToString();
+		customersServed.text = "Served: " + localPlayerData.numCustomersServed.ToString();
 
 		if (orderFulfilled)
 			custmomerMood.text = ":)";
@@ -132,10 +135,16 @@ public class RestaurantController : MonoBehaviour {
 
 		if (food == "Ham Sandwich") {
 			localPlayerData.dishServedMissedStats [0] += 1;
+
+			customerOrder.text = "Order: Ham";
 		} else if (food == "Turkey Sandwich") {
 			localPlayerData.dishServedMissedStats [2] += 1;
+
+			customerOrder.text = "Order: Turkey";
 		} else if (food == "Veggie Sandwich") {
 			localPlayerData.dishServedMissedStats [4] += 1;
+
+			customerOrder.text = "Order: Veggie";
 		}
 		//For each ingredient in the recipe...
 		foreach (string ingredient in ingredientList) {
@@ -198,6 +207,10 @@ public class RestaurantController : MonoBehaviour {
 		localPlayerData.UpdateDishDemands();
 		localPlayerData.updateFavorabilityRating ();
 		newspaper.SetActive (true);
+		//Call newspaper's setup here!
+		NewspaperController newsController = newspaper.GetComponent<NewspaperController>();
+		newsController.init ();
+		newsController.pickStory();
 	}
-
+		
 }
