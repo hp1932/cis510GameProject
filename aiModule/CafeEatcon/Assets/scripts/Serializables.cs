@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class RestaurantStatistics
 {
+	public int currentDay;		//The current day in the game.
+
 	public float currentBalance;	//The current amount of money available. Is updated during phase 1
 	public float startingBalance;	//The amount of money at the start of phase 1. Needs to be persistent to calculate the profits/losses
 	public GameObject[] supplies;	//A list of current supplies. This will be populated with actual gameObjects representing the ingredient
@@ -85,6 +87,7 @@ public class RestaurantStatistics
 		InitializeDishServedMissedStats ();
 		SortDemands ();
 
+		currentDay = 1;
 		favorabilityRating = 1.0f;
 		levelFavorability = 0f;
 		currentBalance = 10.00f;	//start with some cash just to see the difference from daily profit to start

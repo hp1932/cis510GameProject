@@ -44,6 +44,8 @@ public class ButtonController : MonoBehaviour {
 		GlobalControl.Instance.savedPlayerData.ResetValuesForPhase1 ();
 		GlobalControl.Instance.savedPlayerData.updateNumCustomers ();
 		SoundManager.instance.PlaySingle (switchSound);
+		GlobalControl.Instance.savedPlayerData.currentDay += 1;
+
 		SceneManager.LoadScene ("phase1");
 	}
 }

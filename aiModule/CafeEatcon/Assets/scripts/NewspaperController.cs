@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class NewspaperController : MonoBehaviour {
 
+	public RestaurantStatistics localPlayerData;
+
 	private Dictionary<int,string> economyStories;
 	private Dictionary<int,string> normalStories;
 	private float econStoryRate;
 
 	public Text newsText;
+	public Text dayText;
 
 	// Use this for initialization
 	void Start () 
@@ -19,10 +22,14 @@ public class NewspaperController : MonoBehaviour {
 
 	public void init()
 	{
+		localPlayerData = GlobalControl.Instance.savedPlayerData;
+
 		economyStories = new Dictionary<int, string> ();
 		normalStories = new Dictionary<int, string> ();
 		initializeStories();
 		econStoryRate = 0.3f;
+
+		dayText.text = "Day " + localPlayerData.currentDay;
 	}
 
 	private void initializeStories()
