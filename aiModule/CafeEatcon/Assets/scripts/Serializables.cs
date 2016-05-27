@@ -33,6 +33,7 @@ public class RestaurantStatistics
 	public int hamCustomers;
 	public int turkeyCustomers;
 	public int veggieCustomers;
+	public int lastNumCustomers;
 	public int numCustomers;
 	public int numCustomersServed;
 	public float moneySpent;
@@ -95,6 +96,7 @@ public class RestaurantStatistics
 		hamCustomers = 20;
 		turkeyCustomers = 10;
 		veggieCustomers = 10;
+		lastNumCustomers = 0;
 		numCustomers = 25;
 		averagePrice = 3.40f;
 		maxPrice = 6.00f;
@@ -368,7 +370,7 @@ public class RestaurantStatistics
 	 * 
 	 * *********************************/
 	public void updateFavorabilityRating(){
-		favorabilityRating = levelFavorability / numCustomersServed;
+		favorabilityRating = levelFavorability / lastNumCustomers;
 	}
 
 	/**********************************

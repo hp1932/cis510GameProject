@@ -26,6 +26,7 @@ public class CustomerController : MonoBehaviour {
 		openSpaceIndex = 0;
 		customersInLine = new GameObject[MAX_LINE_LENGTH];
 		numCustomers = GlobalControl.Instance.savedPlayerData.numCustomers;
+		GlobalControl.Instance.savedPlayerData.lastNumCustomers = numCustomers;
 		//Spawn in some customers! 
 		StartCoroutine (SpawnCustomers ());
 	}
