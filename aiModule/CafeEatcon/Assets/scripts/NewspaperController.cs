@@ -28,7 +28,7 @@ public class NewspaperController : MonoBehaviour {
 		economyStories = new Dictionary<int, string> ();
 		normalStories = new Dictionary<int, string> ();
 		initializeStories();
-		econStoryRate = 1f;
+		econStoryRate = 0.5f;
 
 		dayText.text = "Day " + localPlayerData.currentDay;
 
@@ -56,6 +56,8 @@ public class NewspaperController : MonoBehaviour {
 		normalStories.Add (1, "In Local Metro News:\nThe traffic signals at Main and 3rd Ave have been malfunctioning since yesterday afternoon causing traffic jams and delays downtown today.");
 		normalStories.Add (2, "In Local Metro News:\nNew construction has started today at 3rd Ave and Morrison St downtown which will be causing traffic delays at that intersection for the next few weeks.");
 		normalStories.Add (3, "In Local Metro News:\n Batboy has returned! Will he help settle the stock market?");
+		normalStories.Add (4, "In Sports News:\n The Middle Valley Senior High Football team clinched a playoff berth with a last second hail mary against Easton Prep.");
+		normalStories.Add (5, "In Local News:\nThe Middleton Police Academy is looking for new applicants for their dog training division. Contact (555)DOG-COPS for more information.");
 
 		economyStories.Add (0, "In Local Metro News:\nAn alligator has escaped from the Metro Zoo and park area along the riverfront! Avoid the entire downtown area if possible!");
 		//economyStories.Add (6, "In Local Metro News:\nLocal poultry farm under investigation for unsanitary working conditions. Many local restaurants using their turkey and chicken products!");
