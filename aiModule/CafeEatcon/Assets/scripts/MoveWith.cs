@@ -50,9 +50,12 @@ public class MoveWith : MonoBehaviour {
 		localPlayerData = GlobalControl.Instance.savedPlayerData;
 		GameObject Origin = GameObject.Find ("Origin");
 		GameObject Destination = GameObject.Find ("Destination");
-		// hamSandwichCost = localPlayerData.dishPrices[localPlayerData.HAM_SANDWICH];
-		// turkeySandwichCost = localPlayerData.dishPrices[localPlayerData.TURKEY_SANDWICH];
-		// veggieSandwichCost = localPlayerData.dishPrices[localPlayerData.VEGGIE_SANDWICH];
+		hamSandwichCost = localPlayerData.dishPrices[localPlayerData.HAM_SANDWICH];
+		turkeySandwichCost = localPlayerData.dishPrices[localPlayerData.TURKEY_SANDWICH];
+		veggieSandwichCost = localPlayerData.dishPrices[localPlayerData.VEGGIE_SANDWICH];
+		// hamSandwichCost = 3.30f; // This is just for testing!
+		// turkeySandwichCost = 3.30f; // This is just for testing!
+		// veggieSandwichCost = 3.00f; // This is just for testing!
 		avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
 		PerCustCostYMove = .50;
 		PerCustCostXMove = .75;
@@ -60,6 +63,7 @@ public class MoveWith : MonoBehaviour {
 		startYAnchor = point.y;
 		startXAnchor = point.x;
 		maxCustomers = localPlayerData.maxCustomers;
+		// maxCustomers = 40; // This is just for testing!
 		originX = Origin.GetComponent<CostMove> ().originX;
 		originY = Origin.GetComponent<CostMove> ().originY;
 		originZ = Origin.GetComponent<CostMove> ().originZ;
@@ -79,7 +83,7 @@ public class MoveWith : MonoBehaviour {
 	{
 		// LEVEL ONE BELOW - 40 MAX CUSTOMERS ===========================================================================
 
-		if (maxCustomers == 40) {
+		if (maxCustomers <= 59) {
 
 			if (avgMealCost >= 6.00) // STARTING STEP 00
 			{ 
@@ -296,7 +300,7 @@ public class MoveWith : MonoBehaviour {
 
 		// BELOW - Level TWO maxCustomers 60 ===========================================================================
 
-		if (maxCustomers == 60) {
+		if (maxCustomers >= 60 && maxCustomers <= 79) {
 
 			if (avgMealCost >= 8.00) { // STARTING STEP 00
 				PerCustCostX = PerCustCostXAnchor + 0;
@@ -490,9 +494,9 @@ public class MoveWith : MonoBehaviour {
 			}
 
 		}
-		// BELOW - Level TWO maxCustomers 80 ===========================================================================
+		// BELOW - Level THREE maxCustomers 80 ===========================================================================
 
-		if (maxCustomers == 80) {
+		if (maxCustomers >= 80 && maxCustomers <= 99) {
 
 			if (avgMealCost >= 10.00) // STARTING STEP 00
 			{ 
@@ -707,9 +711,9 @@ public class MoveWith : MonoBehaviour {
 			}
 		}
 
-		// BELOW - Level TWO maxCustomers 100 ===========================================================================
+		// BELOW - Level FOUR maxCustomers 100 ===========================================================================
 
-		if (maxCustomers == 100) {
+		if (maxCustomers >= 100 && maxCustomers <= 119) {
 
 			if (avgMealCost >= 12.00) // STARTING STEP 00
 			{ 
@@ -924,9 +928,9 @@ public class MoveWith : MonoBehaviour {
 			}
 		}
 
-		// BELOW - Level TWO maxCustomers 120 ===========================================================================
+		// BELOW - Level FIVE maxCustomers 120 ===========================================================================
 
-		if (maxCustomers == 120) {
+		if (maxCustomers >= 120 && maxCustomers <= 139) {
 
 			if (avgMealCost >= 14.00) // STARTING STEP 00
 			{ 
@@ -1141,9 +1145,9 @@ public class MoveWith : MonoBehaviour {
 			}
 		}
 
-		// BELOW - Level TWO maxCustomers 140 ===========================================================================
+		// BELOW - Level SIX maxCustomers 140 ===========================================================================
 
-		if (maxCustomers == 140) {
+		if (maxCustomers >=140 && maxCustomers <=159) {
 
 			if (avgMealCost >= 16.00) // STARTING STEP 00
 			{ 
@@ -1358,9 +1362,9 @@ public class MoveWith : MonoBehaviour {
 			}
 		}
 
-		// BELOW - Level TWO maxCustomers 160 ===========================================================================
+		// BELOW - Level SEVEN maxCustomers 160 ===========================================================================
 
-		if (maxCustomers == 160) {
+		if (maxCustomers >= 160) {
 
 			if (avgMealCost >= 18.00) // STARTING STEP 00
 			{ 
@@ -1580,44 +1584,44 @@ public class MoveWith : MonoBehaviour {
 	public void priceUp()
 
 		{
-		if (maxCustomers == 40)
+		if (maxCustomers <= 59)
 		{
 			priceincrease = .30f;
 			maxSandwichPrice = 6f;
 			menuMinus = .001f;
 		}
-		if (maxCustomers == 60)
+		if (maxCustomers >= 60 && maxCustomers <= 79)
 		{
 			priceincrease = .40f;
 			maxSandwichPrice = 8f;
 			menuMinus = .001f;
 		}
-		if (maxCustomers == 80)
+		if (maxCustomers >= 80 && maxCustomers <= 99)
 		{
 			priceincrease = .50f;
 			maxSandwichPrice = 10f;
 			menuMinus = .001f;
 		}
-		if (maxCustomers == 100)
+		if (maxCustomers >= 100 && maxCustomers <= 119)
 		{
 			priceincrease = .60f;
 			maxSandwichPrice = 12f;
 			menuMinus = .001f;
 
 		}
-		if (maxCustomers == 120)
+		if (maxCustomers >= 120 && maxCustomers <= 139)
 		{
 			priceincrease = .70f;
 			maxSandwichPrice = 14f;
 			menuMinus = .001f;
 		}
-		if (maxCustomers == 140)
+		if (maxCustomers >=140 && maxCustomers <=159)
 		{
 			priceincrease = .80f;
 			maxSandwichPrice = 16f;
 			menuMinus = .001f;
 		}
-		if (maxCustomers == 160)
+		if (maxCustomers >= 160)
 		{
 			priceincrease = .90f;
 			maxSandwichPrice = 18f;

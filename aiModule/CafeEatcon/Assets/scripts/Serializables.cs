@@ -116,9 +116,9 @@ public class RestaurantStatistics
 	 * **************************************/
 	private void InitializePrices()
 	{
-		dishPrices.Add (HAM_SANDWICH, 4.50f);
-		dishPrices.Add (TURKEY_SANDWICH, 5.00f);
-		dishPrices.Add (VEGGIE_SANDWICH,  3.50f);	
+		dishPrices.Add (HAM_SANDWICH, 3.30f);
+		dishPrices.Add (TURKEY_SANDWICH, 3.30f);
+		dishPrices.Add (VEGGIE_SANDWICH,  2.70f);	
 		dishPrices.Add (SODA, 1.00f);
 	}
 
