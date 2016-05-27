@@ -178,7 +178,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Veggie Up
+  m_Text: '>'
 --- !u!222 &36842560
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -219,6 +219,7 @@ MonoBehaviour:
   lineWidth: 0.25
   c1: {r: 0.06974482, g: 0.29398626, b: 0.9485294, a: 0}
   distance: 0
+  dualDemandCurve: 0
 --- !u!120 &42785227
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -359,6 +360,7 @@ RectTransform:
   - {fileID: 661837727}
   - {fileID: 60531324}
   - {fileID: 742616856}
+  - {fileID: 876871259}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_AnchorMin: {x: 0, y: 0}
@@ -547,19 +549,19 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_Font: {fileID: 12800000, guid: 82729b3928a98214298c93f2828f75bc, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Veggie Sandwich    $0.00
 --- !u!222 &81366626
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -694,7 +696,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Veggie Down
+  m_Text: <
 --- !u!222 &237049706
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1030,7 +1032,7 @@ RectTransform:
   m_Children:
   - {fileID: 820318511}
   m_Father: {fileID: 1198937644}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1151,7 +1153,7 @@ RectTransform:
   m_Children:
   - {fileID: 1627885068}
   m_Father: {fileID: 1198937644}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1452,7 +1454,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.6, y: -129.6}
+  m_AnchoredPosition: {x: 57.9, y: -248.61}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &661837728
@@ -1498,7 +1500,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 200, y: 25}
-  m_Spacing: {x: 0, y: 0}
+  m_Spacing: {x: 0, y: 10.4}
   m_Constraint: 1
   m_ConstraintCount: 1
 --- !u!1001 &742616855
@@ -1662,7 +1664,7 @@ RectTransform:
   m_Children:
   - {fileID: 36842558}
   m_Father: {fileID: 1198937644}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1850,7 +1852,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ham Up
+  m_Text: '>'
 --- !u!222 &820318513
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1911,25 +1913,98 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_Font: {fileID: 12800000, guid: 82729b3928a98214298c93f2828f75bc, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Ham Sandwich      $0.00
 --- !u!222 &859543580
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 859543577}
+--- !u!1 &876871258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 876871259}
+  - 222: {fileID: 876871261}
+  - 114: {fileID: 876871260}
+  m_Layer: 5
+  m_Name: MenuTitle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &876871259
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 876871258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 43012345}
+  m_RootOrder: 5
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -147.2}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &876871260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 876871258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 82729b3928a98214298c93f2828f75bc, type: 3}
+    m_FontSize: 38
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Menu
+--- !u!222 &876871261
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 876871258}
 --- !u!1001 &1136671397
 Prefab:
   m_ObjectHideFlags: 0
@@ -2195,17 +2270,17 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 450688174}
-  - {fileID: 598049444}
-  - {fileID: 777029744}
   - {fileID: 2145890553}
   - {fileID: 1612286703}
   - {fileID: 1477979258}
+  - {fileID: 450688174}
+  - {fileID: 598049444}
+  - {fileID: 777029744}
   m_Father: {fileID: 43012345}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -98.95, y: -78.2}
+  m_AnchoredPosition: {x: 19.2, y: -134.8}
   m_SizeDelta: {x: 203.4, y: -224}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1198937645
@@ -2227,8 +2302,8 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 1
-  m_CellSize: {x: 95, y: 17.4}
-  m_Spacing: {x: 5, y: 5}
+  m_CellSize: {x: 21.2, y: 18.4}
+  m_Spacing: {x: 86.3, y: 17.28}
   m_Constraint: 1
   m_ConstraintCount: 2
 --- !u!222 &1198937646
@@ -2452,7 +2527,7 @@ RectTransform:
   m_Children:
   - {fileID: 237049704}
   m_Father: {fileID: 1198937644}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -2615,7 +2690,7 @@ RectTransform:
   m_Children:
   - {fileID: 2020653843}
   m_Father: {fileID: 1198937644}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -2772,7 +2847,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Turkey Up
+  m_Text: '>'
 --- !u!222 &1627885070
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2845,7 +2920,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ham Down
+  m_Text: <
 --- !u!222 &1711612840
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3030,19 +3105,19 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_Font: {fileID: 12800000, guid: 82729b3928a98214298c93f2828f75bc, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Turkey Sandwich    $0.00
 --- !u!222 &1878701990
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3236,7 +3311,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Turkey Down
+  m_Text: <
 --- !u!222 &2020653845
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3372,7 +3447,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 199120, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
@@ -3565,7 +3640,7 @@ RectTransform:
   m_Children:
   - {fileID: 1711612838}
   m_Father: {fileID: 1198937644}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
