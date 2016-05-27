@@ -9,6 +9,7 @@ public class RestaurantStatistics
 	public float currentBalance;	//The current amount of money available. Is updated during phase 1
 	public float startingBalance;	//The amount of money at the start of phase 1. Needs to be persistent to calculate the profits/losses
 	public GameObject[] supplies;	//A list of current supplies. This will be populated with actual gameObjects representing the ingredient
+	public bool dualDemandCurve;
 
 	//NOTE May want to change string name identifier to enum later in each dictionary
 	public List<DishDemand> dishDemandsSorted; 		// demand for each dish
@@ -18,7 +19,6 @@ public class RestaurantStatistics
 	public Dictionary<string, float> dishPrices;		//Cost of each dish.
 	public Dictionary<string, int> ingredientsOnHand;	//Name of eahc ingredient and count 
 	public Dictionary<string, string[]> recipes;
-	public float favorabilityRating;
 
 	// list holding served and missed stats per each dish
 	// 0,1 are served and missed for ham
@@ -36,6 +36,7 @@ public class RestaurantStatistics
 	public float moneySpent;
 	public float moneyEarned;
 	public float balanceIndex;
+	public float maxPrice;
 	public float averagePrice;
 	public float slope;
 	public Dictionary<string, int> dishesServed;	//A list of dishes served and their counts
@@ -56,7 +57,12 @@ public class RestaurantStatistics
 	public int lastCustomerAchievementLevel;
 	public int nextCustomerAchievementLevel;
 	public float customerAchievementProgress;
-	public readonly int CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT = 25;
+	public readonly int CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT = 20;
+	public readonly float MAX_PRICE_INCREMENT = 2f;
+
+	//Favorability Variables
+	public float levelFavorability;
+	public float favorabilityRating;
 
 
 	public RestaurantStatistics()
@@ -70,6 +76,7 @@ public class RestaurantStatistics
 		recipes 			  = new Dictionary<string, string[]> ();
 		dishesServed 		  = new Dictionary<string, int> ();
 
+		dualDemandCurve = false;
 		InitializeIngredientsOnHand ();
 		InitializeIngredientPrices ();
 		InitializeRecipes ();
@@ -78,22 +85,24 @@ public class RestaurantStatistics
 		InitializeDishServedMissedStats ();
 		SortDemands ();
 
-		favorabilityRating = 50f;
+		favorabilityRating = 1.0f;
+		levelFavorability = 0f;
 		currentBalance = 10.00f;	//start with some cash just to see the difference from daily profit to start
-		maxCustomers = 50; 			//initially set to 20
-		hamCustomers = 25;
-		turkeyCustomers = 15;
+		maxCustomers = 40; 			//initially set to 40
+		hamCustomers = 20;
+		turkeyCustomers = 10;
 		veggieCustomers = 10;
 		numCustomers = 25;
-		averagePrice = 4.33f;
+		averagePrice = 3.40f;
+		maxPrice = 6.00f;
 		numCustomersServed = 0;
 		moneyEarned = 0.0f;
 		moneySpent = 0.0f;
 		balanceIndex = 0.90f;
-		slope = 5.55f;
+		slope = 6.66f;
 
-		lastCustomerAchievementLevel = 0;
-		nextCustomerAchievementLevel = 50;
+		lastCustomerAchievementLevel = 40;
+		nextCustomerAchievementLevel = 60;
 		customerAchievementProgress = 0f;
 
 	}
@@ -116,9 +125,9 @@ public class RestaurantStatistics
 	 * **************************************/
 	private void InitializePrices()
 	{
-		dishPrices.Add (HAM_SANDWICH, 3.30f);
-		dishPrices.Add (TURKEY_SANDWICH, 3.30f);
-		dishPrices.Add (VEGGIE_SANDWICH,  2.70f);	
+		dishPrices.Add (HAM_SANDWICH, 3.60f);
+		dishPrices.Add (TURKEY_SANDWICH, 3.60f);
+		dishPrices.Add (VEGGIE_SANDWICH,  3.00f);	
 		dishPrices.Add (SODA, 1.00f);
 	}
 
@@ -144,8 +153,8 @@ public class RestaurantStatistics
 	private void InitializeDishDemands()
 	{
 		dishDemands.Add (HAM_SANDWICH, 0.50f);
-		dishDemands.Add (TURKEY_SANDWICH, 0.30f);
-		dishDemands.Add (VEGGIE_SANDWICH, 0.20f);
+		dishDemands.Add (TURKEY_SANDWICH, 0.25f);
+		dishDemands.Add (VEGGIE_SANDWICH, 0.25f);
 		sodaDemand = 0.6f;
 	}
 
@@ -174,9 +183,11 @@ public class RestaurantStatistics
 		float turkeyDemand = CalculateDemand(maxCustomers, turkeyCustomers);
 		float veggieDemand = CalculateDemand(maxCustomers, veggieCustomers);
 
+		/*
 		Debug.Log ("hamDemand: " + hamDemand);
 		Debug.Log ("turkeyDemand: " + turkeyDemand);
 		Debug.Log ("veggieDemand: " + veggieDemand);
+		*/
 
 		setDishDemand (HAM_SANDWICH, hamDemand);
 		setDishDemand (TURKEY_SANDWICH, turkeyDemand);
@@ -194,30 +205,52 @@ public class RestaurantStatistics
 		int turkeyMissed = dishServedMissedStats[3];
 		int veggieServed = dishServedMissedStats[4];
 		int veggieMissed = dishServedMissedStats[5];
-
+		/*
 		Debug.Log ("hamServed: " + hamServed);
 		Debug.Log ("hamMissed: " + hamMissed);
 		Debug.Log ("turkeyServed: " + turkeyServed);
 		Debug.Log ("turkeyMissed: " + turkeyMissed);
 		Debug.Log ("veggieServed: " + veggieServed);
 		Debug.Log ("veggieMissed: " + veggieMissed);
+		*/
 
 		float hamChange = ChangeIndex(hamCustomers, hamServed, hamMissed, balanceIndex);
 		float turkeyChange = ChangeIndex(turkeyCustomers, turkeyServed, turkeyMissed, balanceIndex);
 		float veggieChange = ChangeIndex(veggieCustomers, veggieServed, veggieMissed, balanceIndex);
 
+		/*
 		Debug.Log ("hamChange: " + hamChange);
 		Debug.Log ("turkeyChange: " + turkeyChange);
 		Debug.Log ("veggieChange: " + veggieChange);
+		*/
 
 		hamCustomers = (int)Math.Floor(hamCustomers * hamChange);
 		turkeyCustomers = (int)Math.Floor(turkeyCustomers * turkeyChange);
 		veggieCustomers = (int)Math.Floor(veggieCustomers * veggieChange);
 		maxCustomers = hamCustomers + turkeyCustomers + veggieCustomers;
+		//div by zero fix
 
+		if (maxCustomers<lastCustomerAchievementLevel){
+			if (maxCustomers < 1) {
+				//gameOver
+			} else {
+				float hamAdjust = hamCustomers / maxCustomers;
+				float turkeyAdjust = turkeyCustomers / maxCustomers;
+				float veggieAdjust = veggieCustomers / maxCustomers;
+				hamCustomers = (int)Math.Ceiling(lastCustomerAchievementLevel * hamAdjust);
+				turkeyCustomers = (int)Math.Ceiling(lastCustomerAchievementLevel * turkeyAdjust);
+				veggieCustomers = (int)Math.Ceiling(lastCustomerAchievementLevel * veggieAdjust);
+				maxCustomers = hamCustomers + turkeyCustomers + veggieCustomers;
+			}
+
+		}
+
+		/*
 		Debug.Log ("hamCustomers: " + hamCustomers);
 		Debug.Log ("turkeyCustomers: " + turkeyCustomers);
 		Debug.Log ("veggieCustomers: " + veggieCustomers);
+		*/
+		Debug.Log ("Max Customers (Update Customers): " + maxCustomers);
 	}
 
 	/**************************************
@@ -290,7 +323,11 @@ public class RestaurantStatistics
 		dishDemands [dish] = demand;
 	}
 
-
+	/***********************************
+	 * Purpose: Update the average price after pricing
+	 * 			changes finalized.
+	 * 
+	 * *********************************/
 	public void updateAveragePrice()
 	{
 		float hamPrice = dishPrices[HAM_SANDWICH];
@@ -299,18 +336,36 @@ public class RestaurantStatistics
 		averagePrice = (hamPrice + turkeyPrice + veggiePrice) / 3;
 	}
 
-
+	/***********************************
+	 * Purpose: Update number of customers based
+	 * 			on average price and favorability rating
+	 * 
+	 * *********************************/
 	public void updateNumCustomers()
 	{
 		//Q = maxCustomers - Slope * (AvgPrice)
 		int temp = (int)(slope * averagePrice);
 		Debug.Log ("Slope * AveragePrice = " + temp);
-		numCustomers = ( maxCustomers - temp );
+		//recalculate favorability rating
+		float tempCustomers = ((float) maxCustomers - (float)temp ) * favorabilityRating;
+		numCustomers = (int)tempCustomers;
 		if (numCustomers < 1) 
 		{
 			numCustomers = 1;
 		}
 		Debug.Log ("numCustomers: " + numCustomers);
+	}
+
+	/***********************************
+	 * Purpose: Update favorability rating at end of
+	 * 			simulation 
+	 * 			TO-DO:
+	 * 			[]Code
+	 * 				Favor Rating Updating
+	 * 
+	 * *********************************/
+	public void updateFavorabilityRating(){
+		favorabilityRating = levelFavorability / numCustomersServed;
 	}
 
 	/**********************************
@@ -322,6 +377,7 @@ public class RestaurantStatistics
 		moneyEarned = 0;
 		numCustomersServed = 0;
 		dishesServed = new Dictionary<string, int> ();
+		levelFavorability = 0f;
 		for (int i = 0; i < 6; i++)
 		{
 			dishServedMissedStats[i] = 0;
@@ -335,14 +391,18 @@ public class RestaurantStatistics
 	public void checkAchievementProgress()
 	{
 		//Customer achievement check
-		Debug.Log("Num customers: "+ maxCustomers);
+		Debug.Log("Max Customers (Achievement Check): "+ maxCustomers);
 		if (maxCustomers >= nextCustomerAchievementLevel) 
 		{
 			lastCustomerAchievementLevel = nextCustomerAchievementLevel;
+			if(dualDemandCurve==false){
+				dualDemandCurve = true;
+			}
 			//DEBUG
 			Debug.Log("Achievement unlocked! Got to "+nextCustomerAchievementLevel + " customers!");
 
 			nextCustomerAchievementLevel += CUSTOMER_ACHIEVEMENT_LEVEL_INCREMENT;
+			maxPrice += MAX_PRICE_INCREMENT;
 
 			//THIS WOULD BE WHERE A FLAG WOULD BE SET TO SHOW THE ACHIEVEMENT TO BE SHOWN ON THE NEWSPAPER
 		}

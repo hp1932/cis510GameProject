@@ -1583,7 +1583,7 @@ public class MoveWith : MonoBehaviour {
 
 	public void priceUp()
 
-		{
+	{
 		if (maxCustomers <= 59)
 		{
 			priceincrease = .30f;
@@ -1640,49 +1640,49 @@ public class MoveWith : MonoBehaviour {
 
 			moveMiddle ();
 		}
-	
+
 	}
 
 	public void hamDOWN() 
 	{
 		if (hamSandwichCost >= priceincrease - menuMinus) {
 			hamSandwichCost = hamSandwichCost - priceincrease;
-				avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
+			avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
 
-				moveMiddle ();
+			moveMiddle ();
 		}
 	}
 	public void turkeyUP() 
 	{
 		if (turkeySandwichCost <= maxSandwichPrice - menuMinus) {
 			turkeySandwichCost = turkeySandwichCost + priceincrease;
-				avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
+			avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
 
-				moveMiddle ();
+			moveMiddle ();
 
-			}
+		}
 	}
 
 	public void turkeyDOWN() 
 	{
 		if (turkeySandwichCost >= priceincrease - menuMinus) {
 			turkeySandwichCost = turkeySandwichCost - priceincrease;
-				avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
+			avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
 
-				moveMiddle ();
+			moveMiddle ();
 
-			}
+		}
 	}
 
 	public void veggieUP() 
 	{
 		if (veggieSandwichCost <= maxSandwichPrice - menuMinus) {
 			veggieSandwichCost = veggieSandwichCost + priceincrease;
-				avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
+			avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
 
-				moveMiddle ();
+			moveMiddle ();
 
-			}
+		}
 	}
 
 	public void veggieDOWN() 
@@ -1705,22 +1705,22 @@ public class MoveWith : MonoBehaviour {
 
 	void OnGUI ()
 	{
-	// 
-	// 	GUI.color = Color.black;
-	//	GUI.Label (new Rect (40, 105, 308, 20), "Potential Total Next Day Sales: $ " + potentialIncome.ToString("#.00"));
+		// 
+		// 	GUI.color = Color.black;
+		//	GUI.Label (new Rect (40, 105, 308, 20), "Potential Total Next Day Sales: $ " + potentialIncome.ToString("#.00"));
 		GUI.color = Color.red;
-	// 	GUI.Label(new Rect(xOfGUI,yOfGUI,200,20), "Price of Ham Sandwich: $ " + hamSandwichCost.ToString());
-	// 	GUI.Label(new Rect(xOfGUI,yOfGUI + 25,200,20), "Price of Turkey Sandwich: $ " + turkeySandwichCost.ToString());
-	// 	GUI.Label(new Rect(xOfGUI,yOfGUI + 50,200,20), "Price of Veggie Sandwich: $ " + veggieSandwichCost.ToString());
-	// 	GUI.Label(new Rect(xOfGUI,yOfGUI - 25,200,20), "Average Meal Cost: $ ");
-	// 	GUI.Label(new Rect(xOfGUI + 130,yOfGUI - 25,30,20), avgMealCost.ToString());
-	
+		// 	GUI.Label(new Rect(xOfGUI,yOfGUI,200,20), "Price of Ham Sandwich: $ " + hamSandwichCost.ToString());
+		// 	GUI.Label(new Rect(xOfGUI,yOfGUI + 25,200,20), "Price of Turkey Sandwich: $ " + turkeySandwichCost.ToString());
+		// 	GUI.Label(new Rect(xOfGUI,yOfGUI + 50,200,20), "Price of Veggie Sandwich: $ " + veggieSandwichCost.ToString());
+		// 	GUI.Label(new Rect(xOfGUI,yOfGUI - 25,200,20), "Average Meal Cost: $ ");
+		// 	GUI.Label(new Rect(xOfGUI + 130,yOfGUI - 25,30,20), avgMealCost.ToString());
 
-	Vector3 point = Camera.main.WorldToScreenPoint (transform.position);
+
+		Vector3 point = Camera.main.WorldToScreenPoint (transform.position);
 		yVal = Screen.height - point.y - 20;
 		GUI.Label (new Rect (startXAnchor - 35, yVal + 9, 35, 20), "$" + avgMealCost.ToString());
 		GUI.Label (new Rect (point.x - 5, startYAnchor - 40, 40, 20), potentialCustomers.ToString ());
-	
+
 	}
 
 
