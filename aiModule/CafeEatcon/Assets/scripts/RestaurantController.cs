@@ -135,16 +135,10 @@ public class RestaurantController : MonoBehaviour {
 
 		if (food == "Ham Sandwich") {
 			localPlayerData.dishServedMissedStats [0] += 1;
-
-			customerOrder.text = "Order: Ham";
 		} else if (food == "Turkey Sandwich") {
 			localPlayerData.dishServedMissedStats [2] += 1;
-
-			customerOrder.text = "Order: Turkey";
 		} else if (food == "Veggie Sandwich") {
 			localPlayerData.dishServedMissedStats [4] += 1;
-
-			customerOrder.text = "Order: Veggie";
 		}
 		//For each ingredient in the recipe...
 		foreach (string ingredient in ingredientList) {
