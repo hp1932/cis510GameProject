@@ -523,7 +523,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 661837727}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -561,7 +561,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Veggie Sandwich    $0.00
+  m_Text: $0.00
 --- !u!222 &81366626
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1447,6 +1447,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2002233751}
+  - {fileID: 1154960766}
+  - {fileID: 923906153}
   - {fileID: 859543578}
   - {fileID: 1878701988}
   - {fileID: 81366624}
@@ -1454,7 +1457,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 57.9, y: -248.61}
+  m_AnchoredPosition: {x: 40.93, y: -262.1}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &661837728
@@ -1499,10 +1502,10 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 1
-  m_CellSize: {x: 200, y: 25}
-  m_Spacing: {x: 0, y: 10.4}
+  m_CellSize: {x: 0, y: 0}
+  m_Spacing: {x: 229.9, y: 40}
   m_Constraint: 1
-  m_ConstraintCount: 1
+  m_ConstraintCount: 2
 --- !u!1001 &742616855
 Prefab:
   m_ObjectHideFlags: 0
@@ -1887,7 +1890,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 661837727}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1925,7 +1928,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Ham Sandwich      $0.00
+  m_Text: $0.00
 --- !u!222 &859543580
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2005,6 +2008,79 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 876871258}
+--- !u!1 &923906152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 923906153}
+  - 222: {fileID: 923906155}
+  - 114: {fileID: 923906154}
+  m_Layer: 5
+  m_Name: VeggieLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &923906153
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 923906152}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 661837727}
+  m_RootOrder: 2
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &923906154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 923906152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 82729b3928a98214298c93f2828f75bc, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Veggie Sandwich
+--- !u!222 &923906155
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 923906152}
 --- !u!1001 &1136671397
 Prefab:
   m_ObjectHideFlags: 0
@@ -2087,6 +2163,79 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 460626, guid: b31f64a2300b084469688c8823daaefe, type: 2}
   m_PrefabInternal: {fileID: 1136671397}
+--- !u!1 &1154960765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1154960766}
+  - 222: {fileID: 1154960768}
+  - 114: {fileID: 1154960767}
+  m_Layer: 5
+  m_Name: TurkeyLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1154960766
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1154960765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 661837727}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1154960767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1154960765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 82729b3928a98214298c93f2828f75bc, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Turkey Sandwich
+--- !u!222 &1154960768
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1154960765}
 --- !u!1 &1177740575
 GameObject:
   m_ObjectHideFlags: 0
@@ -2280,7 +2429,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.2, y: -134.8}
+  m_AnchoredPosition: {x: 19.2, y: -140.1}
   m_SizeDelta: {x: 203.4, y: -224}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1198937645
@@ -2302,8 +2451,8 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 1
-  m_CellSize: {x: 21.2, y: 18.4}
-  m_Spacing: {x: 86.3, y: 17.28}
+  m_CellSize: {x: 25, y: 25}
+  m_Spacing: {x: 85, y: 15}
   m_Constraint: 1
   m_ConstraintCount: 2
 --- !u!222 &1198937646
@@ -3034,11 +3183,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 21240564, guid: 988ed5ee5cb33fc4e9eb643b00a42aba, type: 2}
       propertyPath: m_SortingLayerID
-      value: -138460809
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 21240564, guid: 988ed5ee5cb33fc4e9eb643b00a42aba, type: 2}
       propertyPath: m_SortingOrder
-      value: 13
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 21240564, guid: 988ed5ee5cb33fc4e9eb643b00a42aba, type: 2}
       propertyPath: m_Enabled
@@ -3079,7 +3228,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 661837727}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -3117,7 +3266,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Turkey Sandwich    $0.00
+  m_Text: $0.00
 --- !u!222 &1878701990
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3245,6 +3394,79 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1884546221}
+--- !u!1 &2002233750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 2002233751}
+  - 222: {fileID: 2002233753}
+  - 114: {fileID: 2002233752}
+  m_Layer: 5
+  m_Name: HamLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2002233751
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2002233750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 661837727}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2002233752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2002233750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 82729b3928a98214298c93f2828f75bc, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Ham Sandwich
+--- !u!222 &2002233753
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2002233750}
 --- !u!1 &2020653842
 GameObject:
   m_ObjectHideFlags: 0
@@ -3367,67 +3589,67 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 21223702, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingLayerID
-      value: -138460809
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 21245630, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingLayerID
-      value: -138460809
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 21225718, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingLayerID
-      value: -138460809
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 21284688, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingLayerID
-      value: -138460809
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 21240922, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingLayerID
-      value: -138460809
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 21284980, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingLayerID
-      value: -138460809
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 21278866, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingLayerID
-      value: -138460809
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 21290098, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingLayerID
-      value: -138460809
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 21225718, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingOrder
-      value: 10
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 21284688, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingOrder
-      value: 10
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 21284980, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingOrder
-      value: 10
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 21290098, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingOrder
-      value: 10
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 21223702, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingOrder
-      value: 10
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 21245630, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingOrder
-      value: 10
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 21240922, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingOrder
-      value: 10
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 21278866, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_SortingOrder
-      value: 10
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 131962, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_IsActive
@@ -3447,7 +3669,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 199120, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
