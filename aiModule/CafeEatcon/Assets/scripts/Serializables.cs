@@ -9,6 +9,7 @@ public class RestaurantStatistics
 	public float currentBalance;	//The current amount of money available. Is updated during phase 1
 	public float startingBalance;	//The amount of money at the start of phase 1. Needs to be persistent to calculate the profits/losses
 	public GameObject[] supplies;	//A list of current supplies. This will be populated with actual gameObjects representing the ingredient
+	public bool dualDemandCurve;
 
 	//NOTE May want to change string name identifier to enum later in each dictionary
 	public List<DishDemand> dishDemandsSorted; 		// demand for each dish
@@ -75,6 +76,7 @@ public class RestaurantStatistics
 		recipes 			  = new Dictionary<string, string[]> ();
 		dishesServed 		  = new Dictionary<string, int> ();
 
+		dualDemandCurve = false;
 		InitializeIngredientsOnHand ();
 		InitializeIngredientPrices ();
 		InitializeRecipes ();
@@ -393,6 +395,9 @@ public class RestaurantStatistics
 		if (maxCustomers >= nextCustomerAchievementLevel) 
 		{
 			lastCustomerAchievementLevel = nextCustomerAchievementLevel;
+			if(dualDemandCurve==false){
+				dualDemandCurve = true;
+			}
 			//DEBUG
 			Debug.Log("Achievement unlocked! Got to "+nextCustomerAchievementLevel + " customers!");
 
