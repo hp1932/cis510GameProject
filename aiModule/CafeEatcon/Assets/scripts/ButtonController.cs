@@ -43,6 +43,7 @@ public class ButtonController : MonoBehaviour {
 	{
 		GlobalControl.Instance.savedPlayerData.ResetValuesForPhase1 ();
 		GlobalControl.Instance.savedPlayerData.updateNumCustomers ();
+		GlobalControl.Instance.savedPlayerData.CheckRandEvent ();
 		SoundManager.instance.PlaySingle (switchSound);
 		GlobalControl.Instance.savedPlayerData.currentDay += 1;
 

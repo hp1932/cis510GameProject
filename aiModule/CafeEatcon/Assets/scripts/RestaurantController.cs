@@ -164,7 +164,7 @@ public class RestaurantController : MonoBehaviour {
 		}
 
 		orderFulfilled = true;
-		print("Served "+food+" left: "+ localPlayerData.ingredientsOnHand ["Soda"]);
+		//print("Served "+food+" left: "+ localPlayerData.ingredientsOnHand ["Soda"]);
 	}
 
 	/********************************************************************
@@ -202,10 +202,11 @@ public class RestaurantController : MonoBehaviour {
 	public void finishScene()
 	{
 		Time.timeScale = 1.0f;
-		localPlayerData.checkAchievementProgress (); 
 		localPlayerData.UpdateCustomers();
+		localPlayerData.checkAchievementProgress (); 
 		localPlayerData.UpdateDishDemands();
 		localPlayerData.updateFavorabilityRating ();
+		localPlayerData.economyEventCond = false;
 		newspaper.SetActive (true);
 		//Call newspaper's setup here!
 		NewspaperController newsController = newspaper.GetComponent<NewspaperController>();

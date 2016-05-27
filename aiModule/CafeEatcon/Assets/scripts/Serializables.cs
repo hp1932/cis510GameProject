@@ -15,7 +15,9 @@ public class RestaurantStatistics
 
 	//NOTE May want to change string name identifier to enum later in each dictionary
 	public List<DishDemand> dishDemandsSorted; 		// demand for each dish
+	public List<DishDemand> tempDemandsSorted; 		// demand for each dish
 	public Dictionary<string, float> dishDemands;
+	public Dictionary<string, float> tempDemands;
 	public float sodaDemand;
 	public Dictionary<string, float> ingredientPrices;	// Cost of each ingredient
 	public Dictionary<string, float> dishPrices;		//Cost of each dish.
@@ -67,10 +69,15 @@ public class RestaurantStatistics
 	public float levelFavorability;
 	public float favorabilityRating;
 
+	//Random Events
+	public int randEvent;
+	public bool economyEventCond;
+	public bool tempDemand;
 
 	public RestaurantStatistics()
 	{
 		dishDemandsSorted 	  = new List<DishDemand>();
+		tempDemandsSorted 	  = new List<DishDemand>();
 		dishServedMissedStats = new List<int> ();
 		dishDemands 		  = new Dictionary<string, float> ();
 		ingredientPrices 	  = new Dictionary<string, float>();
@@ -78,15 +85,20 @@ public class RestaurantStatistics
 		ingredientsOnHand 	  = new Dictionary<string, int>();
 		recipes 			  = new Dictionary<string, string[]> ();
 		dishesServed 		  = new Dictionary<string, int> ();
+		tempDemands			  = new Dictionary<string, float> ();
 
 		dualDemandCurve = false;
+		economyEventCond = false;
+		tempDemand = false;
+		randEvent = 0;
 		InitializeIngredientsOnHand ();
 		InitializeIngredientPrices ();
 		InitializeRecipes ();
 		InitializePrices ();
 		InitializeDishDemands ();
 		InitializeDishServedMissedStats ();
-		SortDemands ();
+		SortDishDemands ();
+		SortTempDemands ();
 
 		currentDay = 0;
 		favorabilityRating = 1.0f;
@@ -160,6 +172,9 @@ public class RestaurantStatistics
 		dishDemands.Add (HAM_SANDWICH, 0.50f);
 		dishDemands.Add (TURKEY_SANDWICH, 0.25f);
 		dishDemands.Add (VEGGIE_SANDWICH, 0.25f);
+		tempDemands.Add (HAM_SANDWICH, 0.50f);
+		tempDemands.Add (TURKEY_SANDWICH, 0.25f);
+		tempDemands.Add (VEGGIE_SANDWICH, 0.25f);
 		sodaDemand = 0.6f;
 	}
 
@@ -197,6 +212,68 @@ public class RestaurantStatistics
 		setDishDemand (HAM_SANDWICH, hamDemand);
 		setDishDemand (TURKEY_SANDWICH, turkeyDemand);
 		setDishDemand (VEGGIE_SANDWICH, veggieDemand);
+	}
+
+	/**************************************
+	 * Purpose: Check if economy shifting event has occured
+	 * **************************************/
+	public void CheckRandEvent(){
+		if (tempDemand) {
+			tempDemand = false;
+		}
+		if(economyEventCond){
+			float tempCustomers;
+			switch (randEvent) {
+			case 0:
+				//alligator, minus 30% customers
+				tempCustomers = (float)numCustomers * 0.7f;
+				numCustomers = (int)tempCustomers;
+				break;
+			
+			case 1:
+				//Comic Con, up 60% customers
+				tempCustomers = (float)numCustomers * 1.6f;
+				numCustomers = (int)tempCustomers;
+				break;
+			case 2:
+				//Strike, down 10% customers
+				tempCustomers = (float)numCustomers * 0.9f;
+				numCustomers = (int)tempCustomers;
+				break;
+			case 3:
+				//farmers market, down 10% customers
+				tempCustomers = (float)numCustomers * 0.9f;
+				numCustomers = (int)tempCustomers;
+				break;
+			
+			case 4:
+				//gardening conference, up 30% customers
+				tempCustomers = (float)numCustomers * 1.3f;
+				numCustomers = (int)tempCustomers;
+				break;
+			case 5:
+				//vegan animal rescue society, Turkey and Ham down 20%, veggie up 60%
+				tempDemand = true;
+				tempDemands[HAM_SANDWICH] = 0.2f;
+				tempDemands[TURKEY_SANDWICH] = 0.2f;
+				tempDemands[VEGGIE_SANDWICH] = 0.6f;
+				break;
+			case 6:
+				//poultry unsanitary, minus 90% turkey demand
+				tempDemand = true;
+				tempDemands[HAM_SANDWICH] = 0.5f;
+				tempDemands[TURKEY_SANDWICH] = 0.1f;
+				tempDemands[VEGGIE_SANDWICH] = 0.4f;
+				break;
+			case 7:
+				//hoof and mouth disease Ham down 80%, Turkey down 10 percent, veggie up 30%
+				tempDemand = true;
+				tempDemands[HAM_SANDWICH] = 0.1f;
+				tempDemands[TURKEY_SANDWICH] = 0.3f;
+				tempDemands[VEGGIE_SANDWICH] = 0.6f;
+				break;
+			}
+		}
 	}
 
 	/**************************************
@@ -294,13 +371,28 @@ public class RestaurantStatistics
 	 * Note: THIS IS NOT THE BEST WAY TO DO THIS
 	 * 	But it will work for the POC. I'll refactor later
 	 * ***************************/
-	public void SortDemands()
+	public void SortDishDemands()
 	{
 		dishDemandsSorted = new List<DishDemand> ();
 		foreach (KeyValuePair<string, float> kvp in dishDemands) {
 			dishDemandsSorted.Add (new DishDemand (kvp.Key, kvp.Value));
 		}
 		dishDemandsSorted.Sort ();
+	}
+
+	/**************************
+	 * Purpose: take tempDemands dictionary
+	 * 			copy into tempDemandsSorted and sort it
+	 * Note: THIS IS NOT THE BEST WAY TO DO THIS
+	 * 	But it will work for the POC. I'll refactor later
+	 * ***************************/
+	public void SortTempDemands()
+	{
+		tempDemandsSorted = new List<DishDemand> ();
+		foreach (KeyValuePair<string, float> kvp in tempDemands) {
+			tempDemandsSorted.Add (new DishDemand (kvp.Key, kvp.Value));
+		}
+		tempDemandsSorted.Sort ();
 	}
 
 	/************************************
@@ -350,7 +442,7 @@ public class RestaurantStatistics
 	{
 		//Q = maxCustomers - Slope * (AvgPrice)
 		int temp = (int)(slope * averagePrice);
-		Debug.Log ("Slope * AveragePrice = " + temp);
+		//Debug.Log ("Slope * AveragePrice = " + temp);
 		//recalculate favorability rating
 		float tempCustomers = ((float) maxCustomers - (float)temp ) * favorabilityRating;
 		numCustomers = (int)tempCustomers;
