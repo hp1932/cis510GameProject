@@ -88,7 +88,7 @@ public class RestaurantStatistics
 		InitializeDishServedMissedStats ();
 		SortDemands ();
 
-		currentDay = 1;
+		currentDay = 0;
 		favorabilityRating = 1.0f;
 		levelFavorability = 0f;
 		currentBalance = 10.00f;	//start with some cash just to see the difference from daily profit to start
