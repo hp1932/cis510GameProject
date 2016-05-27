@@ -34,6 +34,9 @@ public class PurchaseController : MonoBehaviour {
 	public AudioClip buttonSound;
 	public AudioClip purchaseSound;
 	public AudioClip failSound;
+
+	public int breadIncrement;
+	public int fillingIncrement;
 	
 
 	void Start () {
@@ -111,13 +114,20 @@ public class PurchaseController : MonoBehaviour {
 	public void incrementCount(string food)
 	{
 		SoundManager.instance.PlaySingle (buttonSound);
-		purchaseCount [food] += 1;
+		if (food == "Bread" || food == "Soda")
+			purchaseCount [food] += breadIncrement;
+		else
+			purchaseCount [food] += fillingIncrement;
 	}
 
 	public void decrementCount(string food)
 	{
 		SoundManager.instance.PlaySingle (buttonSound);
-		if (purchaseCount [food] > 0)
-			purchaseCount [food] -= 1;
+		if (food == "Bread" || food == "Soda") {
+			if (purchaseCount[food] >= breadIncrement) purchaseCount [food] -= breadIncrement;
+		} else {
+			if (purchaseCount[food] >= fillingIncrement) purchaseCount [food] -= fillingIncrement;
+		}
+	
 	}
 }
