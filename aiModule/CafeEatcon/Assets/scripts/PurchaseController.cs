@@ -69,8 +69,8 @@ public class PurchaseController : MonoBehaviour {
 		sodaResult_Text.text 	= "x        =  " + (localPlayerData.ingredientPrices ["Soda"] * purchaseCount ["Soda"]).ToString ("C2");
 
 
-		balanceText.text = "Bank Balance: $" + localPlayerData.currentBalance.ToString ();
-		profitText.text = "Today's Revenue: $" + (localPlayerData.moneyEarned).ToString ();
+		balanceText.text = "Bank Balance: " + localPlayerData.currentBalance.ToString ("C2");
+		profitText.text = "Today's Revenue: " + (localPlayerData.moneyEarned).ToString ("C2");
 
 		inventoryText.text = 
 			localPlayerData.ingredientsOnHand ["Bread"].ToString () +
