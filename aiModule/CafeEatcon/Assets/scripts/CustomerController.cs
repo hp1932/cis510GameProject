@@ -46,9 +46,16 @@ public class CustomerController : MonoBehaviour {
 		GameObject customer;
 		GameObject spawnedCustomer;
 		CustomerMover spawnedCustomerMover;
+		List<DishDemand> sortedDemands;
 		Vector3 spawnPosition;
 		Quaternion spawnRotation;
-		List<DishDemand> sortedDemands = GlobalControl.Instance.savedPlayerData.dishDemandsSorted;
+		if (GlobalControl.Instance.savedPlayerData.tempDemand) {
+			GlobalControl.Instance.savedPlayerData.SortTempDemands ();
+			sortedDemands = GlobalControl.Instance.savedPlayerData.tempDemandsSorted;
+		} else {
+			sortedDemands = GlobalControl.Instance.savedPlayerData.dishDemandsSorted;
+		}
+
 		float rand;
 
 		//While there are customers left
