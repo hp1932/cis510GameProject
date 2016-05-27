@@ -198,6 +198,10 @@ public class RestaurantController : MonoBehaviour {
 		localPlayerData.UpdateDishDemands();
 		localPlayerData.updateFavorabilityRating ();
 		newspaper.SetActive (true);
+		//Call newspaper's setup here!
+		NewspaperController newsController = newspaper.GetComponent<NewspaperController>();
+		newsController.init ();
+		newsController.pickStory();
 	}
-
+		
 }
