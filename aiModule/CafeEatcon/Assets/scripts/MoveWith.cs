@@ -27,12 +27,11 @@ public class MoveWith : MonoBehaviour {
 	float priceincrease;
 	float maxSandwichPrice;
 	float menuMinus; //The small fraction off each max and min to calculate correctly when rounding
-	public float originX;
-	public float originY;
-	public float originZ;
+
 	public float destX;
 	public float destY;
 	public float destZ;
+	public bool dualDemandCurve;
 
 
 	public int yOfGUI;
@@ -48,11 +47,25 @@ public class MoveWith : MonoBehaviour {
 
 	{ 
 		localPlayerData = GlobalControl.Instance.savedPlayerData;
-		GameObject Origin = GameObject.Find ("Origin");
+
 		GameObject Destination = GameObject.Find ("Destination");
 		hamSandwichCost = localPlayerData.dishPrices[localPlayerData.HAM_SANDWICH];
 		turkeySandwichCost = localPlayerData.dishPrices[localPlayerData.TURKEY_SANDWICH];
 		veggieSandwichCost = localPlayerData.dishPrices[localPlayerData.VEGGIE_SANDWICH];
+		// implementing line render move below
+
+		dualDemandCurve = localPlayerData.dualDemandCurve;
+		// dualDemandCurve = true; // for testing only
+		if (dualDemandCurve == true) 
+		{
+			PerCustCostXAnchor = -10 + 2;
+		}
+
+		if (dualDemandCurve == false) 
+		{
+			PerCustCostXAnchor = -10;
+		}
+
 		// hamSandwichCost = 3.30f; // This is just for testing!
 		// turkeySandwichCost = 3.30f; // This is just for testing!
 		// veggieSandwichCost = 3.00f; // This is just for testing!
@@ -64,14 +77,12 @@ public class MoveWith : MonoBehaviour {
 		startXAnchor = point.x;
 		maxCustomers = localPlayerData.maxCustomers;
 		// maxCustomers = 40; // This is just for testing!
-		originX = Origin.GetComponent<CostMove> ().originX;
-		originY = Origin.GetComponent<CostMove> ().originY;
-		originZ = Origin.GetComponent<CostMove> ().originZ;
+
 		destX = Destination.GetComponent<destinationMove> ().destX;
 		destY = Destination.GetComponent<destinationMove> ().destY;
 		destZ = Destination.GetComponent<destinationMove> ().destZ;
 		print (maxCustomers);
-
+		print (dualDemandCurve);
 
 		moveMiddle ();
 		priceUp ();
