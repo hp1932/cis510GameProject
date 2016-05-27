@@ -99,7 +99,7 @@ public class RestaurantStatistics
 		balanceIndex = 0.90f;
 		slope = 6.66f;
 
-		lastCustomerAchievementLevel = 0;
+		lastCustomerAchievementLevel = 40;
 		nextCustomerAchievementLevel = 60;
 		customerAchievementProgress = 0f;
 
@@ -181,9 +181,11 @@ public class RestaurantStatistics
 		float turkeyDemand = CalculateDemand(maxCustomers, turkeyCustomers);
 		float veggieDemand = CalculateDemand(maxCustomers, veggieCustomers);
 
+		/*
 		Debug.Log ("hamDemand: " + hamDemand);
 		Debug.Log ("turkeyDemand: " + turkeyDemand);
 		Debug.Log ("veggieDemand: " + veggieDemand);
+		*/
 
 		setDishDemand (HAM_SANDWICH, hamDemand);
 		setDishDemand (TURKEY_SANDWICH, turkeyDemand);
@@ -201,30 +203,52 @@ public class RestaurantStatistics
 		int turkeyMissed = dishServedMissedStats[3];
 		int veggieServed = dishServedMissedStats[4];
 		int veggieMissed = dishServedMissedStats[5];
-
+		/*
 		Debug.Log ("hamServed: " + hamServed);
 		Debug.Log ("hamMissed: " + hamMissed);
 		Debug.Log ("turkeyServed: " + turkeyServed);
 		Debug.Log ("turkeyMissed: " + turkeyMissed);
 		Debug.Log ("veggieServed: " + veggieServed);
 		Debug.Log ("veggieMissed: " + veggieMissed);
+		*/
 
 		float hamChange = ChangeIndex(hamCustomers, hamServed, hamMissed, balanceIndex);
 		float turkeyChange = ChangeIndex(turkeyCustomers, turkeyServed, turkeyMissed, balanceIndex);
 		float veggieChange = ChangeIndex(veggieCustomers, veggieServed, veggieMissed, balanceIndex);
 
+		/*
 		Debug.Log ("hamChange: " + hamChange);
 		Debug.Log ("turkeyChange: " + turkeyChange);
 		Debug.Log ("veggieChange: " + veggieChange);
+		*/
 
 		hamCustomers = (int)Math.Floor(hamCustomers * hamChange);
 		turkeyCustomers = (int)Math.Floor(turkeyCustomers * turkeyChange);
 		veggieCustomers = (int)Math.Floor(veggieCustomers * veggieChange);
 		maxCustomers = hamCustomers + turkeyCustomers + veggieCustomers;
+		//div by zero fix
 
+		if (maxCustomers<lastCustomerAchievementLevel){
+			if (maxCustomers < 1) {
+				//gameOver
+			} else {
+				float hamAdjust = hamCustomers / maxCustomers;
+				float turkeyAdjust = turkeyCustomers / maxCustomers;
+				float veggieAdjust = veggieCustomers / maxCustomers;
+				hamCustomers = (int)Math.Ceiling(lastCustomerAchievementLevel * hamAdjust);
+				turkeyCustomers = (int)Math.Ceiling(lastCustomerAchievementLevel * turkeyAdjust);
+				veggieCustomers = (int)Math.Ceiling(lastCustomerAchievementLevel * veggieAdjust);
+				maxCustomers = hamCustomers + turkeyCustomers + veggieCustomers;
+			}
+
+		}
+
+		/*
 		Debug.Log ("hamCustomers: " + hamCustomers);
 		Debug.Log ("turkeyCustomers: " + turkeyCustomers);
 		Debug.Log ("veggieCustomers: " + veggieCustomers);
+		*/
+		Debug.Log ("Max Customers (Update Customers): " + maxCustomers);
 	}
 
 	/**************************************
@@ -365,7 +389,7 @@ public class RestaurantStatistics
 	public void checkAchievementProgress()
 	{
 		//Customer achievement check
-		Debug.Log("Num customers: "+ maxCustomers);
+		Debug.Log("Max Customers (Achievement Check): "+ maxCustomers);
 		if (maxCustomers >= nextCustomerAchievementLevel) 
 		{
 			lastCustomerAchievementLevel = nextCustomerAchievementLevel;
