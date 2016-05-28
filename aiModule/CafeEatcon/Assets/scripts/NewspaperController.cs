@@ -83,7 +83,7 @@ public class NewspaperController : MonoBehaviour {
 				retVal = economyStories [randIndex];
 				GlobalControl.Instance.savedPlayerData.economyEventCond = true;
 				GlobalControl.Instance.savedPlayerData.randEvent = randIndex;
-				economyStories.Remove (randIndex);
+				//economyStories.Remove (randIndex);
 			}
 		} 
 		else 
@@ -92,7 +92,7 @@ public class NewspaperController : MonoBehaviour {
 			{
 				randIndex = Random.Range (0, normalStories.Count);
 				retVal = normalStories [randIndex];
-				normalStories.Remove (randIndex);
+				//normalStories.Remove (randIndex);
 			}
 		}
 		newsText.text = retVal;
