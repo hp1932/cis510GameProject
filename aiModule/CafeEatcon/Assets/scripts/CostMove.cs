@@ -15,7 +15,7 @@ public class CostMove : MonoBehaviour {
 
 
 		GameObject Middle = GameObject.Find ("Middle");
-		GameObject GhostofOrigin = GameObject.Find ("GhostofOrigin");
+		//GameObject GhostofOrigin = GameObject.Find ("GhostofOrigin");
 
 		dualDemandCurve = Middle.GetComponent<MoveWith> ().dualDemandCurve;
 		// dualDemandCurve = true; // testing only!
