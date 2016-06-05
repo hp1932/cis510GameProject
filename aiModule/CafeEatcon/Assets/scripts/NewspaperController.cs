@@ -20,6 +20,7 @@ public class NewspaperController : MonoBehaviour {
 	private float acheivementProgress;
 	private float acheivementProgressRemaining;
 	private float restaurantRating;
+	private readonly string LAVA_LEVEL_TEXT = "ALERT: VOLCANIC MT.NACHO IS ERUPTING! TRAFFIC IS BACKED UP AND MANY REPORT EXTREME HUNGER ALONG THE EVACUATION ROUTE."; 
 
 	// Use this for initialization
 	void Start () 
@@ -30,7 +31,6 @@ public class NewspaperController : MonoBehaviour {
 	public void init()
 	{
 		localPlayerData = GlobalControl.Instance.savedPlayerData;
-
 		economyStories = new Dictionary<int, string> ();
 		normalStories = new Dictionary<int, string> ();
 		initializeStories();
@@ -81,28 +81,35 @@ public class NewspaperController : MonoBehaviour {
 
 	public string pickStory()
 	{
-		float percentRand = Random.Range (0f, 1f);
 		string retVal = "";
-		int randIndex;
-
-		if (percentRand < econStoryRate) 
+		if (localPlayerData.lavaLevelTimer >= localPlayerData.lavaLevelLimit) 
 		{
-			if (economyStories.Count > 0) 
-			{
-				randIndex = Random.Range (0, economyStories.Count);
-				retVal = economyStories [randIndex];
-				GlobalControl.Instance.savedPlayerData.economyEventCond = true;
-				GlobalControl.Instance.savedPlayerData.randEvent = randIndex;
-				//economyStories.Remove (randIndex);
-			}
+			retVal = LAVA_LEVEL_TEXT;
+			localPlayerData.isLavaLevel = true;
+			localPlayerData.lavaLevelTimer = 0;
+			localPlayerData.lavaLevelLimit = localPlayerData.lavaLevelLimit * 2;
 		} 
 		else 
 		{
-			if (normalStories.Count > 0) 
-			{
-				randIndex = Random.Range (0, normalStories.Count);
-				retVal = normalStories [randIndex];
-				//normalStories.Remove (randIndex);
+			float percentRand = Random.Range (0f, 1f);
+			int randIndex;
+
+			if (percentRand < econStoryRate) {
+				if (economyStories.Count > 0) {
+					randIndex = Random.Range (0, economyStories.Count);
+					retVal = economyStories [randIndex];
+					GlobalControl.Instance.savedPlayerData.economyEventCond = true;
+					GlobalControl.Instance.savedPlayerData.randEvent = randIndex;
+					//economyStories.Remove (randIndex);
+					localPlayerData.lavaLevelTimer++;
+				}
+			} else {
+				if (normalStories.Count > 0) {
+					randIndex = Random.Range (0, normalStories.Count);
+					retVal = normalStories [randIndex];
+					//normalStories.Remove (randIndex);
+					localPlayerData.lavaLevelTimer++;
+				}
 			}
 		}
 		newsText.text = retVal;

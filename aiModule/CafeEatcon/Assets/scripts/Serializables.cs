@@ -74,6 +74,9 @@ public class RestaurantStatistics
 	public int randEvent;
 	public bool economyEventCond;
 	public bool tempDemand;
+	public bool isLavaLevel;
+	public int lavaLevelTimer;
+	public int lavaLevelLimit;
 
 	public RestaurantStatistics()
 	{
@@ -87,6 +90,11 @@ public class RestaurantStatistics
 		recipes 			  = new Dictionary<string, string[]> ();
 		dishesServed 		  = new Dictionary<string, int> ();
 		tempDemands			  = new Dictionary<string, float> ();
+
+		//For lava level
+		isLavaLevel = false;
+		lavaLevelLimit = 5;
+		lavaLevelTimer = 0;
 
 		dualDemandCurve = false;
 		economyEventCond = false;

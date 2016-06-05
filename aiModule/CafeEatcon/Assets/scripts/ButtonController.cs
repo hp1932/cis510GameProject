@@ -47,6 +47,14 @@ public class ButtonController : MonoBehaviour {
 		SoundManager.instance.PlaySingle (switchSound);
 		GlobalControl.Instance.savedPlayerData.currentDay += 1;
 
-		SceneManager.LoadScene ("phase1");
+		if (GlobalControl.Instance.savedPlayerData.isLavaLevel) 
+		{
+			GlobalControl.Instance.savedPlayerData.isLavaLevel = false;
+			SceneManager.LoadScene ("phase1_lava");
+		} 
+		else 
+		{
+			SceneManager.LoadScene ("phase1");
+		}
 	}
 }
