@@ -80,7 +80,7 @@ public class CustomerMover : MonoBehaviour {
 				if (transform.position == driveUpLocation) 
 				{
 					reachedTarget = true;
-					restaurant.customerOrder.text = order.Split(' ')[0];
+					restaurant.customerOrder.text = "Order: " + order.Split(' ')[0];
 					PauseForFood (orderTime);
 					restaurant.Order (order);
 				}

@@ -14,6 +14,12 @@ public class NewspaperController : MonoBehaviour {
 	public Text newsText;
 	public Text dayText;
 	public Text ratingText;
+	public Text achievementText;
+	public Text achievementNumber;
+
+	private float acheivementProgress;
+	private float acheivementProgressRemaining;
+	private float restaurantRating;
 
 	// Use this for initialization
 	void Start () 
@@ -32,20 +38,24 @@ public class NewspaperController : MonoBehaviour {
 
 		dayText.text = "Day " + localPlayerData.currentDay;
 
-		if (localPlayerData.favorabilityRating == 0f) {
-			ratingText.text = ":(";
-		} else if (localPlayerData.favorabilityRating < 0.2f) {
-			ratingText.text = "*";
-		} else if (localPlayerData.favorabilityRating < 0.4f) {
-			ratingText.text = "**";
-		} else if (localPlayerData.favorabilityRating < 0.6f) {
-			ratingText.text = "***";
-		} else if (localPlayerData.favorabilityRating < 0.8f) {
-			ratingText.text = "****";
-		} else if (localPlayerData.favorabilityRating <= 1.0f) {
-			ratingText.text = "*****";
-		} else {
-			ratingText.text = localPlayerData.favorabilityRating.ToString();
+		ratingText.text = "";
+		restaurantRating = localPlayerData.favorabilityRating;
+		while (restaurantRating > 0) {
+			ratingText.text += "*";
+			restaurantRating -= 0.2f;
+		}
+
+		achievementNumber.text = "\"" + localPlayerData.nextCustomerAchievementLevel.ToString() + " Customers Served\"";
+		acheivementProgress = localPlayerData.customerAchievementProgress;
+		acheivementProgressRemaining = 1.0f - acheivementProgress;
+		achievementText.text = "";
+		while (acheivementProgress > 0) {
+			achievementText.text += "*";
+			acheivementProgress -= 0.1f;
+		}
+		while (acheivementProgressRemaining > 0) {
+			achievementText.text += "-";
+			acheivementProgressRemaining -= 0.1f;
 		}
 
 	}
