@@ -3393,7 +3393,7 @@ RectTransform:
   - {fileID: 642983457}
   - {fileID: 511753538}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -4243,7 +4243,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -254.86}
+  m_AnchoredPosition: {x: 0, y: -262.9}
   m_SizeDelta: {x: 150, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &511753539
@@ -4319,7 +4319,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 13df03eb26f5e7f4e97f70c01bb4feff, type: 3}
-    m_FontSize: 20
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -4531,7 +4531,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 570223285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -5.81, z: 0}
+  m_LocalPosition: {x: -2, y: -5.75, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 828486969}
@@ -4540,8 +4540,8 @@ Transform:
   - {fileID: 396427514}
   - {fileID: 2033759356}
   - {fileID: 1475441841}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1585404941}
+  m_RootOrder: 4
 --- !u!1001 &580828963
 Prefab:
   m_ObjectHideFlags: 0
@@ -5078,7 +5078,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -197.43}
+  m_AnchoredPosition: {x: 0, y: -208.53}
   m_SizeDelta: {x: 150, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &642983458
@@ -10580,6 +10580,7 @@ Transform:
   - {fileID: 1529012489}
   - {fileID: 2068750243}
   - {fileID: 440929410}
+  - {fileID: 570223286}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!1 &1592040851
@@ -12725,7 +12726,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1001 &1928530680
 Prefab:
   m_ObjectHideFlags: 0
@@ -13314,7 +13315,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 409506, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -7.65
+      value: -7.25
       objectReference: {fileID: 0}
     - target: {fileID: 409506, guid: 5f094d188f9f27b4b9bd47ef33c295a5, type: 2}
       propertyPath: m_LocalPosition.z
