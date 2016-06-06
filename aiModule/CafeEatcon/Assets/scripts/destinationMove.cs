@@ -8,15 +8,25 @@ public class destinationMove : MonoBehaviour {
 	public float destZ;
 	public bool dualDemandCurve;
 
+
+	RestaurantStatistics localPlayerData;
+
 	void Start ()
 	{
-		GameObject Middle = GameObject.Find ("Middle");
+		localPlayerData = GlobalControl.Instance.savedPlayerData;
+
+		// GameObject Middle = GameObject.Find ("Middle");
+		// dualDemandCurve = Middle.GetComponent<MoveWith> ().dualDemandCurve;
+		dualDemandCurve = localPlayerData.dualDemandCurve;
+
+
+		// dualDemandCurve = Middle.GetComponent<MoveWith> ().dualDemandCurve;
+		// dualDemandCurve = true; // testing only!
 		destX = transform.position.x;
 		destY = transform.position.y;
 		destZ = transform.position.z;
 
-		dualDemandCurve = Middle.GetComponent<MoveWith> ().dualDemandCurve;
-		// dualDemandCurve = true; // testing only!
+
 
 		if (dualDemandCurve == true)
 		{

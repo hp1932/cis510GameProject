@@ -8,17 +8,26 @@ public class CostMove : MonoBehaviour {
 	public float originZ;
 	public bool dualDemandCurve;
 
+	RestaurantStatistics localPlayerData;
+
 
 	void Start ()
 	{
+		localPlayerData = GlobalControl.Instance.savedPlayerData;
+
+		//GameObject Middle = GameObject.Find ("Middle");
+		// dualDemandCurve = Middle.GetComponent<MoveWith> ().dualDemandCurve;
+		dualDemandCurve = localPlayerData.dualDemandCurve;
 
 
-
-		GameObject Middle = GameObject.Find ("Middle");
+		// GameObject Middle = GameObject.Find ("Middle");
 		//GameObject GhostofOrigin = GameObject.Find ("GhostofOrigin");
 
-		dualDemandCurve = Middle.GetComponent<MoveWith> ().dualDemandCurve;
+
 		// dualDemandCurve = true; // testing only!
+		// GameObject GhostofOrigin = GameObject.Find ("GhostofOrigin");
+
+
 		originX = transform.position.x;
 		originY = transform.position.y;
 		originZ = transform.position.z;

@@ -97,7 +97,7 @@ public class RestaurantStatistics
 		lavaLevelLimit = 5;
 		lavaLevelTimer = 0;
 
-		dualDemandCurve = false;
+		dualDemandCurve = true;
 		economyEventCond = false;
 		tempDemand = false;
 		randEvent = 0;
@@ -470,7 +470,7 @@ public class RestaurantStatistics
 		numCustomers = (int)tempCustomers;
 		if (numCustomers < 1) 
 		{
-			numCustomers = 1;
+			numCustomers = 0;
 		}
 		Debug.Log ("numCustomers: " + numCustomers);
 	}
