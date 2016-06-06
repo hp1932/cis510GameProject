@@ -28,7 +28,7 @@ public class NewspaperController : MonoBehaviour {
 		economyStories = new Dictionary<int, string> ();
 		normalStories = new Dictionary<int, string> ();
 		initializeStories();
-		econStoryRate = 1f;
+		econStoryRate = 0.5f;
 
 		dayText.text = "Day " + localPlayerData.currentDay;
 
