@@ -81,7 +81,7 @@ public class NewspaperController : MonoBehaviour {
 
 	public string pickStory()
 	{
-		string retVal = "";
+		string retVal = "NULL";
 		if (localPlayerData.lavaLevelTimer >= localPlayerData.lavaLevelLimit) 
 		{
 			retVal = LAVA_LEVEL_TEXT;
@@ -93,21 +93,26 @@ public class NewspaperController : MonoBehaviour {
 		{
 			float percentRand = Random.Range (0f, 1f);
 			int randIndex;
+			randIndex = 0;
 
 			if (percentRand < econStoryRate) {
 				if (economyStories.Count > 0) {
-					randIndex = Random.Range (0, economyStories.Count);
-					retVal = economyStories [randIndex];
+					while (retVal == "NULL") {
+						randIndex = Random.Range (0, economyStories.Count);
+						retVal = economyStories [randIndex];
+						GlobalControl.Instance.savedPlayerData.randEvent = randIndex;
+					}
 					GlobalControl.Instance.savedPlayerData.economyEventCond = true;
-					GlobalControl.Instance.savedPlayerData.randEvent = randIndex;
-					//economyStories.Remove (randIndex);
+					economyStories[randIndex] = "NULL";
 					localPlayerData.lavaLevelTimer++;
 				}
 			} else {
 				if (normalStories.Count > 0) {
-					randIndex = Random.Range (0, normalStories.Count);
-					retVal = normalStories [randIndex];
-					//normalStories.Remove (randIndex);
+					while (retVal == "NULL") {
+						randIndex = Random.Range (0, normalStories.Count);
+						retVal = normalStories [randIndex];
+					}
+					normalStories[randIndex] = "NULL";
 					localPlayerData.lavaLevelTimer++;
 				}
 			}
