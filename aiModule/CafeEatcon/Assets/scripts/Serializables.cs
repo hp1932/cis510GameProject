@@ -283,6 +283,95 @@ public class RestaurantStatistics
 				tempDemands[TURKEY_SANDWICH] = 0.3f;
 				tempDemands[VEGGIE_SANDWICH] = 0.6f;
 				break;
+			case 8:
+				// video game expo, up 40% customers
+				tempCustomers = (float)numCustomers * 1.4f;
+				numCustomers = (int)tempCustomers;
+				break;
+			case 9:
+				// circus in town, up 30% customers
+				tempCustomers = (float)numCustomers * 1.3f;
+				numCustomers = (int)tempCustomers;
+				break;
+			case 10:
+				// Evening Walk, up 10% customers
+				tempCustomers = (float)numCustomers * 1.1f;
+				numCustomers = (int)tempCustomers;
+				break;
+			case 11:
+				// Chili Cookoff, down 20% customers
+				tempCustomers = (float)numCustomers * 0.8f;
+				numCustomers = (int)tempCustomers;
+				break;
+			case 12:
+				// Chamber of Commerce Review, up 10% customers
+				tempCustomers = (float)numCustomers * 1.1f;
+				numCustomers = (int)tempCustomers;
+				break;
+			case 13:
+				// Princesses on Ice cancellation, down 10% customers
+				tempCustomers = (float)numCustomers * 0.9f;
+				numCustomers = (int)tempCustomers;
+				break;
+			case 14:
+				// Solar Flare, down 20% customers
+				tempCustomers = (float)numCustomers * 0.8f;
+				numCustomers = (int)tempCustomers;
+				break;
+			case 15:
+				// Bed bug infestation, down 30% customers
+				tempCustomers = (float)numCustomers * 0.7f;
+				numCustomers = (int)tempCustomers;
+				break;
+			case 16:
+				// Canadian bad pork, ham 0.1, turkey 0.5, veggie 0.4
+				tempDemand = true;
+				tempDemands[HAM_SANDWICH] = 0.1f;
+				tempDemands[TURKEY_SANDWICH] = 0.5f;
+				tempDemands[VEGGIE_SANDWICH] = 0.4f;
+				break;
+			case 17:
+				// Bird Flu, ham 0.4, turkey 0.1, veggie 0.5
+				tempDemand = true;
+				tempDemands[HAM_SANDWICH] = 0.4f;
+				tempDemands[TURKEY_SANDWICH] = 0.1f;
+				tempDemands[VEGGIE_SANDWICH] = 0.5f;
+				break;
+			case 18:
+				// Salmonella outbreak, ham 0.6, turkey 0.2, veggie 0.2
+				tempDemand = true;
+				tempDemands[HAM_SANDWICH] = 0.6f;
+				tempDemands[TURKEY_SANDWICH] = 0.2f;
+				tempDemands[VEGGIE_SANDWICH] = 0.2f;
+				break;
+			case 19:
+				// Salmonella poultry, ham 0.6, turkey 0.05, veggie 0.35
+				tempDemand = true;
+				tempDemands[HAM_SANDWICH] = 0.6f;
+				tempDemands[TURKEY_SANDWICH] = 0.05f;
+				tempDemands[VEGGIE_SANDWICH] = 0.35f;
+				break;
+			case 20:
+				// Big Ham more organic, ham 0.5, turkey, 0.25, veggie 0.25
+				tempDemand = true;
+				tempDemands[HAM_SANDWICH] = 0.5f;
+				tempDemands[TURKEY_SANDWICH] = 0.25f;
+				tempDemands[VEGGIE_SANDWICH] = 0.25f;
+				break;
+			case 21:
+				// ham contamination, ham 0.2, turkey 0.3, veggie 0.5
+				tempDemand = true;
+				tempDemands[HAM_SANDWICH] = 0.2f;
+				tempDemands[TURKEY_SANDWICH] = 0.3f;
+				tempDemands[VEGGIE_SANDWICH] = 0.5f;
+				break;
+			case 22:
+				// Farmer strike, ham 0.3, turkey 0.3, veggie 0.4
+				tempDemand = true;
+				tempDemands[HAM_SANDWICH] = 0.3f;
+				tempDemands[TURKEY_SANDWICH] = 0.3f;
+				tempDemands[VEGGIE_SANDWICH] = 0.4f;
+				break;
 			}
 		}
 	}
@@ -531,5 +620,3 @@ public class RestaurantStatistics
 		customerAchievementProgress = Mathf.Clamp (customerAchievementProgress, 0.0f, 1.0f);
 	}
 }
-
-	
