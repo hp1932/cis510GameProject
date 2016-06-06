@@ -28,7 +28,7 @@ public class NewspaperController : MonoBehaviour {
 		economyStories = new Dictionary<int, string> ();
 		normalStories = new Dictionary<int, string> ();
 		initializeStories();
-		econStoryRate = 0.5f;
+		econStoryRate = 1f;
 
 		dayText.text = "Day " + localPlayerData.currentDay;
 
@@ -60,13 +60,13 @@ public class NewspaperController : MonoBehaviour {
 		normalStories.Add (5, "In Local News:\nThe Middleton Police Academy is looking for new applicants for their dog training division. Contact (555)DOG-COPS for more information.");
 
 		economyStories.Add (0, "In Local Metro News:\nAn alligator has escaped from the Metro Zoo and park area along the riverfront! Avoid the entire downtown area if possible!");
-		//economyStories.Add (6, "In Local Metro News:\nLocal poultry farm under investigation for unsanitary working conditions. Many local restaurants using their turkey and chicken products!");
+		economyStories.Add (6, "In Local Metro News:\nLocal poultry farm under investigation for unsanitary working conditions. Many local restaurants using their turkey and chicken products!");
 		economyStories.Add (1, "In Local Metro News:\nNational SuperCon comic book convention is coming to the metro area today, expect large crowds in the downtown area all day!");
 		economyStories.Add (2, "In Local Metro News:\nLocal MPEU Employees Union today announced an immediate strike today, which will grind metro area work and traffic to a halt today!");
 		economyStories.Add (3, "In Local Metro News:\nThe metro area Farmers Market is back for its spring season today, you may want to avoid downtown today because of the thousands of people attending!");
-		//economyStories.Add (5, "In Local Metro News:\nThe Downtown Metro Area Vegan Animal Rescue Society is having a pet adoption extravaganza starting at 9am!");
+		economyStories.Add (5, "In Local Metro News:\nThe Downtown Metro Area Vegan Animal Rescue Society is having a pet adoption extravaganza starting at 9am!");
 		economyStories.Add (4, "In Local Metro News:\nStarting today and continuing through the weekend is the All Metro Area Homestead and Gardening Conference at Pioneer Square!");
-		//economyStories.Add (7, "In Local Metro News:\nThe first local incidents of Hoof and Mouth disease were Recently reported to local health officials. Please be advised this is a continuing story.");
+		economyStories.Add (7, "In Local Metro News:\nThe first local incidents of Hoof and Mouth disease were Recently reported to local health officials. Please be advised this is a continuing story.");
 	}	
 
 	public string pickStory()

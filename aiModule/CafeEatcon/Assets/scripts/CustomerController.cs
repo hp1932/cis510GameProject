@@ -51,20 +51,18 @@ public class CustomerController : MonoBehaviour {
 		Vector3 spawnPosition;
 		Quaternion spawnRotation;
 
-		/* Yarrr Matey, Tharr be some BUGGY Code below. Watch Yer Footing.
 		if (GlobalControl.Instance.savedPlayerData.tempDemand) {
 			GlobalControl.Instance.savedPlayerData.SortTempDemands ();
 			sortedDemands = GlobalControl.Instance.savedPlayerData.tempDemandsSorted;
 		} else {
 			sortedDemands = GlobalControl.Instance.savedPlayerData.dishDemandsSorted;
 		}
-		*/
-		sortedDemands = GlobalControl.Instance.savedPlayerData.dishDemandsSorted;
 
-		/* This 'ere be a map ter 'elp find BUGS
+		//sortedDemands = GlobalControl.Instance.savedPlayerData.dishDemandsSorted;
+
 		foreach (DishDemand db in sortedDemands){
 			Debug.Log ("Demand" + db.name + ": " + db.probability);
-		}*/
+		}
 
 		float rand;
 

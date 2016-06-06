@@ -32,6 +32,7 @@ public class RestaurantStatistics
 
 	//Variables to be reported in phase 2
 	public int maxCustomers;
+	public int oldMaxCustomers;
 	public int hamCustomers;
 	public int turkeyCustomers;
 	public int veggieCustomers;
@@ -106,6 +107,7 @@ public class RestaurantStatistics
 		levelFavorability = 0f;
 		currentBalance = 10.00f;	//start with some cash just to see the difference from daily profit to start
 		maxCustomers = 40; 			//initially set to 40
+		oldMaxCustomers = 20;
 		hamCustomers = 20;
 		turkeyCustomers = 10;
 		veggieCustomers = 10;
@@ -310,9 +312,19 @@ public class RestaurantStatistics
 		hamCustomers = (int)Math.Floor(hamCustomers * hamChange);
 		turkeyCustomers = (int)Math.Floor(turkeyCustomers * turkeyChange);
 		veggieCustomers = (int)Math.Floor(veggieCustomers * veggieChange);
-		maxCustomers = hamCustomers + turkeyCustomers + veggieCustomers;
-		//div by zero fix
 
+
+		float maxTest = (float)(oldMaxCustomers * 0.75f);
+		maxCustomers = hamCustomers + turkeyCustomers + veggieCustomers;
+		if ((float)maxCustomers < maxTest) {
+			maxCustomers = (int)maxTest;
+			oldMaxCustomers = (int)maxTest;
+		} else {
+			oldMaxCustomers = maxCustomers;
+			maxCustomers = hamCustomers + turkeyCustomers + veggieCustomers;
+		}
+		//div by zero fix
+		/*
 		if (maxCustomers<lastCustomerAchievementLevel){
 			if (maxCustomers < 1) {
 				//gameOver
@@ -326,7 +338,7 @@ public class RestaurantStatistics
 				maxCustomers = hamCustomers + turkeyCustomers + veggieCustomers;
 			}
 
-		}
+		}*/
 
 		/*
 		Debug.Log ("hamCustomers: " + hamCustomers);
@@ -334,6 +346,7 @@ public class RestaurantStatistics
 		Debug.Log ("veggieCustomers: " + veggieCustomers);
 		*/
 		Debug.Log ("Max Customers (Update Customers): " + maxCustomers);
+		Debug.Log ("Old Max Customers (Update Customers): " + oldMaxCustomers);
 	}
 
 	/**************************************
@@ -409,7 +422,7 @@ public class RestaurantStatistics
 		ingredientsOnHand.Add(TURKEY, 8);
 		ingredientsOnHand.Add(HAM, 12);
 		ingredientsOnHand.Add(VEGGIE, 5);
-		ingredientsOnHand.Add (SODA, 15);
+		ingredientsOnHand.Add (SODA, 10);
 	}
 
 	/***********************************
@@ -490,7 +503,7 @@ public class RestaurantStatistics
 	public void checkAchievementProgress()
 	{
 		//Customer achievement check
-		Debug.Log("Max Customers (Achievement Check): "+ maxCustomers);
+		//Debug.Log("Max Customers (Achievement Check): "+ maxCustomers);
 		if (maxCustomers >= nextCustomerAchievementLevel) 
 		{
 			lastCustomerAchievementLevel = nextCustomerAchievementLevel;
