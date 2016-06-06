@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class RestaurantController : MonoBehaviour {
 
@@ -18,11 +19,32 @@ public class RestaurantController : MonoBehaviour {
 	public Text customerOrder;
 	public bool orderFulfilled;
 	private float profit;
-
+	private bool gameOver = false;
+		
 	void Awake()
 	{
 		//Get the ingredientsOnHand from the global controller
 		localPlayerData = GlobalControl.Instance.savedPlayerData;
+		if (localPlayerData.numCustomers <= 0) 
+		{
+			gameOver = true;
+		}
+	}
+
+	public void OnGUI()
+	{
+		if (gameOver) {
+			Rect windowRect = new Rect(75, 300, 248, 50);
+			windowRect = GUI.Window(0, windowRect, OpenConfirmation, "No more customers! Game Over!");
+		}
+	}
+	void OpenConfirmation(int windowID) 
+	{
+		if (GUI.Button (new Rect (80, 20, 100, 20), "New Game")) {
+			Destroy (GlobalControl.Instance);
+			SceneManager.LoadScene ("start");
+			gameOver = false;
+		}
 	}
 
 

@@ -470,7 +470,7 @@ public class RestaurantStatistics
 		numCustomers = (int)tempCustomers;
 		if (numCustomers < 1) 
 		{
-			numCustomers = 1;
+			numCustomers = 0;
 		}
 		Debug.Log ("numCustomers: " + numCustomers);
 	}
