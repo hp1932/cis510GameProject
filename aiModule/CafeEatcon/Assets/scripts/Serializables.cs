@@ -97,7 +97,7 @@ public class RestaurantStatistics
 		lavaLevelLimit = 5;
 		lavaLevelTimer = 0;
 
-		dualDemandCurve = true;
+		dualDemandCurve = false;
 		economyEventCond = false;
 		tempDemand = false;
 		randEvent = 0;
