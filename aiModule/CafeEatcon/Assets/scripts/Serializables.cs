@@ -94,7 +94,7 @@ public class RestaurantStatistics
 
 		//For lava level
 		isLavaLevel = false;
-		lavaLevelLimit = 5;
+		lavaLevelLimit = 2;
 		lavaLevelTimer = 0;
 
 		dualDemandCurve = false;
