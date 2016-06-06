@@ -16,19 +16,26 @@ public class ghostRender : MonoBehaviour {
 
 	RestaurantStatistics localPlayerData;
 
+	void Start () { // removed PUBLIC not sure its purpose
 
+		localPlayerData = GlobalControl.Instance.savedPlayerData;
 
-	public void Start () {
+		// GameObject Middle = GameObject.Find ("Middle");
+		// dualDemandCurve = Middle.GetComponent<MoveWith> ().dualDemandCurve;
+		dualDemandCurve = localPlayerData.dualDemandCurve;
 
 		if (dualDemandCurve == true) {
 
+
 			localPlayerData = GlobalControl.Instance.savedPlayerData;
+			// GameObject Middle = GameObject.Find ("Middle");
+			// dualDemandCurve = Middle.GetComponent<MoveWith> ().dualDemandCurve;
+			// dualDemandCurve = true; // testing only!
 			// Main Origin to Destination Line
 			lineRendererMain = GetComponent<LineRenderer> ();
 			lineRendererMain.SetPosition (0, origin.position);
 			lineRendererMain.SetColors (c1, c1);
 			lineRendererMain.SetWidth (lineWidth, lineWidth);
-			dualDemandCurve = localPlayerData.dualDemandCurve;
 
 			distance = Vector3.Distance (origin.position, destination.position);
 

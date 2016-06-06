@@ -49,13 +49,14 @@ public class MoveWith : MonoBehaviour {
 		localPlayerData = GlobalControl.Instance.savedPlayerData;
 
 		GameObject Destination = GameObject.Find ("Destination");
+		// GameObject Origin = GameObject.Find ("Origin");
+		dualDemandCurve = localPlayerData.dualDemandCurve;
+		// dualDemandCurve = true; // for testing only
 		hamSandwichCost = localPlayerData.dishPrices[localPlayerData.HAM_SANDWICH];
 		turkeySandwichCost = localPlayerData.dishPrices[localPlayerData.TURKEY_SANDWICH];
 		veggieSandwichCost = localPlayerData.dishPrices[localPlayerData.VEGGIE_SANDWICH];
 		// implementing line render move below
 
-		dualDemandCurve = localPlayerData.dualDemandCurve;
-		// dualDemandCurve = true; // for testing only
 		if (dualDemandCurve == true) 
 		{
 			PerCustCostXAnchor = -10 + 2;
@@ -1710,7 +1711,7 @@ public class MoveWith : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		//potentialIncome = potentialCustomers * avgMealCost;
+
 
 	}
 
@@ -1729,9 +1730,19 @@ public class MoveWith : MonoBehaviour {
 
 		Vector3 point = Camera.main.WorldToScreenPoint (transform.position);
 		yVal = Screen.height - point.y - 20;
-		GUI.Label (new Rect (startXAnchor - 35, yVal + 9, 35, 20), "$" + avgMealCost.ToString());
-		GUI.Label (new Rect (point.x - 5, startYAnchor - 40, 40, 20), potentialCustomers.ToString ());
+		GUI.Label (new Rect (point.x + 18, yVal + 9, 35, 20), "$" + avgMealCost.ToString()); //  startXAnchor + 90
+		GUI.Label (new Rect (point.x - 5, startYAnchor - 48, 40, 20), potentialCustomers.ToString ());
 
+
+	// BELOW IS PRINTING FOR JUMPING UP LEVEL CONGRATS ETC
+
+		if (dualDemandCurve == true)
+		{ 
+			GUI.color = Color.black;
+			GUI.Label (new Rect (145, 170, 250, 20), "Well done! You climbed a level!");
+			GUI.Label (new Rect (145, 185, 250, 20), "Past Total Customers: 40");
+			GUI.Label (new Rect (145, 200, 250, 20), "Past Max Menu Price $2.00");
+		}
 	}
 
 
