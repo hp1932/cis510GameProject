@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class MoveWith : MonoBehaviour {
 
+	public AudioClip buttonSound;
+	public AudioClip switchSound;
 	public double avgMealCost;
 	public float hamSandwichCost;
 	public float turkeySandwichCost;
@@ -1647,6 +1649,7 @@ public class MoveWith : MonoBehaviour {
 		priceUp ();
 
 		if (hamSandwichCost <= maxSandwichPrice - menuMinus) {
+			SoundManager.instance.PlaySingle (buttonSound);
 			hamSandwichCost = hamSandwichCost + priceincrease;
 			avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
 
@@ -1658,6 +1661,7 @@ public class MoveWith : MonoBehaviour {
 	public void hamDOWN() 
 	{
 		if (hamSandwichCost >= priceincrease - menuMinus) {
+			SoundManager.instance.PlaySingle (buttonSound);
 			hamSandwichCost = hamSandwichCost - priceincrease;
 			avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
 
@@ -1667,6 +1671,7 @@ public class MoveWith : MonoBehaviour {
 	public void turkeyUP() 
 	{
 		if (turkeySandwichCost <= maxSandwichPrice - menuMinus) {
+			SoundManager.instance.PlaySingle (buttonSound);
 			turkeySandwichCost = turkeySandwichCost + priceincrease;
 			avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
 
@@ -1678,6 +1683,7 @@ public class MoveWith : MonoBehaviour {
 	public void turkeyDOWN() 
 	{
 		if (turkeySandwichCost >= priceincrease - menuMinus) {
+			SoundManager.instance.PlaySingle (buttonSound);
 			turkeySandwichCost = turkeySandwichCost - priceincrease;
 			avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
 
@@ -1689,6 +1695,7 @@ public class MoveWith : MonoBehaviour {
 	public void veggieUP() 
 	{
 		if (veggieSandwichCost <= maxSandwichPrice - menuMinus) {
+			SoundManager.instance.PlaySingle (buttonSound);
 			veggieSandwichCost = veggieSandwichCost + priceincrease;
 			avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
 
@@ -1700,6 +1707,7 @@ public class MoveWith : MonoBehaviour {
 	public void veggieDOWN() 
 	{
 		if (veggieSandwichCost >= priceincrease - menuMinus) {
+			SoundManager.instance.PlaySingle (buttonSound);
 			veggieSandwichCost = veggieSandwichCost - priceincrease;
 			avgMealCost = (hamSandwichCost + turkeySandwichCost + veggieSandwichCost) / 3;
 
@@ -1749,6 +1757,7 @@ public class MoveWith : MonoBehaviour {
 	public void finalSubmit ()
 	{
 		if (avgMealCost >=0.50){
+			SoundManager.instance.PlaySingle (switchSound);
 			localPlayerData.dishPrices[localPlayerData.HAM_SANDWICH] = hamSandwichCost;
 			localPlayerData.dishPrices[localPlayerData.TURKEY_SANDWICH] = turkeySandwichCost;
 			localPlayerData.dishPrices[localPlayerData.VEGGIE_SANDWICH] = veggieSandwichCost;
