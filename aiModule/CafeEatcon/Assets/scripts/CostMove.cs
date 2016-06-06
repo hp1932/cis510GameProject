@@ -15,7 +15,7 @@ public class CostMove : MonoBehaviour {
 	{
 		localPlayerData = GlobalControl.Instance.savedPlayerData;
 
-		GameObject Middle = GameObject.Find ("Middle");
+		//GameObject Middle = GameObject.Find ("Middle");
 		// dualDemandCurve = Middle.GetComponent<MoveWith> ().dualDemandCurve;
 		dualDemandCurve = localPlayerData.dualDemandCurve;
 
