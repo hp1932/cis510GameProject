@@ -78,6 +78,8 @@ public class RestaurantStatistics
 	public bool isLavaLevel;
 	public int lavaLevelTimer;
 	public int lavaLevelLimit;
+	public int econStoriesAccessed;
+	public int normStoriesAccessed;
 
 	public RestaurantStatistics()
 	{
@@ -128,6 +130,8 @@ public class RestaurantStatistics
 		moneySpent = 0.0f;
 		balanceIndex = 0.90f;
 		slope = 6.66f;
+		econStoriesAccessed = 0;
+		normStoriesAccessed = 0;
 
 		lastCustomerAchievementLevel = 40;
 		nextCustomerAchievementLevel = 60;
