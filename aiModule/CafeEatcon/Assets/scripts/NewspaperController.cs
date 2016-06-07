@@ -65,13 +65,18 @@ public class NewspaperController : MonoBehaviour {
 		normalStories.Add (0, "In Local Metro News:\nThe metro unemployment report came out showing minimal job growth, and a current unemployment rate at 5.4% - could be worse...");
 		normalStories.Add (1, "In Local Metro News:\nThe traffic signals at Main and 3rd Ave have been malfunctioning since yesterday afternoon causing traffic jams and delays downtown today.");
 		normalStories.Add (2, "In Local Metro News:\nNew construction has started today at 3rd Ave and Morrison St downtown which will be causing traffic delays at that intersection for the next few weeks.");
-		normalStories.Add (3, "In Local Metro News:\n Batboy has returned! Will he help settle the stock market?");
-		normalStories.Add (4, "In Sports News:\n The Middle Valley Senior High Football team clinched a playoff berth with a last second hail mary against Easton Prep.");
+		normalStories.Add (3, "In Local Metro News:\nBatboy has returned! Will he help settle the stock market?");
+		normalStories.Add (4, "In Sports News:\nThe Middle Valley Senior High Football team clinched a playoff berth with a last second hail mary against Easton Prep.");
 		normalStories.Add (5, "In Local News:\nThe Middleton Police Academy is looking for new applicants for their dog training division. Contact (555)DOG-COPS for more information.");
 		normalStories.Add (6, "In Metro Business News:\nA water main broke on 1st Ave late last night causing major flooding in some downtown areas, city officials said it will take the entire day to fix.");
 		normalStories.Add (7, "In Metro Business News:\nToday, the world renowned balloon sculpture Finnigan Zyphese will be sculpting downtown for free!");
 		normalStories.Add (8, "In Metro Business News:\nThe World Series of Juggling will be holding its final competition today at the historic courthouse area downtown from 10am through 6pm, all are welcome!");
 		normalStories.Add (9, "In National News Headlines:\nThat one candidate running for president said something really bad about that other candidate running for president. This is not really a breaking story.");
+		normalStories.Add (10, "In Sports News:\nThe Springtown AAA Baseball team is being sold to Hillside for an undisclosed amount. Star pitcher Pepper Smith says he is excited for the move.");
+		normalStories.Add (11, "In Entertainment News:\nStar search will be in town next weekend. Be sure to sign up online for your chance to prove you're a star!");
+		normalStories.Add (12, "In International News:\nThe UN has criticised Russia for having two ss make an sh sound. It was later revealed that this was a late April Fools joke gone wrong.");
+		normalStories.Add (13, "In Shopping News:\nRussel's Boutique will be opening next Friday at 7am, and closing at 3pm. They will return to regular hours afterward.");
+
 
 		economyStories.Add (0, "In Local Metro News:\nAn alligator has escaped from the Metro Zoo and park area along the riverfront! Avoid the entire downtown area if possible!");
 		economyStories.Add (6, "In Local Metro News:\nLocal poultry farm under investigation for unsanitary working conditions. Many local restaurants using their turkey and chicken products!");
@@ -110,6 +115,11 @@ public class NewspaperController : MonoBehaviour {
 		normalStories[7] = "In Metro Business News:\nToday, the world renowned balloon sculpture Finnigan Zyphese will be sculpting downtown for free!";
 		normalStories[8] = "In Metro Business News:\nThe World Series of Juggling will be holding its final competition today at the historic courthouse area downtown from 10am through 6pm, all are welcome!";
 		normalStories[9] = "In National News Headlines:\nThat one candidate running for president said something really bad about that other candidate running for president. This is not really a breaking story.";
+		normalStories[10] = "In Sports News:\nThe Springtown AAA Baseball team is being sold to Hillside for an undisclosed amount. Star pitcher Pepper Smith says he is excited for the move.";
+		normalStories[11] = "In Entertainment News:\nStar search will be in town next weekend. Be sure to sign up online for your chance to prove you're a star!";
+		normalStories[12] = "In International News:\nThe UN has criticised Russia for having two ss make an sh sound. It was later revealed that this was a late April Fools joke gone wrong.";
+		normalStories[13] = "In Shopping News:\nRussel's Boutique will be opening next Friday at 7am, and closing at 3pm. They will return to regular hours afterward.";
+
 
 		economyStories[0] = "In Local Metro News:\nAn alligator has escaped from the Metro Zoo and park area along the riverfront! Avoid the entire downtown area if possible!";
 		economyStories[6] = "In Local Metro News:\nLocal poultry farm under investigation for unsanitary working conditions. Many local restaurants using their turkey and chicken products!";
